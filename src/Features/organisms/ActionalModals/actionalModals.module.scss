@@ -39,7 +39,7 @@
     backdrop-filter: blur(24px);
     border-radius: 8px;
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow: auto;
     padding: 48px 24px 38px;
     @media all and (max-width: $smallTablet) {

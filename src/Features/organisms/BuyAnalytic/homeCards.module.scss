@@ -1,0 +1,17 @@
+@use "sass:math";
+@import "/src/styles/vars";
+@import "/src/styles/mixins";
+
+
+.cardRow {
+    @include flexRow(math.div(24, 2), 4);
+    @media all and (max-width: $normalDesktop) {
+        @include flexRow(math.div(16, 2), 4);
+    }
+    @media all and (max-width: $tablet) {
+        @include flexRow(math.div(20, 2), 2);
+    }
+    @media all and (max-width: $mobile) {
+        @include flexRow(math.div(20, 2), 1);
+    }
+}

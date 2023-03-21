@@ -8,6 +8,7 @@ import CloseSvg from '../../../Assets/Icons/CloseSvg';
 import { getActionalModals } from '../../../Store/Selectors/modal';
 import { setActionModal } from '../../../Store/Slices/modal';
 import BinanceFuture from '../../moleculs/Modals/BinanceFuture';
+// import DetailsModal from '../../moleculs/Modals/DetailsModal';
 import styles from './actionalModals.module.scss';
 
 const badSuspension = {
