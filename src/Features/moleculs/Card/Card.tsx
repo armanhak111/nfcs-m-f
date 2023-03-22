@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import TooltipSvg from '../../../Assets/Icons/cards/TooltipSvg';
+import { ROUTES } from '../../../Constants/Routes';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
 import Typography from '../../atoms/Typography';
 import { THomeCards } from '../../organisms/organismsTypes';
+// import Dashboard from '../../views/Dashboard';
 import styles from './card.module.scss';
 
 interface ICard extends THomeCards {
@@ -22,6 +25,7 @@ const Card: React.FC<ICard> = ({
   hoverEffect,
 }) => {
   const Component = icon;
+  const history = useHistory();
 
   const [toolTip, setToolTip] = useState<boolean>(false);
   return (
@@ -51,10 +55,22 @@ const Card: React.FC<ICard> = ({
         <Typography className={styles.cardTitle} component="h2" id={title} />
         <Typography className={styles.cardText} component="p" id={info} />
         <div className={styles.cardPrice}>
-          {saleMode && <s>{saledPrice}$</s>}
-          <p>{price}$</p>
+          {hoverEffect === 'cardItemDisabled' ? (
+            <p>_ _ _</p>
+          ) : (
+            <>
+              {' '}
+              {saleMode && <s>{saledPrice}$</s>}
+              <p>{price}$</p>
+            </>
+          )}
         </div>
-        <Button type="primary" customClass={styles.cardBtn} id={buttonText} />
+        <Button
+          type="primary"
+          customClass={styles.cardBtn}
+          id={buttonText}
+          onClick={() => history.push(ROUTES.DASHBOARD)}
+        />
       </div>
     </div>
   );

@@ -18,13 +18,13 @@ const ForecastList: React.FC = () => {
           <div className={styles.forecastHeader}>
             <ul className={styles.forecasstChangers}>
               <li className="col_">
-                <button type="button">Wait List</button>
-              </li>
-              <li className="col_">
                 <button type="button" className={styles.active}>
-                  Ready Forecasts
+                  Wait List
                   <div className={styles.readyCount}>2</div>
                 </button>
+              </li>
+              <li className="col_">
+                <button type="button">Ready Forecasts</button>
               </li>
               <li className="col_">
                 <button type="button">Your Forecasts</button>
