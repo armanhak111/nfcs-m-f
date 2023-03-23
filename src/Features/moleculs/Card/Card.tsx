@@ -28,6 +28,17 @@ const Card: React.FC<ICard> = ({
   const history = useHistory();
 
   const [toolTip, setToolTip] = useState<boolean>(false);
+
+  const isAuth = true;
+
+  const orderAnalytic = () => {
+    if (isAuth) {
+      history.push(ROUTES.DASHBOARD);
+    } else {
+      history.push(ROUTES.SIGN_IN);
+    }
+  };
+  console.log(isAuth);
   return (
     <div className={`${styles.cardsCol_25} col_25`}>
       <div>
@@ -69,7 +80,7 @@ const Card: React.FC<ICard> = ({
           type="primary"
           customClass={styles.cardBtn}
           id={buttonText}
-          onClick={() => history.push(ROUTES.DASHBOARD)}
+          onClick={orderAnalytic}
         />
       </div>
     </div>

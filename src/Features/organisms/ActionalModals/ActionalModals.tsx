@@ -8,6 +8,7 @@ import CloseSvg from '../../../Assets/Icons/CloseSvg';
 import { getActionalModals } from '../../../Store/Selectors/modal';
 import { setActionModal } from '../../../Store/Slices/modal';
 import BinanceFuture from '../../moleculs/Modals/BinanceFuture';
+// import NftFuture from '../../moleculs/Modals/NftFuture/NftFuture';
 // import DetailsModal from '../../moleculs/Modals/DetailsModal';
 import styles from './actionalModals.module.scss';
 
@@ -61,6 +62,7 @@ const ActionalModals: React.FC = () => {
           </div>
           <BinanceFuture />
           {/* <DetailsModal /> */}
+          {/* <NftFuture /> */}
         </motion.div>
       </AnimatePresence>
     </Modal>

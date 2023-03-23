@@ -4,28 +4,28 @@ import useMediaQuery from 'react-use-media-query-hook';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { useSettingsCollapse } from '../../../Hooks/useSettingsCollapse';
 import Button from '../../atoms/Button';
-import Dropdown from '../../atoms/Dropdown';
+// import Dropdown from '../../atoms/Dropdown';
 import Input from '../../atoms/Input';
 import styles from './settings.module.scss';
 
-const INQUIRY_OPTIONS = [
-  {
-    id: 'contactus.dropdown.generalInquiry',
-    value: 'General Inquiry',
-  },
-  {
-    id: 'contactus.dropdown.salesInquiry',
-    value: 'Sales Inquiry',
-  },
-  {
-    id: 'contactus.dropdown.techIssue',
-    value: 'Technical Issue',
-  },
-];
+// const INQUIRY_OPTIONS = [
+//   {
+//     id: 'contactus.dropdown.generalInquiry',
+//     value: 'General Inquiry',
+//   },
+//   {
+//     id: 'contactus.dropdown.salesInquiry',
+//     value: 'Sales Inquiry',
+//   },
+//   {
+//     id: 'contactus.dropdown.techIssue',
+//     value: 'Technical Issue',
+//   },
+// ];
 const Settings: React.FC = () => {
   const { collapse, currentItem, currentHeight } = useSettingsCollapse();
   const isMobile = useMediaQuery(SCREENS.mobile);
-  const istablet = useMediaQuery(SCREENS.bigTablet);
+  // const istablet = useMediaQuery(SCREENS.bigTablet);
   return (
     <section>
       <h2 className="title dashboard-title">Settings</h2>
@@ -34,7 +34,7 @@ const Settings: React.FC = () => {
           <div className={styles.settingsCollapseItem}>
             <div className={styles.settingsCollapseRow}>
               <div className={styles.settingsCollapseCol}>
-                <div className={styles.settinsCollapseItem}>
+                {/* <div className={styles.settinsCollapseItem}>
                   <div className={styles.settinsCollapseItemHeader} id="header_1">
                     <h3 className={styles.settinsCollapseTitle}>Default language</h3>
                     {istablet && !isMobile && <div className={styles.languageName}>English</div>}
@@ -117,7 +117,7 @@ const Settings: React.FC = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className={styles.settingsCollapseCol}>
                 <div className={styles.settinsCollapseItem}>

@@ -4,7 +4,7 @@ import TooltipSvg from '../../../../Assets/Icons/cards/TooltipSvg';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
-import styles from './binanceFuture.module.scss';
+import styles from './nftFuture.module.scss';
 
 const INQUIRY_OPTIONS = [
   {
@@ -20,16 +20,16 @@ const INQUIRY_OPTIONS = [
     value: 'Technical Issue',
   },
 ];
-const BinanceFuture: React.FC = () => {
+const NftFuture = () => {
   return (
     <>
-      <h2 className={styles.modalTitle}>Binance Future Forecast</h2>
+      <h2 className={styles.modalTitle}>NFT Forecast</h2>
       <div className={styles.detailsList}>
         <div className={styles.detailsItemContent}>
           <TooltipSvg />
           <Dropdown
             name="inquiry"
-            label="contactus.dropdown.label"
+            label="Platform"
             options={INQUIRY_OPTIONS}
             value={'formik.values.inquiry'}
             defaultValue="contactus.dropdown.generalInquiry"
@@ -38,6 +38,17 @@ const BinanceFuture: React.FC = () => {
           />
         </div>
         <div className={styles.detailsItemContent}>
+          <Dropdown
+            name="inquiry"
+            label="Type"
+            options={INQUIRY_OPTIONS}
+            value={'formik.values.inquiry'}
+            defaultValue="contactus.dropdown.generalInquiry"
+            onClick={() => null}
+            onChange={() => null}
+          />
+        </div>
+        {/* <div className={styles.detailsItemContent}>
           <label className={styles.label}>Adjust Leverage</label>
           <div className={styles.leverageItem}>
             <button disabled className={styles.leverageMinus}>
@@ -59,7 +70,7 @@ const BinanceFuture: React.FC = () => {
               <p>50x</p>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={styles.detailsItemContent}>
           <div className={styles.inputsItems}>
             <div className={styles.inputsItem}>
@@ -67,12 +78,12 @@ const BinanceFuture: React.FC = () => {
                 htmlFor="name"
                 type="text"
                 name="name"
-                placeHolder="contactus.name"
+                placeHolder="Min"
                 label="Price Range"
                 onClick={() => null}
                 onFocus={() => null}
                 onChange={() => null}
-                value={'formik.values.name'}
+                value={' '}
               />
             </div>
             <div className={styles.divider} />
@@ -88,29 +99,18 @@ const BinanceFuture: React.FC = () => {
                 htmlFor="name"
                 type="text"
                 name="name"
-                placeHolder="contactus.name"
+                placeHolder="Max"
                 label=" "
                 onClick={() => null}
                 onFocus={() => null}
                 onChange={() => null}
-                value={'formik.values.name'}
+                value={''}
               />
             </div>
           </div>
         </div>
+
         <div className={styles.detailsItemContent}>
-          <Dropdown
-            name="inquiry"
-            label="Time Zone"
-            options={INQUIRY_OPTIONS}
-            value={'formik.values.inquiry'}
-            defaultValue="contactus.dropdown.generalInquiry"
-            onClick={() => null}
-            onChange={() => null}
-          />
-        </div>
-        <div className={styles.detailsItemContent}>
-          <div>aaa</div>
           <div className={styles.dropdownsRow}>
             <div className="col_">
               <Dropdown
@@ -126,7 +126,7 @@ const BinanceFuture: React.FC = () => {
             <div className="col_">
               <Dropdown
                 name="inquiry"
-                label=" "
+                label="formik.values.name "
                 options={INQUIRY_OPTIONS}
                 value={'formik.values.inquiry'}
                 defaultValue="contactus.dropdown.generalInquiry"
@@ -137,7 +137,7 @@ const BinanceFuture: React.FC = () => {
             <div className="col_">
               <Dropdown
                 name="inquiry"
-                label=" "
+                label="formik.values.name "
                 options={INQUIRY_OPTIONS}
                 value={'formik.values.inquiry'}
                 defaultValue="contactus.dropdown.generalInquiry"
@@ -154,5 +154,4 @@ const BinanceFuture: React.FC = () => {
     </>
   );
 };
-
-export default BinanceFuture;
+export default NftFuture;
