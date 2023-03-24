@@ -59,7 +59,7 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
                           <span
                             className={styles.links}
-                            onClick={() => dispatch(setActionModal('asqqq'))}
+                            onClick={() => dispatch(setActionModal('detailsModal'))}
                           >
                             Details
                           </span>

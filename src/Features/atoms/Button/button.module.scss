@@ -51,6 +51,8 @@
     border-radius: 8px;
     border: none;
     outline: none;
+    color:  $titleColor;
+    @include fontRem(18, 500);
     background-color: transparent;
     height: 48px;
     background-image: radial-gradient(

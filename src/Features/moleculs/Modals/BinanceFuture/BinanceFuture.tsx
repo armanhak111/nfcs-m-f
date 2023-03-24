@@ -77,24 +77,26 @@ const BinanceFuture: React.FC = () => {
             </div>
             <div className={styles.divider} />
             <div className={styles.inputsItem}>
-              <div className={styles.customSwich}>
-                <input type="checkbox" id="modal_swich" />
-                <label htmlFor="modal_swich">
-                  <p className="col_">USD</p>
-                  <p className="col_">EUR</p>
-                </label>
+              <div className={styles.inputsItemPrice}>
+                <div className={styles.customSwich}>
+                  <input type="checkbox" id="modal_swich" />
+                  <label htmlFor="modal_swich">
+                    <p className="col_">USD</p>
+                    <p className="col_">EUR</p>
+                  </label>
+                </div>
+                <Input
+                  htmlFor="name"
+                  type="text"
+                  name="name"
+                  placeHolder="contactus.name"
+                  label=" "
+                  onClick={() => null}
+                  onFocus={() => null}
+                  onChange={() => null}
+                  value={'formik.values.name'}
+                />
               </div>
-              <Input
-                htmlFor="name"
-                type="text"
-                name="name"
-                placeHolder="contactus.name"
-                label=" "
-                onClick={() => null}
-                onFocus={() => null}
-                onChange={() => null}
-                value={'formik.values.name'}
-              />
             </div>
           </div>
         </div>
@@ -110,12 +112,11 @@ const BinanceFuture: React.FC = () => {
           />
         </div>
         <div className={styles.detailsItemContent}>
-          <div>aaa</div>
           <div className={styles.dropdownsRow}>
             <div className="col_">
               <Dropdown
                 name="inquiry"
-                label=" "
+                label="Date "
                 options={INQUIRY_OPTIONS}
                 value={'formik.values.inquiry'}
                 defaultValue="contactus.dropdown.generalInquiry"

@@ -22,7 +22,7 @@ export const modalSlice = createSlice({
         errorMessage: action.payload,
       };
     },
-    setActionModal: (state, action) => {
+    setActionModal: (state, action: any) => {
       return {
         ...state,
         actionModal: action.payload,

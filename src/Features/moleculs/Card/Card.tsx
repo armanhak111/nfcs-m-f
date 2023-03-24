@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import TooltipSvg from '../../../Assets/Icons/cards/TooltipSvg';
 import { ROUTES } from '../../../Constants/Routes';
+import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
 import Typography from '../../atoms/Typography';
@@ -26,19 +28,23 @@ const Card: React.FC<ICard> = ({
 }) => {
   const Component = icon;
   const history = useHistory();
-
+  const { pathname } = useLocation();
+  const dispatch = useDispatch();
   const [toolTip, setToolTip] = useState<boolean>(false);
 
   const isAuth = true;
 
-  const orderAnalytic = () => {
-    if (isAuth) {
-      history.push(ROUTES.DASHBOARD);
+  const orderAnalytic = (id: string) => {
+    if (pathname === '/') {
+      if (isAuth) {
+        history.push(ROUTES.DASHBOARD);
+      } else {
+        history.push(ROUTES.SIGN_IN);
+      }
     } else {
-      history.push(ROUTES.SIGN_IN);
+      dispatch(setActionModal(id));
     }
   };
-  console.log(isAuth);
   return (
     <div className={`${styles.cardsCol_25} col_25`}>
       <div>
@@ -80,7 +86,7 @@ const Card: React.FC<ICard> = ({
           type="primary"
           customClass={styles.cardBtn}
           id={buttonText}
-          onClick={orderAnalytic}
+          onClick={() => orderAnalytic(title)}
         />
       </div>
     </div>

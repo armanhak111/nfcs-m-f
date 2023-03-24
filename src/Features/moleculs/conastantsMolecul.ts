@@ -12,7 +12,7 @@ import ShieldLockSvg from '../../Assets/Icons/why-we/ShieldLockSvg';
 import ShieldQuality from '../../Assets/Icons/why-we/ShieldQuality';
 import ShieldReliability from '../../Assets/Icons/why-we/ShieldReliability';
 import { ROUTES } from '../../Constants/Routes';
-import { TFooterIcon, THowItWorks, TLanguages, TNavBar, TWhyWe } from './typesMolecules';
+import { TFooterIcon, THowItWorks, TNavBar, TWhyWe } from './typesMolecules';
 
 export const LOGO_ITEM: TNavBar = {
   title: 'Logo',
@@ -59,20 +59,20 @@ export const NAV_BAR: TNavBar[] = [
   },
 ];
 
-export const LANGUAGES: TLanguages[] = [
-  {
-    title: 'English',
-    code: 'en',
-  },
-  {
-    title: 'German',
-    code: 'ge',
-  },
-  {
-    title: 'French',
-    code: 'fr',
-  },
-];
+// export const LANGUAGES: TLanguages[] = [
+//   {
+//     title: 'English',
+//     code: 'en',
+//   },
+//   {
+//     title: 'German',
+//     code: 'ge',
+//   },
+//   {
+//     title: 'French',
+//     code: 'fr',
+//   },
+// ];
 
 export const FOOTER_ICONS: TFooterIcon[] = [
   {

@@ -1,3 +1,5 @@
+import BinanceFuture from '../Features/moleculs/Modals/BinanceFuture';
+
 type TModals = {
   type: 'error' | 'success';
   title: string;
@@ -45,4 +47,8 @@ export const MODALS: Record<TModalVariantsSuccess, TModals> = {
     buttonText: 'modals.success.resetPass.button',
     outsideClose: true,
   },
+};
+
+export const ACTION_MODALS: Record<string, any> = {
+  'home.cards.futures.title': BinanceFuture,
 };
