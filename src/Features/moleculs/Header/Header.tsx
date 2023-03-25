@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { useCallback, useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 // import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useHistory } from 'react-router-dom';
@@ -11,6 +12,7 @@ import Logo from '../../../Assets/images/logo.svg';
 import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { usePositions } from '../../../Hooks/usePositions';
+import { getCurrentUser } from '../../../Store/Selectors/auth';
 // import { getCurrentLocale } from '../../../Store/Selectors/main';
 // import { setLocale } from '../../../Store/Slices/mainSlice';
 import Button from '../../atoms/Button';
@@ -25,8 +27,10 @@ const Header: React.FC = () => {
   const [burger, setBurger] = useState(false);
   const history = useHistory();
   const location = useLocation();
+  const currentUser = useSelector(getCurrentUser);
+
   // const dispatch = useDispatch();
-  const isAuth = true;
+  const isAuth = Object.values(currentUser).length;
   const { currentRef, scrollPosition } = usePositions();
   const currNavBarItems = useMemo(() => {
     return NAV_BAR.filter((curr) => {

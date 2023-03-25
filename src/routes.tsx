@@ -1,7 +1,8 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
+import { PageLoader } from './Components/Dumb/PageLoader/PageLoader';
 import ScrollToTop from './Components/Dumb/ScrollToTop';
 import AboutUs from './Features/views/AboutUs';
 import ChangePassword from './Features/views/AutohFlow/ChangePassword';
@@ -16,9 +17,22 @@ import HomePage from './Features/views/HomePage';
 import Privacy from './Features/views/Privacy';
 import Terms from './Features/views/Terms';
 import { getCurrentUser } from './Store/Selectors/auth';
+import { getUser } from './Store/Slices/auth';
 
 const Routes: React.FC = () => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (token) {
+      dispatch(getUser());
+    }
+  }, []);
+  console.log(currentUser);
+  if (token && !Object.values(currentUser).length) {
+    return <PageLoader />;
+  }
   return (
     <BrowserRouter>
       <ScrollToTop>
@@ -40,6 +54,7 @@ const Routes: React.FC = () => {
             <ResetPassword />
           </Route>
           <Route exact path="/dashboard">
+            {!Object.entries(currentUser).length && <Redirect to="/" />}
             <Dashboard />
           </Route>
           <Route exact path="/about">

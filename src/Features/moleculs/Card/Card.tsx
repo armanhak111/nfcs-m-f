@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import TooltipSvg from '../../../Assets/Icons/cards/TooltipSvg';
 import { ROUTES } from '../../../Constants/Routes';
+import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
@@ -32,7 +33,9 @@ const Card: React.FC<ICard> = ({
   const dispatch = useDispatch();
   const [toolTip, setToolTip] = useState<boolean>(false);
 
-  const isAuth = true;
+  const currentUser = useSelector(getCurrentUser);
+
+  const isAuth = Object.values(currentUser).length;
 
   const orderAnalytic = (id: string) => {
     if (pathname === '/') {

@@ -83,10 +83,33 @@ export const signIn = (email: string, password: string, history: any) => (dispat
       if (response) {
         await localStorage.setItem('token', response.data.accessToken);
         await localStorage.setItem('refresh', response.data.refreshToken);
+        await localStorage.setItem('id', response.data.user.id);
         dispatch(setCurrentUser(response.data.user));
         dispatch(setAuth(true));
         dispatch(setAuthLoader(false));
         history.push(ROUTES.DASHBOARD);
+      }
+    })
+    .catch((e) => {
+      const errorMessage = e.response.data.message;
+      if (errorMessage) {
+        dispatch(setErrorMessage(e.response.data.message));
+      } else {
+        dispatch(setErrorMessage('modals.error.tryLater'));
+      }
+    })
+    .finally(() => {
+      dispatch(setAuthLoader(false));
+    });
+};
+
+export const getUser = () => (dispatch: Dispatch) => {
+  dispatch(setAuthLoader(true));
+  $api
+    .get('/user')
+    .then(async (response: AxiosResponse<IAuthUserResponse>) => {
+      if (response) {
+        dispatch(setCurrentUser(response.data));
       }
     })
     .catch((e) => {
@@ -128,7 +151,7 @@ export const users = (id: string) => (dispatch: Dispatch) => {
   $api
     .get(`/user/${id}`)
     .then((response: AxiosResponse<IAuthUserResponse>) => {
-      console.log(response);
+      dispatch(setCurrentUser(response.data.user));
     })
     .finally(() => {
       dispatch(setDashboardLoading(false));

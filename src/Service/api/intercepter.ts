@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-export const API_URL = 'http://ec2-18-233-167-133.compute-1.amazonaws.com:8080/api';
+export const API_URL = 'http://localhost:5000/api';
 const $api = axios.create({
   withCredentials: true,
   baseURL: API_URL,
