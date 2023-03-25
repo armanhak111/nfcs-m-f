@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../../atoms/Button';
+import Button from '../../../../atoms/Button';
 import styles from './cancelModal.module.scss';
 
 const CancelModal: React.FC = () => {

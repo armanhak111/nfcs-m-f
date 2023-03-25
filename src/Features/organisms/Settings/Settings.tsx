@@ -1,13 +1,18 @@
+import { useFormik } from 'formik';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { useSettingsCollapse } from '../../../Hooks/useSettingsCollapse';
+import { getCurrentUser } from '../../../Store/Selectors/auth';
+import { changeName } from '../../../Store/Slices/dashboard';
+import { changeNameValidationScheme } from '../../../Utils/validations';
 import Button from '../../atoms/Button';
 // import Dropdown from '../../atoms/Dropdown';
 import Input from '../../atoms/Input';
 import styles from './settings.module.scss';
-
 // const INQUIRY_OPTIONS = [
 //   {
 //     id: 'contactus.dropdown.generalInquiry',
@@ -23,9 +28,25 @@ import styles from './settings.module.scss';
 //   },
 // ];
 const Settings: React.FC = () => {
-  const { collapse, currentItem, currentHeight } = useSettingsCollapse();
+  const dispatch = useDispatch();
+  const { collapse, currentItem, currentHeight, setCurretHeight } = useSettingsCollapse();
   const isMobile = useMediaQuery(SCREENS.mobile);
+  const user = useSelector(getCurrentUser);
   // const istablet = useMediaQuery(SCREENS.bigTablet);
+
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+    },
+    validationSchema: changeNameValidationScheme,
+    onSubmit: (arg: any) => {
+      dispatch(changeName(arg.name, setCurretHeight));
+    },
+  });
+
+  const handleChangeName = () => {
+    formik.handleSubmit();
+  };
   return (
     <section>
       <h2 className="title dashboard-title">Settings</h2>
@@ -125,7 +146,7 @@ const Settings: React.FC = () => {
                     <h3 className={styles.settinsCollapseTitle}>Name</h3>
                     {!isMobile && (
                       <div className={styles.settinsCollapsetext}>
-                        <p>Angela Merkel</p>
+                        <p>{user.name}</p>
                       </div>
                     )}
                     <div
@@ -137,7 +158,7 @@ const Settings: React.FC = () => {
                   </div>
                   {isMobile && (
                     <div className={styles.settinsCollapsetext}>
-                      <p>Angela Merkel</p>
+                      <p>{user.name}</p>
                     </div>
                   )}
                   <div
@@ -154,12 +175,13 @@ const Settings: React.FC = () => {
                         name="name"
                         placeHolder="contactus.name"
                         label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
+                        onClick={formik.setFieldTouched}
+                        onFocus={formik.setFieldTouched}
+                        error={formik.touched.name && formik.errors.name}
+                        onChange={formik.handleChange}
+                        value={formik.values.name}
                       />
-                      <Input
+                      {/* <Input
                         htmlFor="name"
                         type="text"
                         name="name"
@@ -169,13 +191,16 @@ const Settings: React.FC = () => {
                         onFocus={() => null}
                         onChange={() => null}
                         value={'formik.values.name'}
-                      />
+                      /> */}
 
                       <div className={styles.buttons}>
-                        <div className={`${styles.buttonOne} col_`}>
+                        <div
+                          onClick={() => setCurretHeight(0)}
+                          className={`${styles.buttonOne} col_`}
+                        >
                           <Button type="primary" customClass={styles.bordered_btn} id="Cancel" />
                         </div>
-                        <div className={`${styles.buttonTwo} col_`}>
+                        <div onClick={handleChangeName} className={`${styles.buttonTwo} col_`}>
                           <Button type="primary" customClass={styles.cardBtn} id="Change" />
                         </div>
                       </div>

@@ -26,7 +26,7 @@
             @include flexRow(0, 3, center);
             list-style-type: none;
             justify-content: center;
-            padding: 0 0 12px;
+            padding: 0 0 12px;         
             &::after {
                 content: "";
                 position: absolute;
@@ -36,7 +36,10 @@
                 border-radius: 10px;
                 width: 100%;
                 height: 4px;
-            }
+            } 
+             .disabled{
+                    cursor: no-drop !important;
+                }
             li {
                 @media all and (max-width: $smallTablet) {
                     flex-grow: 1 !important;
@@ -44,7 +47,7 @@
                     flex-basis: auto !important;
                     max-width: 100% !important;
                 }
-                button {
+                              button {
                     position: relative;
                     @include buttonNulled;
                     width: 100%;
@@ -52,12 +55,13 @@
                     @include fontRem(18, 400);
                     line-height: 18px;
                     color: rgba(251, 252, 255, 0.56);
+                    
                     @media all and (max-width: $smallTablet) {
                         @include fontRem(14, 400);
                         line-height: 17px;
                     }
                     &.active {
-                        color: $titleColor;
+                        color: $titleColor;h
                         &::after {
                             content: "";
                             position: absolute;
@@ -69,7 +73,7 @@
                             border-radius: 10px;
                         }
                     }
-                    .readyCount {
+                    .readyCount {  
                         position: absolute;
                         top: -12px;
                         right: 0;

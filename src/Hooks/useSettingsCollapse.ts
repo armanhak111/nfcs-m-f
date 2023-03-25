@@ -16,5 +16,6 @@ export const useSettingsCollapse = () => {
     currentItem,
     collapse,
     currentHeight,
+    setCurretHeight,
   };
 };

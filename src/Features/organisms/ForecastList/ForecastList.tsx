@@ -24,10 +24,14 @@ const ForecastList: React.FC = () => {
                 </button>
               </li>
               <li className="col_">
-                <button type="button">Ready Forecasts</button>
+                <button type="button" className={styles.disabled}>
+                  Ready Forecasts
+                </button>
               </li>
               <li className="col_">
-                <button type="button">Your Forecasts</button>
+                <button type="button" className={styles.disabled}>
+                  Your Forecasts
+                </button>
               </li>
             </ul>
           </div>

@@ -232,9 +232,8 @@ export const resetPassword = (password: string, resetLink: string) => (dispatch:
 };
 
 export const contactUs = (name: string, email: string, message: string) => (dispatch: Dispatch) => {
-  dispatch(setAuthLoader(true));
   axios
-    .post(`${API_URL}/`, {
+    .post(`${API_URL}/contact`, {
       name,
       email,
       message,
@@ -245,16 +244,12 @@ export const contactUs = (name: string, email: string, message: string) => (disp
       }
     })
     .catch((e) => {
-      dispatch(setAuthLoader(false));
       const errorMessage = e.response.data.message;
       if (errorMessage) {
         dispatch(setErrorMessage(e.response.data.message));
       } else {
         dispatch(setErrorMessage('modals.error.tryLater'));
       }
-    })
-    .finally(() => {
-      dispatch(setAuthLoader(false));
     });
 };
 
