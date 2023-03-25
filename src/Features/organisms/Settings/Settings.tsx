@@ -40,7 +40,7 @@ const Settings: React.FC = () => {
     },
     validationSchema: changeNameValidationScheme,
     onSubmit: (arg: any) => {
-      dispatch(changeName(arg.name, setCurretHeight));
+      dispatch(changeName(arg.name, user.id, setCurretHeight));
     },
   });
 

@@ -44,7 +44,7 @@ export const MODALS: Record<TModalVariantsSuccess, TModals> = {
     type: 'success',
     title: 'axper jan',
     subtitle: 'button.text',
-    buttonText: 'modals.success.resetPass.button',
+    buttonText: 'Ok',
     outsideClose: true,
   },
 };

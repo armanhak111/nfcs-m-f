@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
 import React, { useMemo } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { contactUs } from '../../../Store/Slices/mainSlice';
 import { constactUsValidationScheme } from '../../../Utils/validations';
 import Button from '../../atoms/Button';
 import Dropdown from '../../atoms/Dropdown';
@@ -39,13 +41,14 @@ const INQUIRY_OPTIONS = [
 ];
 
 const Contact = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       ...CONTACT_US_INTIAL,
     },
     validationSchema: constactUsValidationScheme,
-    onSubmit: (values: TContactUs) => {
-      console.log(values);
+    onSubmit: (values: TContactUs, { resetForm }) => {
+      dispatch(contactUs(values, resetForm));
     },
   });
 

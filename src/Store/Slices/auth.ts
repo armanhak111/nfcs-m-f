@@ -231,28 +231,6 @@ export const resetPassword = (password: string, resetLink: string) => (dispatch:
     });
 };
 
-export const contactUs = (name: string, email: string, message: string) => (dispatch: Dispatch) => {
-  axios
-    .post(`${API_URL}/contact`, {
-      name,
-      email,
-      message,
-    })
-    .then(async (response: AxiosResponse<any>) => {
-      if (response) {
-        dispatch(setModal('contact-success-modal'));
-      }
-    })
-    .catch((e) => {
-      const errorMessage = e.response.data.message;
-      if (errorMessage) {
-        dispatch(setErrorMessage(e.response.data.message));
-      } else {
-        dispatch(setErrorMessage('modals.error.tryLater'));
-      }
-    });
-};
-
 export const changePassword =
   (password: string, newPassword: string, email: string) => (dispatch: Dispatch) => {
     dispatch(setAuthLoader(true));

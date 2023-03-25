@@ -25,10 +25,11 @@ export const mainSlice = createSlice({
 });
 
 export const changeName =
-  (name: string, setCurretHeight: (arg: number) => void) => (dispatch: Dispatch) => {
+  (name: string, id: string, setCurretHeight: (arg: number) => void) => (dispatch: Dispatch) => {
     $api
       .put(`${API_URL}/change/name`, {
         name,
+        id,
       })
       .then((response: AxiosResponse<any>) => {
         dispatch(setCurrentUser(response.data));

@@ -31,4 +31,6 @@ declare interface IUser {
   email: string;
   id: string;
   isActivated: boolean;
+  name: string;
+  upt: number;
 }
