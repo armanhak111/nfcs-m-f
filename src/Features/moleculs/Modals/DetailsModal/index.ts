@@ -1,3 +1,3 @@
-import DetailsModal from './DetailsModal';
+// import DetailsModal from './DetailsModal';
 
-export default DetailsModal;
+// export default DetailsModal;

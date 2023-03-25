@@ -1,9 +1,9 @@
 import React from 'react';
 
-import TooltipSvg from '../../../../Assets/Icons/cards/TooltipSvg';
-import styles from './detailsModal.module.scss';
+import TooltipSvg from '../../../../../Assets/Icons/cards/TooltipSvg';
+import styles from './../detailsModal.module.scss';
 
-const DetailsModal: React.FC = () => {
+const DetailsBinance: React.FC = () => {
   return (
     <>
       <h2 className={styles.modalTitle}>Binance Future Forecast</h2>
@@ -41,4 +41,4 @@ const DetailsModal: React.FC = () => {
   );
 };
 
-export default DetailsModal;
+export default DetailsBinance;

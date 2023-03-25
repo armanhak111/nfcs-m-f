@@ -1,9 +1,11 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import bgDesktop from '../../../Assets/images/full-bg.png';
 import bgMobile from '../../../Assets/images/fulll-bg-mobile.png';
 import Portal from '../../../Components/Dumb/Portal';
+import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import Button from '../../atoms/Button';
 import Footer from '../../moleculs/Footer';
@@ -15,6 +17,15 @@ import MainContent from '../../organisms/MainContent';
 import styles from './HomePage.module.scss';
 
 const HomePage: React.FC = () => {
+  const history = useHistory();
+  const isAuth = true;
+  const buyForecast = () => {
+    if (isAuth) {
+      history.push(ROUTES.DASHBOARD);
+    } else {
+      history.push(ROUTES.SIGN_IN);
+    }
+  };
   const isTablet = useMediaQuery(SCREENS.bigTablet);
   return (
     <div
@@ -47,6 +58,7 @@ const HomePage: React.FC = () => {
                   type="primary"
                   customClass={styles.discountBtn}
                   defaultMessage=" Buy Forecast"
+                  onClick={buyForecast}
                 />
               </div>
             </div>

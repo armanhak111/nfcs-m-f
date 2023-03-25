@@ -23,6 +23,7 @@
     }
     .detailsItemContent {
         margin-bottom: 40px;
+       
         .divider {
             position: relative;
             top: 18px;
@@ -97,10 +98,10 @@
         .inputsItems {
             @include flex-center-vert;
             .inputsItem {
-                flex: 1;
                 .inputsItemPrice{
                     margin-bottom: 13px;
                 }
+                flex: 1;
             }
         }
         .leverageRange {

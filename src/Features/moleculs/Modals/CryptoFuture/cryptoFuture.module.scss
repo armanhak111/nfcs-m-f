@@ -249,7 +249,6 @@
             }
         }
         .dropdownsRow {
-            align-items: end !important;
             @include flexRow(7, 3, flex-start);
             @media all and (max-width: $smallTablet) {
                 @include flexRow(2, 3, flex-start);

@@ -2,6 +2,7 @@ import BinanceFutureSvg from '../../Assets/Icons/cards/BinanceFutureSvg';
 import BondDisabledSvg from '../../Assets/Icons/cards/BondDisabledSvg';
 // import BondDisabledSvg from '../../Assets/Icons/cards/BondDisabledSvg';
 import CryptoSvg from '../../Assets/Icons/cards/CryptoSvg';
+import CurrencySvg from '../../Assets/Icons/cards/CurrencySvg';
 import NftSvg from '../../Assets/Icons/cards/NftSvg';
 import StockSvg from '../../Assets/Icons/cards/StockSvg';
 import { THomeCards } from './organismsTypes';
@@ -102,16 +103,16 @@ export const DAHBOARD_CARDS: THomeCards[] = [
   },
   {
     icon: BondDisabledSvg,
-    title: 'home.cards.crypto.title',
+    title: 'Bond',
     info: 'home.cards.futures.text',
-    price: 750,
+    price: 1000,
     saledPrice: 1500,
     buttonText: 'home.cards.buttonText',
     hoverEffect: 'cardItemDisabled',
   },
   {
-    icon: BondDisabledSvg,
-    title: 'home.cards.crypto.title',
+    icon: CurrencySvg,
+    title: 'Currency',
     info: 'home.cards.futures.text',
     price: 750,
     saledPrice: 1500,

@@ -1,14 +1,14 @@
 import React from 'react';
 import useMediaQuery from 'react-use-media-query-hook';
 
-import EnvelopeSvg from '../../../Assets/Icons/EnvelopeSvg';
-import FacebookSvg from '../../../Assets/Icons/FacebookSvg';
-import InstagramSvg from '../../../Assets/Icons/InstagramSvg';
+// import EnvelopeSvg from '../../../Assets/Icons/EnvelopeSvg';
+// import FacebookSvg from '../../../Assets/Icons/FacebookSvg';
+// import InstagramSvg from '../../../Assets/Icons/InstagramSvg';
 import LocationSvg from '../../../Assets/Icons/LocationSvg';
 import PhoneSvg from '../../../Assets/Icons/PhoneSvg';
-import TelegramSvg from '../../../Assets/Icons/TelegramSvg';
-import TwitterSvg from '../../../Assets/Icons/TwitterSvg';
-import WhatsAppSvg from '../../../Assets/Icons/WhatsAppSvg';
+// import TelegramSvg from '../../../Assets/Icons/TelegramSvg';
+// import TwitterSvg from '../../../Assets/Icons/TwitterSvg';
+// import WhatsAppSvg from '../../../Assets/Icons/WhatsAppSvg';
 import tabletBg from '../../../Assets/images/about-tablet.png';
 import bigBg from '../../../Assets/images/contact-about-bg.png';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
@@ -60,7 +60,7 @@ const AboutUs: React.FC = () => {
                         +374 55 846474
                       </a>
                     </div>
-                    <ul className={styles.aboutSocialList}>
+                    {/* <ul className={styles.aboutSocialList}>
                       <li>
                         <span>
                           <TelegramSvg />
@@ -91,7 +91,7 @@ const AboutUs: React.FC = () => {
                           <FacebookSvg />
                         </span>
                       </li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>
