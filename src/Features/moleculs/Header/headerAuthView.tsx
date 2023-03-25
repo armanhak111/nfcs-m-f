@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import ArrowSvg from '../../../Assets/Icons/ArrowSvg';
 import HeaderCoinSvg from '../../../Assets/Icons/HeaderCoinSvg';
 import UserIconSvg from '../../../Assets/Icons/UserIconSvg';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { logout } from '../../../Store/Slices/auth';
 import styles from './header.module.scss';
 
 export const HeaderAuthView: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-
+  const dispatch = useDispatch();
   const handleOpen = () => {
     setOpen(!open);
   };
@@ -43,7 +45,7 @@ export const HeaderAuthView: React.FC = () => {
           <li>
             <span className={styles.userSubLink}>Custom Settings</span>
           </li>
-          <li>
+          <li onClick={() => dispatch(logout())}>
             <span className={styles.userSubLink}>Log Out</span>
           </li>
         </ul>

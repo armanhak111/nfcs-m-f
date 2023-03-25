@@ -134,6 +134,7 @@ export const logout = () => (dispatch: Dispatch) => {
         await localStorage.removeItem('token');
         await localStorage.removeItem('refresh');
         dispatch(setAuth(false));
+        dispatch(setCurrentUser({}));
         dispatch(setDashboardLoading(false));
       }
     })
