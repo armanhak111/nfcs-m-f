@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
@@ -8,7 +8,7 @@ import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { useSettingsCollapse } from '../../../Hooks/useSettingsCollapse';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { changeName } from '../../../Store/Slices/dashboard';
-import { changeNameValidationScheme } from '../../../Utils/validations';
+import { changeNameValidationScheme, changePassValidationScheme } from '../../../Utils/validations';
 import Button from '../../atoms/Button';
 // import Dropdown from '../../atoms/Dropdown';
 import Input from '../../atoms/Input';
@@ -32,21 +32,29 @@ const Settings: React.FC = () => {
   const { collapse, currentItem, currentHeight, setCurretHeight } = useSettingsCollapse();
   const isMobile = useMediaQuery(SCREENS.mobile);
   const user = useSelector(getCurrentUser);
-  // const istablet = useMediaQuery(SCREENS.bigTablet);
 
+  const initialVal = useMemo(() => {
+    return currentItem === 'password_s' ? { old: '', new: '' } : { name: '' };
+  }, [currentItem]);
+  // const istablet = useMediaQuery(SCREENS.bigTablet);
   const formik = useFormik({
-    initialValues: {
-      name: '',
-    },
-    validationSchema: changeNameValidationScheme,
+    initialValues: initialVal,
+    validationSchema:
+      currentItem === 'password_s' ? changePassValidationScheme : changeNameValidationScheme,
     onSubmit: (arg: any) => {
-      dispatch(changeName(arg.name, user.id, setCurretHeight));
+      if (currentItem === 'password_s') {
+        console.log(arg);
+      } else {
+        dispatch(changeName(arg.name, user.id, setCurretHeight));
+      }
     },
+    validateOnMount: true,
   });
 
   const handleChangeName = () => {
     formik.handleSubmit();
   };
+
   return (
     <section>
       <h2 className="title dashboard-title">Settings</h2>
@@ -179,19 +187,8 @@ const Settings: React.FC = () => {
                         onFocus={formik.setFieldTouched}
                         error={formik.touched.name && formik.errors.name}
                         onChange={formik.handleChange}
-                        value={formik.values.name}
+                        value={formik.values.name || ''}
                       />
-                      {/* <Input
-                        htmlFor="name"
-                        type="text"
-                        name="name"
-                        placeHolder="contactus.name"
-                        label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
-                      /> */}
 
                       <div className={styles.buttons}>
                         <div
@@ -244,45 +241,49 @@ const Settings: React.FC = () => {
                   >
                     <div className={styles.collapseContentInner}>
                       <Input
-                        htmlFor="name"
+                        htmlFor="old"
                         type="text"
-                        name="name"
-                        placeHolder="contactus.name"
-                        label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
+                        name="old"
+                        placeHolder="contactus.old"
+                        label="contactus.old"
+                        onClick={formik.setFieldTouched}
+                        onFocus={formik.setFieldTouched}
+                        error={formik.touched.old && formik.errors.old}
+                        onChange={formik.handleChange}
+                        value={formik.values.old || ''}
                       />
                       <Input
-                        htmlFor="name"
+                        htmlFor="new"
                         type="text"
-                        name="name"
-                        placeHolder="contactus.name"
-                        label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
+                        name="new"
+                        placeHolder="contactus.new"
+                        label="contactus.new"
+                        onClick={formik.setFieldTouched}
+                        onFocus={formik.setFieldTouched}
+                        error={formik.touched.new && formik.errors.new}
+                        onChange={formik.handleChange}
+                        value={formik.values.new || ''}
                       />
-                      <Input
-                        htmlFor="name"
-                        type="text"
-                        name="name"
-                        placeHolder="contactus.name"
-                        label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
-                      />
-
                       <div className={styles.buttons}>
-                        <div className={`${styles.buttonOne} col_`}>
+                        <div
+                          className={`${styles.buttonOne} col_`}
+                          onClick={() => setCurretHeight(0)}
+                        >
                           <Button type="primary" customClass={styles.bordered_btn} id="Cancel" />
                         </div>
                         <div className={`${styles.buttonTwo} col_`}>
-                          <Button type="primary" customClass={styles.cardBtn} id="Change" />
+                          <Button
+                            type="primary"
+                            onClick={() => formik.handleSubmit()}
+                            customClass={styles.cardBtn}
+                            id="Change"
+                            disabeled={Boolean(
+                              !formik.touched.new ||
+                                !formik.touched.old ||
+                                formik.errors.new ||
+                                formik.errors.old
+                            )}
+                          />
                         </div>
                       </div>
                     </div>

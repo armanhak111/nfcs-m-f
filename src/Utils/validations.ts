@@ -56,6 +56,10 @@ export const changePasswordValidationScheme = yup.object({
 export const changeNameValidationScheme = yup.object({
   name: yup.string().required(),
 });
+export const changePassValidationScheme = yup.object({
+  old: yup.string().required(),
+  new: yup.string().required(),
+});
 
 export const constactUsValidationScheme = yup.object({
   email: yup

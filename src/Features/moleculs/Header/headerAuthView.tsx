@@ -41,7 +41,7 @@ export const HeaderAuthView: React.FC = () => {
                 <span className={styles.cointIcon}>
                   <HeaderCoinSvg />
                 </span>
-                1345000
+                {user.upt}
               </div>
             </li>
           )}

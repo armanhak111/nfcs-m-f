@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import CopySvg from '../../../Assets/Icons/promocode/CopySvg';
@@ -7,6 +8,7 @@ import ReferralLinkSvg from '../../../Assets/Icons/promocode/ReferralLinkSvg';
 import TotoalUpcomeSvg from '../../../Assets/Icons/promocode/TotoalUpcomeSvg';
 import WaterFallSvg from '../../../Assets/Icons/promocode/WaterFallSvg';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { getCurrentUser } from '../../../Store/Selectors/auth';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import styles from './myPromocode.module.scss';
@@ -15,6 +17,7 @@ const MyPromocode: React.FC = () => {
   const isTablet = useMediaQuery(SCREENS.tablet);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   const smallTablet = useMediaQuery(SCREENS.smallTablet);
+  const user = useSelector(getCurrentUser);
   return (
     <section>
       <h2 className="title dashboard-title">My Promocode</h2>
@@ -28,7 +31,7 @@ const MyPromocode: React.FC = () => {
                     <TotoalUpcomeSvg />
                   </div>
                   <div className={styles.Content}>
-                    <p className={styles.Count}>1345000 UPT</p>
+                    <p className={styles.Count}>{user.upt} UPT</p>
                     <p className={styles.Text}>Total upcome UTP</p>
                   </div>
                 </div>
@@ -41,7 +44,7 @@ const MyPromocode: React.FC = () => {
                     <WaterFallSvg />
                   </div>
                   <div className={styles.Content}>
-                    <p className={styles.Count}>10 UPT</p>
+                    <p className={styles.Count}>0 UPT</p>
                     <p className={styles.Text}>Total upcome UTP from shared users</p>
                   </div>
                 </div>
@@ -54,8 +57,8 @@ const MyPromocode: React.FC = () => {
                     <CostSvg />
                   </div>
                   <div className={styles.Content}>
-                    <p className={styles.Count}>2890 UPT</p>
-                    <p className={styles.Text}>Your Cost</p>
+                    <p className={styles.Count}>0 UPT</p>
+                    <p className={styles.Text}>Total spent</p>
                   </div>
                 </div>
               </div>

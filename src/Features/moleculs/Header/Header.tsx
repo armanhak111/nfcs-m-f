@@ -125,7 +125,7 @@ const Header: React.FC = () => {
                         <span className={styles.cointIcon}>
                           <HeaderCoinSvg />
                         </span>
-                        1345000
+                        {currentUser.upt}
                       </div>
                     </li>
                   )}
@@ -169,7 +169,7 @@ const Header: React.FC = () => {
                       <span className={styles.cointIcon}>
                         <HeaderCoinSvg />
                       </span>
-                      1345000
+                      {currentUser.upt}
                     </div>
                   )}
                 </>
