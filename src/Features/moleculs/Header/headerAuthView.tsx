@@ -35,7 +35,7 @@ export const HeaderAuthView: React.FC = () => {
           </div>
         )}
         <ul className={`${styles.userSubList} ${open ? styles.userSubListOpen : ''}`}>
-          {isMobile && (
+          {isMobile && Object.values(user).length > 0 && (
             <li className={styles.cointListItem}>
               <div className={styles.cointItem}>
                 <span className={styles.cointIcon}>

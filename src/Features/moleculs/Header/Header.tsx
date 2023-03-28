@@ -119,7 +119,7 @@ const Header: React.FC = () => {
                 </li>
               ) : (
                 <>
-                  {!isBigTablet && (
+                  {!isBigTablet && isAuth && (
                     <li>
                       <div className={styles.cointItem}>
                         <span className={styles.cointIcon}>
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
               <div className={styles.tabletItem}>
                 <HeaderAuthView />
                 <>
-                  {isOnlyTablet && (
+                  {isOnlyTablet && isAuth && (
                     <div className={styles.cointItem}>
                       <span className={styles.cointIcon}>
                         <HeaderCoinSvg />

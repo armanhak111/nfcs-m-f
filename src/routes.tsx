@@ -16,21 +16,21 @@ import Dashboard from './Features/views/Dashboard';
 import HomePage from './Features/views/HomePage';
 import Privacy from './Features/views/Privacy';
 import Terms from './Features/views/Terms';
-import { getCurrentUser } from './Store/Selectors/auth';
+import { getAuthFullField, getCurrentUser } from './Store/Selectors/auth';
 import { getUser } from './Store/Slices/auth';
 
 const Routes: React.FC = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
   const token = localStorage.getItem('token');
-
+  const fulfield = useSelector(getAuthFullField);
   useEffect(() => {
     if (token) {
       dispatch(getUser());
     }
   }, []);
-  console.log(currentUser);
-  if (token && !Object.values(currentUser).length) {
+  console.log(!Object.entries(currentUser).length, 'asasas', fulfield);
+  if (token && !Object.values(currentUser).length && !fulfield) {
     return <PageLoader />;
   }
   return (
@@ -47,14 +47,16 @@ const Routes: React.FC = () => {
             <ForgotPassword />
           </Route>
           <Route exact path="/change-password">
-            {!Object.entries(currentUser).length && !currentUser.isActivated && <Redirect to="/" />}
+            {!Object.entries(currentUser).length && fulfield && !currentUser.isActivated && (
+              <Redirect to="/" />
+            )}
             <ChangePassword />
           </Route>
           <Route exact path="/reset-password/:id">
             <ResetPassword />
           </Route>
           <Route exact path="/dashboard">
-            {!Object.entries(currentUser).length && <Redirect to="/" />}
+            {!Object.entries(currentUser).length && fulfield && <Redirect to="/" />}
             <Dashboard />
           </Route>
           <Route exact path="/about">

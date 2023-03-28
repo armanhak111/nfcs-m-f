@@ -15,6 +15,7 @@ const initialState: IAuthSlice = {
   isAuthenticated: false,
   authLoader: false,
   currentUser: {},
+  authFulField: false,
 };
 
 export const authSlice = createSlice({
@@ -37,6 +38,12 @@ export const authSlice = createSlice({
       return {
         ...state,
         currentUser: action.payload,
+      };
+    },
+    setAuthFulfield: (state, action) => {
+      return {
+        ...state,
+        authFulField: action.payload,
       };
     },
   },
@@ -112,16 +119,13 @@ export const getUser = () => (dispatch: Dispatch) => {
         dispatch(setCurrentUser(response.data));
       }
     })
-    .catch((e) => {
-      const errorMessage = e.response.data.message;
-      if (errorMessage) {
-        dispatch(setErrorMessage(e.response.data.message));
-      } else {
-        dispatch(setErrorMessage('modals.error.tryLater'));
-      }
+    .catch(() => {
+      dispatch(setAuthLoader(false));
+      dispatch(setCurrentUser({}));
     })
     .finally(() => {
       dispatch(setAuthLoader(false));
+      dispatch(setAuthFulfield(true));
     });
 };
 
@@ -273,6 +277,6 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       }
     });
 };
-export const { setAuth, setAuthLoader, setCurrentUser } = authSlice.actions;
+export const { setAuth, setAuthLoader, setCurrentUser, setAuthFulfield } = authSlice.actions;
 
 export default authSlice.reducer;

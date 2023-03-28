@@ -17,6 +17,7 @@ declare interface IAuthSlice {
   isAuthenticated: boolean;
   authLoader: boolean;
   currentUser: any;
+  authFulField: boolean;
 }
 
 declare type TState = {
