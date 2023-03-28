@@ -258,7 +258,21 @@ export const changePassword =
         dispatch(setAuthLoader(false));
       });
   };
-
+export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
+  axios
+    .post(`${API_URL}`, data)
+    .then((response: AxiosResponse<any>) => {
+      dispatch(setCurrentUser(response.data));
+    })
+    .catch((e) => {
+      const errorMessage = e.response.data.message;
+      if (errorMessage) {
+        dispatch(setErrorMessage(e.response.data.message));
+      } else {
+        dispatch(setErrorMessage('modals.error.tryLater'));
+      }
+    });
+};
 export const { setAuth, setAuthLoader, setCurrentUser } = authSlice.actions;
 
 export default authSlice.reducer;

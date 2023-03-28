@@ -1,0 +1,49 @@
+@import "/src/styles/vars";
+@import "/src/styles/mixins";
+   .customSwich {
+            display: inline-block;
+            max-width: 115px;
+            width: 100%;
+            margin-left: auto;
+            display: flex;
+            margin-bottom: 16px;
+            input {
+                display: none;
+                &:checked {
+                    + label {
+                        &::after {
+                            left: 58px;
+                        }
+                    }
+                }
+            }
+            label {
+                width: 100%;
+                cursor: pointer;
+                @include flexRow(5, 2, center);
+                border: 1px solid #215ae7;
+                border-radius: 100px;
+                height: 32px;
+                position: relative;
+                p {
+                    position: relative;
+                    z-index: 1;
+                    text-align: center;
+                    @include fontRem(16, 500);
+                    line-height: 20px;
+                    color: $white;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 1px;
+                    background: #215ae7;
+                    border-radius: 100px;
+                    width: 54px;
+                    height: 28px;
+                    transition: 0.3s;
+                }
+            }
+        }

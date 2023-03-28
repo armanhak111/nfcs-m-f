@@ -31,6 +31,7 @@ interface IInputProps {
   isTruthyEqual?: isTruthyEqual;
   textarea?: boolean;
   style?: React.CSSProperties;
+  formik?: any;
 }
 
 const Input: React.FC<IInputProps> = ({
@@ -51,6 +52,7 @@ const Input: React.FC<IInputProps> = ({
   onFocus,
   textarea,
   style,
+  formik,
 }) => {
   const intl = useIntl();
   return (
@@ -77,7 +79,10 @@ const Input: React.FC<IInputProps> = ({
               className={styles.input}
               type={type}
               id={htmlFor}
-              onChange={onChange}
+              onChange={(e) => {
+                onChange(e);
+                formik.setFieldValue(name, e.target.value);
+              }}
               value={value}
               placeholder={intl.formatMessage({ id: placeHolder })}
             />

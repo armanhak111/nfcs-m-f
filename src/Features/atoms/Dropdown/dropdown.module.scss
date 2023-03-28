@@ -2,10 +2,12 @@
 @import "/src/styles/mixins";
 .formItem {
     margin-bottom: 48px;
+  
     @media all and (max-width: $tablet) {
         margin-bottom: 32px;
     }
     .spanText {
+   
         @include fontRem(16, 500);
         line-height: 20px;
         margin-bottom: 16px;
@@ -20,6 +22,7 @@
 .selectParent {
     width: 100%;
     list-style-type: none;
+    
     .selectedItemVisible {
         &::after {
             transform: translateY(-50%) rotate(180deg) !important;
@@ -32,6 +35,7 @@
         border: 1px solid rgba(178, 186, 215, 0.32);
         border-radius: 8px;
         height: 64px;
+        
         @include flex-center-vert;
         padding: 22px 24px 22px 16px;
         color: rgba(227, 230, 234, 0.32);
@@ -48,8 +52,11 @@
             height: 9px;
             transition: 0.3s;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='16' height='9' viewBox='0 0 16 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.64018 1.23178L1.87196 0.591594L0.591594 2.12804L1.35982 2.76822L2.64018 1.23178ZM8 7L7.35982 7.76822L8 8.30171L8.64018 7.76822L8 7ZM14.6402 2.76822L15.4084 2.12804L14.128 0.591594L13.3598 1.23178L14.6402 2.76822ZM1.35982 2.76822L7.35982 7.76822L8.64018 6.23178L2.64018 1.23178L1.35982 2.76822ZM8.64018 7.76822L14.6402 2.76822L13.3598 1.23178L7.35982 6.23178L8.64018 7.76822Z' fill='%23E3E6EA' fill-opacity='0.32'/%3E%3C/svg%3E");
+        
         }
         .selectList {
+            max-height: 250px;
+            overflow: auto;
             max-width: 305px;
             list-style-type: none;
             visibility: hidden;
@@ -74,6 +81,25 @@
                     border-radius: 8px;
                     color: $white;
                 }
+            }
+            &::-webkit-scrollbar {
+                width: 8px;
+                border-radius: 10px;
+                @media all and (max-width: $tablet) {
+                    width: 4px;
+                }
+            }
+            &::-webkit-scrollbar-track {
+                border-radius: 10px;
+                background: linear-gradient(
+                    229.09deg,
+                    rgba(173, 179, 189, 0.24) 3.76%,
+                    rgba(104, 115, 117, 0.24) 115.42%
+                );
+            }
+            &::-webkit-scrollbar-thumb {
+                background: linear-gradient(229.09deg, #1875fc 3.76%, #00ddfb 115.42%);
+                border-radius: 10px;
             }
         }
         .activeLi {

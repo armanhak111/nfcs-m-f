@@ -1,4 +1,7 @@
 import BinanceFuture from '../Features/moleculs/Modals/BinanceFuture';
+import CryptoFuture from '../Features/moleculs/Modals/CryptoFuture/CryptoFuture';
+import NftFuture from '../Features/moleculs/Modals/NftFuture/NftFuture';
+import StockFuture from '../Features/moleculs/Modals/StockFuture/StockFuture';
 
 type TModals = {
   type: 'error' | 'success';
@@ -51,4 +54,7 @@ export const MODALS: Record<TModalVariantsSuccess, TModals> = {
 
 export const ACTION_MODALS: Record<string, any> = {
   'home.cards.futures.title': BinanceFuture,
+  'home.cards.nft.title': NftFuture,
+  'home.cards.stock.title': StockFuture,
+  'home.cards.crypto.title': CryptoFuture,
 };

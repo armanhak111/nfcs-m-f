@@ -18,3 +18,60 @@ export const DASHBOARD: Record<string, React.FC> = {
   myPromocode: MyPromocode,
   settings: Settings,
 };
+export type TBinanceOrder = {
+  incuiryType: string;
+  adjustLeverage: string;
+  sumType: string;
+  minPrice: string;
+  maxPrice: string;
+  timeZone: string;
+};
+export const BINANCE_FUTURE_ORDER: any = {
+  incuiryType: '',
+  adjustLeverage: 20,
+  sumType: '',
+  minPrice: '',
+  maxPrice: '',
+  timeZone: '',
+};
+
+export type TNftOrder = {
+  platform: string;
+  type: string;
+  sumType: string;
+  minPrice: string;
+  maxPrice: string;
+};
+
+export const NFT_FUTURE_ORDER: TNftOrder = {
+  platform: '',
+  type: '',
+  sumType: '',
+  minPrice: '',
+  maxPrice: '',
+};
+export type TStock = {
+  industry: string;
+  sumType: string;
+  minPrice: string;
+  maxPrice: string;
+};
+
+export const STOCK_FUTURE_ORDER: TStock = {
+  industry: '',
+  sumType: '',
+  minPrice: '',
+  maxPrice: '',
+};
+
+export type TCrypto = {
+  sumType: string;
+  minPrice: string;
+  maxPrice: string;
+};
+
+export const CRYPTO_FUTURE_ORDER: TCrypto = {
+  sumType: '',
+  minPrice: '',
+  maxPrice: '',
+};

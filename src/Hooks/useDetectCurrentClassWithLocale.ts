@@ -6,8 +6,8 @@ import { getCurrentLocale } from '../Store/Selectors/main';
 
 const LocaleClassPrefixes: { [propery: string]: string } = {
   ['en']: 'ENL',
-  ['ge']: 'DEL',
-  ['fr']: 'FRL',
+  // ['ge']: 'DEL',
+  // ['fr']: 'FRL',
 };
 
 export const useDetectCurrentClassWithLocale = (classNamesArr: string[]) => {
@@ -28,12 +28,12 @@ export const useDetectCurrentClassWithLocale = (classNamesArr: string[]) => {
     if (currentLocale === 'en') {
       setCurrentClass(searchCurrentClass('en'));
     }
-    if (currentLocale === 'ge') {
-      setCurrentClass(searchCurrentClass('ge'));
-    }
-    if (currentLocale === 'fr') {
-      setCurrentClass(searchCurrentClass('fr'));
-    }
+    // if (currentLocale === 'ge') {
+    //   setCurrentClass(searchCurrentClass('ge'));
+    // }
+    // if (currentLocale === 'fr') {
+    //   setCurrentClass(searchCurrentClass('fr'));
+    // }
   }, [currentLocale]);
   return {
     multylangClass,
