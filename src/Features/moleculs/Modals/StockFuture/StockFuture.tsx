@@ -1,8 +1,14 @@
+import { useFormik } from 'formik';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import { STOCK_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { orderAnalytics } from '../../../../Store/Slices/auth';
+import { orderStockValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
+import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './stockFuture.module.scss';
 
 const INQUIRY_OPTIONS = [
@@ -19,20 +25,30 @@ const INQUIRY_OPTIONS = [
     value: 'Technical Issue',
   },
 ];
-const StockFuture = () => {
+const StockFuture: React.FC = () => {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: STOCK_FUTURE_ORDER,
+    validationSchema: orderStockValidationScheme,
+    onSubmit: (arg) => {
+      dispatch(orderAnalytics(arg));
+    },
+  });
+  console.log('fformik', formik.values);
   return (
     <>
-      <h2 className={styles.modalTitle}>Crypto Forecast</h2>
+      <h2 className={styles.modalTitle}>Stock Forecast</h2>
       <div className={styles.detailsList}>
         <div className={styles.detailsItemContent}>
           <Dropdown
-            name="inquiry"
+            name="industry"
             label="Industry"
             options={INQUIRY_OPTIONS}
-            value={'formik.values.inquiry'}
+            value={formik.values.industry}
             defaultValue="contactus.dropdown.generalInquiry"
             onClick={() => null}
             onChange={() => null}
+            formik={formik}
           />
         </div>
 
@@ -42,35 +58,31 @@ const StockFuture = () => {
               <Input
                 htmlFor="name"
                 type="text"
-                name="name"
+                name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
                 onClick={() => null}
                 onFocus={() => null}
                 onChange={() => null}
-                value={' '}
+                value={formik.values.minPrice}
+                formik={formik}
               />
             </div>
             <div className={styles.divider} />
             <div className={styles.inputsItem}>
               <div className={styles.inputsItemPrice}>
-                <div className={styles.customSwich}>
-                  <input type="checkbox" id="modal_swich" />
-                  <label htmlFor="modal_swich">
-                    <p className="col_">USD</p>
-                    <p className="col_">EUR</p>
-                  </label>
-                </div>
+                <TabSwitch formik={formik} />
                 <Input
                   htmlFor="name"
                   type="text"
-                  name="name"
+                  name="maxPrice"
                   placeHolder="Max"
                   label=" "
                   onClick={() => null}
                   onFocus={() => null}
                   onChange={() => null}
-                  value={''}
+                  value={formik.values.maxPrice}
+                  formik={formik}
                 />
               </div>
             </div>

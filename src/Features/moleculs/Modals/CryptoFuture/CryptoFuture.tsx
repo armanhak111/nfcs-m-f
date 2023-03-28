@@ -1,10 +1,25 @@
+import { useFormik } from 'formik';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
+import { CRYPTO_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { orderAnalytics } from '../../../../Store/Slices/auth';
+import { orderCryptoValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Input from '../../../atoms/Input';
+import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './cryptoFuture.module.scss';
 
-const CryptoFuture = () => {
+const CryptoFuture: React.FC = () => {
+  const dispatch = useDispatch();
+  const formik = useFormik({
+    initialValues: CRYPTO_FUTURE_ORDER,
+    validationSchema: orderCryptoValidationScheme,
+    onSubmit: (arg: any) => {
+      dispatch(orderAnalytics(arg));
+    },
+  });
+  console.log('formik', formik.values);
   return (
     <>
       <h2 className={styles.modalTitle}>Crypto Forecast</h2>
@@ -15,35 +30,31 @@ const CryptoFuture = () => {
               <Input
                 htmlFor="name"
                 type="text"
-                name="name"
+                name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
                 onClick={() => null}
                 onFocus={() => null}
                 onChange={() => null}
-                value={' '}
+                value={formik.values.minPrice}
+                formik={formik}
               />
             </div>
             <div className={styles.divider} />
             <div className={styles.inputsItem}>
               <div className={styles.inputsItemPrice}>
-                <div className={styles.customSwich}>
-                  <input type="checkbox" id="modal_swich" />
-                  <label htmlFor="modal_swich">
-                    <p className="col_">USD</p>
-                    <p className="col_">EUR</p>
-                  </label>
-                </div>
+                <TabSwitch formik={formik} />
                 <Input
                   htmlFor="name"
                   type="text"
-                  name="name"
+                  name="maxPrice"
                   placeHolder="Max"
                   label=" "
                   onClick={() => null}
                   onFocus={() => null}
                   onChange={() => null}
-                  value={''}
+                  value={formik.values.maxPrice}
+                  formik={formik}
                 />
               </div>
             </div>

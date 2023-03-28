@@ -67,3 +67,33 @@ export const constactUsValidationScheme = yup.object({
     .email('validation.scheme.signin.email.invalid')
     .required('validation.scheme.signin.email.requiere'),
 });
+
+export const orderBinanceValidationScheme = yup.object({
+  incuiryType: yup.string().required(),
+  adjustLeverage: yup.string().required(),
+  sumType: yup.string().required(),
+  minPrice: yup.string().required(),
+  maxPrice: yup.string().required(),
+  timeZone: yup.string().required(),
+});
+
+export const orderNftValidationScheme = yup.object({
+  platform: yup.string().required(),
+  type: yup.string().required(),
+  sumType: yup.string().required(),
+  minPrice: yup.string().required(),
+  maxPrice: yup.string().required(),
+});
+
+export const orderStockValidationScheme = yup.object({
+  industry: yup.string().required(),
+  sumType: yup.string().required(),
+  minPrice: yup.string().required(),
+  maxPrice: yup.string().required(),
+});
+
+export const orderCryptoValidationScheme = yup.object({
+  sumType: yup.string().required(),
+  minPrice: yup.string().required(),
+  maxPrice: yup.string().required(),
+});

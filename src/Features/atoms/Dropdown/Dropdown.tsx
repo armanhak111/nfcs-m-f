@@ -18,6 +18,7 @@ interface IDropdown {
   defaultValue?: string;
   onClick: (current: string) => void;
   onChange: (current: string, value: string) => void;
+  formik?: any;
 }
 
 const Dropdown: React.FC<IDropdown> = ({
@@ -28,6 +29,7 @@ const Dropdown: React.FC<IDropdown> = ({
   options,
   value,
   defaultValue,
+  formik,
 }) => {
   const [open, setOpen] = useState(false);
 
@@ -41,8 +43,10 @@ const Dropdown: React.FC<IDropdown> = ({
   const handleSetValue = (curr: string) => {
     if (curr === value) {
       onChange(name, '');
+      formik.setFieldValue(name, '');
     } else {
       onChange(name, curr);
+      formik.setFieldValue(name, curr);
     }
   };
 
