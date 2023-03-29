@@ -198,7 +198,12 @@ const Settings: React.FC = () => {
                           <Button type="primary" customClass={styles.bordered_btn} id="Cancel" />
                         </div>
                         <div onClick={handleChangeName} className={`${styles.buttonTwo} col_`}>
-                          <Button type="primary" customClass={styles.cardBtn} id="Change" />
+                          <Button
+                            type="primary"
+                            disabeled={Boolean(!formik.touched.name || formik.errors.name)}
+                            customClass={styles.cardBtn}
+                            id="Change"
+                          />
                         </div>
                       </div>
                     </div>

@@ -37,7 +37,7 @@ const ForecastList: React.FC = () => {
           </div>
           <div className={styles.forecastBody}>
             <p className={styles.waittimeInfo}>
-              Max Wait Time: <span>3 Hours</span>
+              Max Wait Time: <span>1 Week</span>
             </p>
             <div className={styles.foreacstBodyItem}>
               <div className={styles.forecastBodyItemContent}>
@@ -63,13 +63,18 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
                           <span
                             className={styles.links}
-                            onClick={() => dispatch(setActionModal('detailsModal'))}
+                            onClick={() =>
+                              dispatch(setActionModal('modals.success.details.binance'))
+                            }
                           >
                             Details
                           </span>
-                          <a href="" className={styles.links}>
+                          <span
+                            className={styles.links}
+                            onClick={() => dispatch(setActionModal('modals.cancel.order'))}
+                          >
                             Cancel
-                          </a>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -155,13 +160,18 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
                           <span
                             className={styles.links}
-                            onClick={() => dispatch(setActionModal('jasjas'))}
+                            onClick={() =>
+                              dispatch(setActionModal('modals.success.details.crypto'))
+                            }
                           >
                             Details
                           </span>
-                          <a href="" className={styles.links}>
+                          <span
+                            className={styles.links}
+                            onClick={() => dispatch(setActionModal('modals.cancel.order'))}
+                          >
                             Cancel
-                          </a>
+                          </span>
                         </div>
                       </div>
                     </div>

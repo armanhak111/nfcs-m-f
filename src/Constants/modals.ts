@@ -1,5 +1,11 @@
 import BinanceFuture from '../Features/moleculs/Modals/BinanceFuture';
+import CancelModal from '../Features/moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
+// import CancelModal from '../Features/moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
 import CryptoFuture from '../Features/moleculs/Modals/CryptoFuture/CryptoFuture';
+import DetailsBinance from '../Features/moleculs/Modals/DetailsModal/DetailsBinanceFuture/DetailsBinance';
+import DetaislCrypto from '../Features/moleculs/Modals/DetailsModal/DetailsCrypto/DetailsCrypto';
+import DetailsNft from '../Features/moleculs/Modals/DetailsModal/DetailsNftFuture/DetailsNft';
+import DetailsStock from '../Features/moleculs/Modals/DetailsModal/DetailsStock/DetailsStock';
 import NftFuture from '../Features/moleculs/Modals/NftFuture/NftFuture';
 import StockFuture from '../Features/moleculs/Modals/StockFuture/StockFuture';
 
@@ -57,4 +63,9 @@ export const ACTION_MODALS: Record<string, any> = {
   'home.cards.nft.title': NftFuture,
   'home.cards.stock.title': StockFuture,
   'home.cards.crypto.title': CryptoFuture,
+  'modals.success.details.binance': DetailsBinance,
+  'modals.success.details.nft': DetailsNft,
+  'modals.success.details.stock': DetailsStock,
+  'modals.success.details.crypto': DetaislCrypto,
+  'modals.cancel.order': CancelModal,
 };

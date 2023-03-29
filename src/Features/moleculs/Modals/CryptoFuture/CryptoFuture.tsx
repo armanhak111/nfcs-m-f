@@ -33,11 +33,12 @@ const CryptoFuture: React.FC = () => {
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
-                onClick={() => null}
-                onFocus={() => null}
+                onClick={formik.setFieldTouched}
+                onFocus={formik.setFieldTouched}
                 onChange={() => null}
                 value={formik.values.minPrice}
                 formik={formik}
+                error={formik.touched.minPrice && formik.errors.minPrice}
               />
             </div>
             <div className={styles.divider} />
@@ -50,18 +51,30 @@ const CryptoFuture: React.FC = () => {
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "
-                  onClick={() => null}
-                  onFocus={() => null}
+                  onClick={formik.setFieldTouched}
+                  onFocus={formik.setFieldTouched}
                   onChange={() => null}
                   value={formik.values.maxPrice}
                   formik={formik}
+                  error={formik.touched.maxPrice && formik.errors.maxPrice}
                 />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.modalBtn}>
-          <Button onClick={() => null} type="primary" id={'Order'} />
+          <Button
+            onClick={formik.handleSubmit}
+            customClass={styles.cardBtn}
+            disabeled={Boolean(
+              !formik.touched.minPrice ||
+                !formik.touched.maxPrice ||
+                formik.errors.minPrice ||
+                formik.errors.maxPrice
+            )}
+            type="primary"
+            id="Order"
+          />
         </div>
       </div>
     </>

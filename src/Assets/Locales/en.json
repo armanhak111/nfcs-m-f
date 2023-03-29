@@ -92,5 +92,8 @@
     "resetPassword.rememberPass": "Remembered the password?",
     "modals.success.resetPass.title": "Your password succesfully reseted",
     "modals.success.resetPass.subTitle": "Please sign in with new password",
-    "modals.success.resetPass.button": "Sign In"
+    "modals.success.resetPass.button": "Sign In",
+    "modals.analytics.details":"Details",
+    "modals.cancel.order":"Cancel"
+
 }
