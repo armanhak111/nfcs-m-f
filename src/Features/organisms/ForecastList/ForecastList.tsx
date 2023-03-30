@@ -1,8 +1,13 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
+// import CryptoSvg from '../../../Assets/Icons/forecast/Crypto';
+// import BinanceSvg from '../../../Assets/Icons/forecast/BinanceSvg';
 import NftSvg from '../../../Assets/Icons/forecast/NftSvg';
+// import StockSvg from '../../../Assets/Icons/forecast/StockSvg';
 import TimeSvg from '../../../Assets/Icons/forecast/TimeSvg';
+import { getCurrentUser } from '../../../Store/Selectors/auth';
+import { usersAnalytics } from '../../../Store/Slices/auth';
 import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
@@ -10,6 +15,7 @@ import styles from './forecastList.module.scss';
 
 const ForecastList: React.FC = () => {
   const dispatch = useDispatch();
+  const curentUser = useSelector(getCurrentUser);
   return (
     <section className={styles.buyForecastSection}>
       <h2 className="title dashboard-title">Forecast List</h2>
@@ -37,7 +43,7 @@ const ForecastList: React.FC = () => {
           </div>
           <div className={styles.forecastBody}>
             <p className={styles.waittimeInfo}>
-              Max Wait Time: <span>3 Hours</span>
+              Max Wait Time: <span>1 Week</span>
             </p>
             <div className={styles.foreacstBodyItem}>
               <div className={styles.forecastBodyItemContent}>
@@ -54,6 +60,9 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemLogo}`}>
                           <p>
                             <NftSvg />
+                            {/* <BinanceSvg /> */}
+                            {/* <StockSvg /> */}
+                            {/* <CryptoSvg /> */}
                             <span>Lorem Ipsum</span>
                             <p>
                               <small>Open Sea</small>
@@ -63,13 +72,16 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
                           <span
                             className={styles.links}
-                            onClick={() => dispatch(setActionModal('detailsModal'))}
+                            onClick={() => dispatch(usersAnalytics(curentUser.id))}
                           >
                             Details
                           </span>
-                          <a href="" className={styles.links}>
+                          <span
+                            className={styles.links}
+                            onClick={() => dispatch(setActionModal('modals.cancel.order'))}
+                          >
                             Cancel
-                          </a>
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -155,13 +167,18 @@ const ForecastList: React.FC = () => {
                         <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
                           <span
                             className={styles.links}
-                            onClick={() => dispatch(setActionModal('jasjas'))}
+                            onClick={() =>
+                              dispatch(setActionModal('modals.success.details.crypto'))
+                            }
                           >
                             Details
                           </span>
-                          <a href="" className={styles.links}>
+                          <span
+                            className={styles.links}
+                            onClick={() => dispatch(setActionModal('modals.cancel.order'))}
+                          >
                             Cancel
-                          </a>
+                          </span>
                         </div>
                       </div>
                     </div>

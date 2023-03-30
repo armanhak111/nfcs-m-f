@@ -1,22 +1,31 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { CRYPTO_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderCryptoValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderCryptoValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Input from '../../../atoms/Input';
 import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './cryptoFuture.module.scss';
 
 const CryptoFuture: React.FC = () => {
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: CRYPTO_FUTURE_ORDER,
     validationSchema: orderCryptoValidationScheme,
     onSubmit: (arg: any) => {
-      dispatch(orderAnalytics(arg));
+      const data = {
+        ...arg,
+        date: CURRENT_DATE,
+        orderType: 'crypto',
+        id: userId,
+      };
+      dispatch(orderAnalytics(data));
     },
   });
   console.log('formik', formik.values);
@@ -33,11 +42,12 @@ const CryptoFuture: React.FC = () => {
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
-                onClick={() => null}
-                onFocus={() => null}
+                onClick={formik.setFieldTouched}
+                onFocus={formik.setFieldTouched}
                 onChange={() => null}
                 value={formik.values.minPrice}
                 formik={formik}
+                error={formik.touched.minPrice && formik.errors.minPrice}
               />
             </div>
             <div className={styles.divider} />
@@ -50,18 +60,30 @@ const CryptoFuture: React.FC = () => {
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "
-                  onClick={() => null}
-                  onFocus={() => null}
+                  onClick={formik.setFieldTouched}
+                  onFocus={formik.setFieldTouched}
                   onChange={() => null}
                   value={formik.values.maxPrice}
                   formik={formik}
+                  error={formik.touched.maxPrice && formik.errors.maxPrice}
                 />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.modalBtn}>
-          <Button onClick={() => null} type="primary" id={'Order'} />
+          <Button
+            onClick={formik.handleSubmit}
+            customClass={styles.cardBtn}
+            disabeled={Boolean(
+              !formik.touched.minPrice ||
+                !formik.touched.maxPrice ||
+                formik.errors.minPrice ||
+                formik.errors.maxPrice
+            )}
+            type="primary"
+            id="Order"
+          />
         </div>
       </div>
     </>

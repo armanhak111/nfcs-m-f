@@ -28,8 +28,8 @@ export type TBinanceOrder = {
 };
 export const BINANCE_FUTURE_ORDER: any = {
   incuiryType: '',
-  adjustLeverage: 20,
-  sumType: '',
+  adjustLeverage: '20',
+  sumType: 'USD',
   minPrice: '',
   maxPrice: '',
   timeZone: '',
@@ -46,10 +46,11 @@ export type TNftOrder = {
 export const NFT_FUTURE_ORDER: TNftOrder = {
   platform: '',
   type: '',
-  sumType: '',
+  sumType: 'USD',
   minPrice: '',
   maxPrice: '',
 };
+
 export type TStock = {
   industry: string;
   sumType: string;
@@ -59,7 +60,7 @@ export type TStock = {
 
 export const STOCK_FUTURE_ORDER: TStock = {
   industry: '',
-  sumType: '',
+  sumType: 'USD',
   minPrice: '',
   maxPrice: '',
 };
@@ -71,7 +72,7 @@ export type TCrypto = {
 };
 
 export const CRYPTO_FUTURE_ORDER: TCrypto = {
-  sumType: '',
+  sumType: 'USD',
   minPrice: '',
   maxPrice: '',
 };

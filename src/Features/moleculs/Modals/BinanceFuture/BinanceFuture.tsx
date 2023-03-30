@@ -1,12 +1,13 @@
 import { useFormik } from 'formik';
 import React from 'react';
 // import { string } from 'yup';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { BINANCE_FUTURE_ORDER } from '../../../../Constants/dashboard';
 import { TIME_ZONE } from '../../../../Constants/timeZone';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderBinanceValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderBinanceValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
@@ -29,12 +30,19 @@ const INQUIRY_OPTIONS = [
 ];
 const BinanceFuture = () => {
   const dispatch = useDispatch();
-
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const formik = useFormik({
     initialValues: BINANCE_FUTURE_ORDER,
     validationSchema: orderBinanceValidationScheme,
     onSubmit: (arg) => {
-      dispatch(orderAnalytics(arg));
+      const data = {
+        ...arg,
+        date: CURRENT_DATE,
+        orderType: 'binance',
+        id: userId,
+      };
+      dispatch(orderAnalytics(data));
     },
   });
 
@@ -50,8 +58,8 @@ const BinanceFuture = () => {
             label="contactus.dropdown.label"
             options={INQUIRY_OPTIONS}
             value={formik.values.incuiryType}
-            defaultValue="contactus.dropdown.generalInquiry"
-            onClick={() => null}
+            defaultValue="Select"
+            onClick={formik.setFieldTouched}
             onChange={() => null}
             formik={formik}
           />
@@ -119,8 +127,9 @@ const BinanceFuture = () => {
                 onClick={formik.setFieldTouched}
                 onFocus={formik.setFieldTouched}
                 onChange={() => null}
-                value={formik.values.name}
+                value={formik.values.minPrice}
                 formik={formik}
+                error={formik.touched.minPrice && formik.errors.minPrice}
               />
             </div>
             <div className={styles.divider} />
@@ -136,8 +145,9 @@ const BinanceFuture = () => {
                   onClick={formik.setFieldTouched}
                   onFocus={formik.setFieldTouched}
                   onChange={() => null}
-                  value={formik.values.name}
+                  value={formik.values.maxPrice}
                   formik={formik}
+                  error={formik.touched.maxPrice && formik.errors.maxPrice}
                 />
               </div>
             </div>
@@ -149,15 +159,26 @@ const BinanceFuture = () => {
             label="Time Zone"
             options={TIME_ZONE}
             value={formik.values.timeZone}
-            defaultValue="contactus.dropdown.generalInquiry"
-            onClick={() => null}
+            defaultValue="Select"
+            onClick={formik.setFieldTouched}
             onChange={() => null}
             formik={formik}
           />
         </div>
 
         <div className={styles.modalBtn}>
-          <Button onClick={() => null} type="primary" id={'Order'} />
+          <Button
+            onClick={formik.handleSubmit}
+            customClass={styles.cardBtn}
+            disabeled={Boolean(
+              !formik.touched.incuiryType ||
+                !formik.touched.minPrice ||
+                !formik.touched.maxPrice ||
+                !formik.touched.timeZone
+            )}
+            type="primary"
+            id={'Order'}
+          />
         </div>
       </div>
     </>

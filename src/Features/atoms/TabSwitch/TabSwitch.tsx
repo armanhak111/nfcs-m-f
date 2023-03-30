@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './tabSwitch.module.scss';
 
 const TabSwitch: React.FC<{ formik?: any }> = ({ formik }) => {
-  const [moneyType, setMoneyType] = useState<string>('USD');
-
   const handelChange = () => {
-    if (moneyType === 'USD') {
-      setMoneyType(formik.setFieldValue('sumType', 'EUR'));
+    if (formik.values.sumType === 'USD') {
+      formik.setFieldValue('sumType', 'EUR');
     } else {
-      setMoneyType(formik.setFieldValue('sumType', 'USD'));
+      formik.setFieldValue('sumType', 'USD');
     }
   };
 

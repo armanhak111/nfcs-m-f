@@ -8,6 +8,8 @@ export const getAuthLoading = createSelector(mainSelector, (state) => state.auth
 
 export const getCurrentUser = createSelector(mainSelector, (state) => state.currentUser);
 
+export const getOrderDetails = createSelector(mainSelector, (state) => state.orderDetails);
+
 export const getAuthLoader = createSelector(mainSelector, (state) => state.authLoader);
 
 export const getAuthFullField = createSelector(mainSelector, (state) => state.authFulField);

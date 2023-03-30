@@ -15,6 +15,7 @@ const initialState: IAuthSlice = {
   isAuthenticated: false,
   authLoader: false,
   currentUser: {},
+  orderDetails: [],
   authFulField: false,
 };
 
@@ -38,6 +39,12 @@ export const authSlice = createSlice({
       return {
         ...state,
         currentUser: action.payload,
+      };
+    },
+    setOrderDetails: (state, action) => {
+      return {
+        ...state,
+        orderDetails: action.payload,
       };
     },
     setAuthFulfield: (state, action) => {
@@ -263,8 +270,8 @@ export const changePassword =
       });
   };
 export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
-  axios
-    .post(`${API_URL}`, data)
+  $api
+    .post(`${API_URL}/analytics/order`, data)
     .then((response: AxiosResponse<any>) => {
       dispatch(setCurrentUser(response.data));
     })
@@ -277,6 +284,20 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       }
     });
 };
-export const { setAuth, setAuthLoader, setCurrentUser, setAuthFulfield } = authSlice.actions;
+export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
+  dispatch(setDashboardLoading(true));
+  $api
+    .post(`${API_URL}/analytics`, {
+      id,
+    })
+    .then((response: AxiosResponse<IAuthUserResponse>) => {
+      dispatch(setOrderDetails(response.data));
+    })
+    .finally(() => {
+      dispatch(setDashboardLoading(false));
+    });
+};
+export const { setAuth, setAuthLoader, setCurrentUser, setAuthFulfield, setOrderDetails } =
+  authSlice.actions;
 
 export default authSlice.reducer;

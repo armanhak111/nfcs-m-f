@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { NFT_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderNftValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderNftValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
@@ -27,11 +28,19 @@ const INQUIRY_OPTIONS = [
 ];
 const NftFuture: React.FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const formik = useFormik({
     initialValues: NFT_FUTURE_ORDER,
     validationSchema: orderNftValidationScheme,
     onSubmit: (arg) => {
-      dispatch(orderAnalytics(arg));
+      const data = {
+        ...arg,
+        date: CURRENT_DATE,
+        orderType: 'nft',
+        id: userId,
+      };
+      dispatch(orderAnalytics(data));
     },
   });
   console.log('formik', formik.values);
@@ -45,8 +54,8 @@ const NftFuture: React.FC = () => {
             label="Platform"
             options={INQUIRY_OPTIONS}
             value={formik.values.platform}
-            defaultValue="contactus.dropdown.generalInquiry"
-            onClick={() => null}
+            defaultValue="Select"
+            onClick={formik.setFieldTouched}
             onChange={() => null}
             formik={formik}
           />
@@ -57,8 +66,8 @@ const NftFuture: React.FC = () => {
             label="Type"
             options={INQUIRY_OPTIONS}
             value={formik.values.type}
-            defaultValue="contactus.dropdown.generalInquiry"
-            onClick={() => null}
+            defaultValue="Select"
+            onClick={formik.setFieldTouched}
             onChange={() => null}
             formik={formik}
           />
@@ -72,11 +81,12 @@ const NftFuture: React.FC = () => {
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
-                onClick={() => null}
-                onFocus={() => null}
+                onClick={formik.setFieldTouched}
+                onFocus={formik.setFieldTouched}
                 onChange={() => null}
                 value={formik.values.minPrice}
                 formik={formik}
+                error={formik.touched.minPrice && formik.errors.minPrice}
               />
             </div>
             <div className={styles.divider} />
@@ -89,18 +99,31 @@ const NftFuture: React.FC = () => {
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "
-                  onClick={() => null}
-                  onFocus={() => null}
+                  onClick={formik.setFieldTouched}
+                  onFocus={formik.setFieldTouched}
                   onChange={() => null}
                   value={formik.values.maxPrice}
                   formik={formik}
+                  error={formik.touched.maxPrice && formik.errors.maxPrice}
                 />
               </div>
             </div>
           </div>
         </div>
         <div className={styles.modalBtn}>
-          <Button onClick={() => null} type="primary" id={'Order'} />
+          <Button
+            onClick={formik.handleSubmit}
+            disabeled={Boolean(
+              !formik.touched.platform ||
+                !formik.touched.type ||
+                !formik.touched.minPrice ||
+                !formik.touched.maxPrice ||
+                formik.errors.minPrice ||
+                formik.errors.maxPrice
+            )}
+            type="primary"
+            id={'Order'}
+          />
         </div>
       </div>
     </>

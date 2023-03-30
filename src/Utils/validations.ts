@@ -1,5 +1,26 @@
 import * as yup from 'yup';
 
+function dateToYMD(date: any) {
+  const shortMonths = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+  const day = date.getDate();
+  const month = shortMonths[date.getMonth()];
+  const year = date.getFullYear();
+  return '' + (day <= 9 ? '0' + day : day) + '.' + month + '.' + year;
+}
+export const CURRENT_DATE = dateToYMD(new Date());
 export const signInValidationSchema = yup.object({
   email: yup
     .string()

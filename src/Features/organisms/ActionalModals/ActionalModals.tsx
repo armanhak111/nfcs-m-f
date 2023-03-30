@@ -8,6 +8,7 @@ import CloseSvg from '../../../Assets/Icons/CloseSvg';
 import { ACTION_MODALS } from '../../../Constants/modals';
 import { getActionalModals } from '../../../Store/Selectors/modal';
 import { setActionModal } from '../../../Store/Slices/modal';
+// import CancelModal from '../../moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
 // import DetaislCrypto from '../../moleculs/Modals/DetailsModal/DetailsCrypto/DetailsCrypto';
 // import DetailsStock from '../../moleculs/Modals/DetailsModal/DetailsStock/DetailsStock';
 // import CryptoFuture from '../../moleculs/Modals/CryptoFuture/CryptoFuture';
