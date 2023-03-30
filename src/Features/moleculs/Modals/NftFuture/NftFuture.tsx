@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { NFT_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderNftValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderNftValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
@@ -27,14 +28,17 @@ const INQUIRY_OPTIONS = [
 ];
 const NftFuture: React.FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const formik = useFormik({
     initialValues: NFT_FUTURE_ORDER,
     validationSchema: orderNftValidationScheme,
     onSubmit: (arg) => {
-      const date = new Date();
       const data = {
         ...arg,
-        date: `${date.getDay()}.${date.getMonth() + 1}.${date.getFullYear()}`,
+        date: CURRENT_DATE,
+        orderType: 'nft',
+        id: userId,
       };
       dispatch(orderAnalytics(data));
     },

@@ -32,6 +32,16 @@
                 position: absolute;
                 left: 0;
                 bottom: 0;
+                background: #18AAFC;
+                border-radius: 10px;
+                width: 33%;
+                height: 4px;
+            } 
+            &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
                 background: rgba(41, 52, 139, 0.32);
                 border-radius: 10px;
                 width: 100%;

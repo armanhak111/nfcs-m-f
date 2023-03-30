@@ -1,10 +1,11 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { STOCK_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderStockValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderStockValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Dropdown from '../../../atoms/Dropdown';
 import Input from '../../../atoms/Input';
@@ -27,11 +28,19 @@ const INQUIRY_OPTIONS = [
 ];
 const StockFuture: React.FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const formik = useFormik({
     initialValues: STOCK_FUTURE_ORDER,
     validationSchema: orderStockValidationScheme,
     onSubmit: (arg) => {
-      dispatch(orderAnalytics(arg));
+      const data = {
+        ...arg,
+        date: CURRENT_DATE,
+        orderType: 'stock',
+        id: userId,
+      };
+      dispatch(orderAnalytics(data));
     },
   });
   console.log('fformik', formik.values);

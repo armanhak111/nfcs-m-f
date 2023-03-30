@@ -1,22 +1,31 @@
 import { useFormik } from 'formik';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { CRYPTO_FUTURE_ORDER } from '../../../../Constants/dashboard';
+import { getCurrentUser } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
-import { orderCryptoValidationScheme } from '../../../../Utils/validations';
+import { CURRENT_DATE, orderCryptoValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
 import Input from '../../../atoms/Input';
 import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './cryptoFuture.module.scss';
 
 const CryptoFuture: React.FC = () => {
+  const currentUser = useSelector(getCurrentUser);
+  const userId = currentUser.id;
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: CRYPTO_FUTURE_ORDER,
     validationSchema: orderCryptoValidationScheme,
     onSubmit: (arg: any) => {
-      dispatch(orderAnalytics(arg));
+      const data = {
+        ...arg,
+        date: CURRENT_DATE,
+        orderType: 'crypto',
+        id: userId,
+      };
+      dispatch(orderAnalytics(data));
     },
   });
   console.log('formik', formik.values);

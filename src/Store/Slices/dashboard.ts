@@ -44,7 +44,7 @@ export const changeName =
         }
       });
   };
-//
+
 export const { setDashboardLoading } = mainSlice.actions;
 
 export default mainSlice.reducer;

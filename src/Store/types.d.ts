@@ -17,6 +17,7 @@ declare interface IAuthSlice {
   isAuthenticated: boolean;
   authLoader: boolean;
   currentUser: any;
+  orderDetails: any;
   authFulField: boolean;
 }
 
