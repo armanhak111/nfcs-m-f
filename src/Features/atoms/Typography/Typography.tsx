@@ -27,7 +27,11 @@ const Typography: React.FC<ITypographyProps> = ({
       className={hasMultyClasss ? hasMultyClasss?.multylangClass : className}
       style={style}
     >
-      <FormattedMessage values={currentValue} id={id} defaultMessage={defaultMessage} />
+      {id.includes('.') ? (
+        <FormattedMessage values={currentValue} id={id} defaultMessage={defaultMessage} />
+      ) : (
+        id
+      )}
     </Component>
   );
 };

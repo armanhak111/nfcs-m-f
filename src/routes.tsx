@@ -29,7 +29,6 @@ const Routes: React.FC = () => {
       dispatch(getUser());
     }
   }, []);
-  console.log(!Object.entries(currentUser).length, 'asasas', fulfield);
   if (token && !Object.values(currentUser).length && !fulfield) {
     return <PageLoader />;
   }

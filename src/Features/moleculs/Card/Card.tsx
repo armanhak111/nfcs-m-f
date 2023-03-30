@@ -75,9 +75,7 @@ const Card: React.FC<ICard> = ({
         <Typography className={styles.cardTitle} component="h2" id={title} />
         <Typography className={styles.cardText} component="p" id={info} />
         <div className={styles.cardPrice}>
-          {hoverEffect === 'cardItemDisabled' ? (
-            <p>_ _ _</p>
-          ) : (
+          {hoverEffect !== 'cardItemDisabled' && (
             <>
               {' '}
               {saleMode && <s>{saledPrice}$</s>}

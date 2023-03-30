@@ -5,8 +5,18 @@
 
 .cardRow {
     @include flexRow(math.div(24, 2), 4);
+    [class*="cardsCol"]{
+        color: red;
+        flex: 0 0 33%;
+        max-width: 33%;
+    }
     @media all and (max-width: $normalDesktop) {
         @include flexRow(math.div(16, 2), 4);
+        [class*="cardsCol"]{
+            color: red;
+            flex: 0 0 33%;
+            max-width: 33%;
+        }
     }
     @media all and (max-width: $tablet) {
         @include flexRow(math.div(20, 2), 2);
