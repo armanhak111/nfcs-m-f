@@ -1,42 +1,43 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import TooltipSvg from '../../../../../Assets/Icons/cards/TooltipSvg';
+// import TooltipSvg from '../../../../../Assets/Icons/cards/TooltipSvg';
+import { getOrderDetails } from '../../../../../Store/Selectors/auth';
 import styles from './../detailsModal.module.scss';
 
 const DetailsBinance: React.FC = () => {
+  const orderDetails = useSelector(getOrderDetails);
   return (
     <>
       <h2 className={styles.modalTitle}>Binance Future Forecast</h2>
-      <div className={styles.detailsList}>
-        <div className={styles.detailsItemContent}>
-          <p className={styles.detailtsItemTitle}>
-            Inquiry type <TooltipSvg />
-          </p>
-          <p className={styles.detailsItemText}>Cross</p>
-        </div>
-        <div className={styles.detailsItemContent}>
-          <p className={styles.detailtsItemTitle}>Adjust Leverage</p>
-          <p className={styles.detailsItemText}>25x</p>
-        </div>
-        <div className={styles.detailsItemContent}>
-          <p className={styles.detailtsItemTitle}>
-            Price Range : <span>USD</span>
-          </p>
-          <p className={styles.detailsItemText}>
-            100$ <span className={styles.line}></span>424$
-          </p>
-        </div>
-        <div className={styles.detailsItemContent}>
-          <p className={styles.detailtsItemTitle}>Time Zone</p>
-          <p className={styles.detailsItemText}>
-            (UTC - 05;00) Eastern Time (US & Canada) America/Iqualuit
-          </p>
-        </div>
-        <div className={styles.detailsItemContent}>
-          <p className={styles.detailtsItemTitle}>Date</p>
-          <p className={styles.detailsItemText}>22/Jun/1684</p>
-        </div>
-      </div>
+      {orderDetails.map((item: any) => {
+        if (item.orderType === 'binance')
+          return (
+            <div key={item.analyticId} className={styles.detailsList}>
+              <div className={styles.detailsItemContent}>
+                <p className={styles.detailtsItemTitle}>Inquiry type</p>
+                <p className={styles.detailsItemText}>{item.incuiryType}</p>
+              </div>
+              <div className={styles.detailsItemContent}>
+                <p className={styles.detailtsItemTitle}>Adjust Leverage</p>
+                <p className={styles.detailsItemText}>{item.adjustLeverage}x</p>
+              </div>
+              <div className={styles.detailsItemContent}>
+                <p className={styles.detailtsItemTitle}>
+                  Price Range : <span>{item.sumType}</span>
+                </p>
+                <p className={styles.detailsItemText}>
+                  {item.minPrice}$ <span className={styles.line}></span>
+                  {item.maxPrice}$
+                </p>
+              </div>
+              <div className={styles.detailsItemContent}>
+                <p className={styles.detailtsItemTitle}>Time Zone</p>
+                <p className={styles.detailsItemText}>{item.timeZone}</p>
+              </div>
+            </div>
+          );
+      })}
     </>
   );
 };

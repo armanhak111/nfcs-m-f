@@ -117,10 +117,10 @@ export const signIn = (email: string, password: string, history: any) => (dispat
     });
 };
 
-export const getUser = () => (dispatch: Dispatch) => {
+export const getUser = (id: string) => (dispatch: Dispatch) => {
   dispatch(setAuthLoader(true));
   $api
-    .get('/user')
+    .get(`/user?id=${id}`)
     .then(async (response: AxiosResponse<IAuthUserResponse>) => {
       if (response) {
         dispatch(setCurrentUser(response.data));
@@ -273,7 +273,7 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
   $api
     .post(`${API_URL}/analytics/order`, data)
     .then((response: AxiosResponse<any>) => {
-      dispatch(setCurrentUser(response.data));
+      dispatch(setOrderDetails(response.data));
     })
     .catch((e) => {
       const errorMessage = e.response.data.message;

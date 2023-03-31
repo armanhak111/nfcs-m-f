@@ -9,6 +9,7 @@ import MyPromoCodeSvg from '../../../Assets/Icons/dashboard/MyPromoCodeSvg';
 import MenuFoldSvg from '../../../Assets/Icons/MenuFoldSvg';
 import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { getOrderDetails } from '../../../Store/Selectors/auth';
 import { getDashboardCurrentSlide } from '../../../Store/Selectors/dashboardLocal';
 import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import styles from './dashboardSideBar.module.scss';
@@ -18,6 +19,7 @@ const DashboardSideBar: React.FC = () => {
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
   };
+  const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   return (
@@ -52,7 +54,9 @@ const DashboardSideBar: React.FC = () => {
             >
               <ForecastListSvg />
               <span className={styles.closedSidebar}>Forecast List</span>
-              <span className={`${styles.radyCount} ${styles.radyCountClosed}`}>2</span>
+              <span className={`${styles.radyCount} ${styles.radyCountClosed}`}>
+                {orderDetails.length}
+              </span>
             </span>
           </li>
           <li className={styles.asideListDivider} />

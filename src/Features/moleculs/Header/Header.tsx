@@ -164,7 +164,7 @@ const Header: React.FC = () => {
               <div className={styles.tabletItem}>
                 <HeaderAuthView />
                 <>
-                  {isOnlyTablet && isAuth && (
+                  {isOnlyTablet && isAuth > 0 && (
                     <div className={styles.cointItem}>
                       <span className={styles.cointIcon}>
                         <HeaderCoinSvg />

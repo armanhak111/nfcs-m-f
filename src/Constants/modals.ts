@@ -69,3 +69,10 @@ export const ACTION_MODALS: Record<string, any> = {
   'modals.success.details.crypto': DetaislCrypto,
   'modals.cancel.order': CancelModal,
 };
+
+export const DETAILS_MODAL: Record<string, any> = {
+  crypto: DetaislCrypto,
+  nft: DetailsNft,
+  stock: DetailsStock,
+  binance: DetailsBinance,
+};
