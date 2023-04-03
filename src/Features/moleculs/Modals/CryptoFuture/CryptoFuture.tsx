@@ -14,6 +14,7 @@ import styles from './cryptoFuture.module.scss';
 const CryptoFuture: React.FC = () => {
   const currentUser = useSelector(getCurrentUser);
   const userId = currentUser.id;
+  console.log(userId, 'sa e ');
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: CRYPTO_FUTURE_ORDER,
@@ -25,6 +26,7 @@ const CryptoFuture: React.FC = () => {
         orderType: 'crypto',
         id: userId,
       };
+      console.log(data, 'sa e datan');
       dispatch(orderAnalytics(data));
     },
   });

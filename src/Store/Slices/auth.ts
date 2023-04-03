@@ -6,7 +6,7 @@ import { ROUTES } from '../../Constants/Routes';
 import $api, { $refreshApi, API_URL } from '../../Service/api/intercepter';
 import { AuthResponse } from '../../Service/api/types';
 import { setDashboardLoading } from './dashboard';
-import { setErrorMessage, setModal } from './modal';
+import { setActionModal, setErrorMessage, setModal } from './modal';
 
 interface IAuthUserResponse extends AuthResponse {
   user: IUser;
@@ -270,6 +270,7 @@ export const changePassword =
       });
   };
 export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
+  dispatch(setDashboardLoading(true));
   $api
     .post(`${API_URL}/analytics/order`, data)
     .then((response: AxiosResponse<any>) => {
@@ -282,6 +283,12 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       } else {
         dispatch(setErrorMessage('modals.error.tryLater'));
       }
+    })
+    .finally(() => {
+      dispatch(setDashboardLoading(false));
+      dispatch(setActionModal('modals.confirmation'));
+      // dispatch(setActionModal('modals.cancel.order'));
+      // dispatch(setActionModal(''));
     });
 };
 export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
