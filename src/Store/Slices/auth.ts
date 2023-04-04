@@ -17,6 +17,7 @@ const initialState: IAuthSlice = {
   currentUser: {},
   orderDetails: [],
   authFulField: false,
+  currAnalyticId: '',
 };
 
 export const authSlice = createSlice({
@@ -53,6 +54,12 @@ export const authSlice = createSlice({
         authFulField: action.payload,
       };
     },
+    setCurrAnalyticId: (state, action) => {
+      return {
+        ...state,
+        currAnalyticId: action.payload,
+      };
+    },
   },
 });
 export const registration =
@@ -67,6 +74,7 @@ export const registration =
         if (response) {
           await localStorage.setItem('token', response.data.accessToken);
           await localStorage.setItem('refresh', response.data.refreshToken);
+          await localStorage.setItem('id', response.data.user.id);
           dispatch(setCurrentUser(response.data.user));
           dispatch(setAuth(true));
           dispatch(setAuthLoader(false));
@@ -191,6 +199,7 @@ export const checkAuth = (history: any) => (dispatch: Dispatch) => {
       dispatch(setAuthLoader(false));
     });
 };
+
 export const forgotPassword = (email: string) => (dispatch: Dispatch) => {
   dispatch(setAuthLoader(true));
   axios
@@ -269,6 +278,7 @@ export const changePassword =
         dispatch(setAuthLoader(false));
       });
   };
+
 export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
   dispatch(setDashboardLoading(true));
   $api
@@ -291,6 +301,7 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       // dispatch(setActionModal(''));
     });
 };
+
 export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
   dispatch(setDashboardLoading(true));
   $api
@@ -304,7 +315,26 @@ export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
       dispatch(setDashboardLoading(false));
     });
 };
-export const { setAuth, setAuthLoader, setCurrentUser, setAuthFulfield, setOrderDetails } =
-  authSlice.actions;
+
+export const deleteUserAnalytics = (userId: string, analyticId: any) => (dispatch: Dispatch) => {
+  $api
+    .delete(`${API_URL}/analytics/delete`, {
+      data: { userId, analyticId },
+    })
+    .then((response: AxiosResponse<IAuthUserResponse>) => {
+      dispatch(setOrderDetails(response.data));
+    })
+    .finally(() => {
+      dispatch(setDashboardLoading(false));
+    });
+};
+export const {
+  setAuth,
+  setAuthLoader,
+  setCurrentUser,
+  setAuthFulfield,
+  setOrderDetails,
+  setCurrAnalyticId,
+} = authSlice.actions;
 
 export default authSlice.reducer;

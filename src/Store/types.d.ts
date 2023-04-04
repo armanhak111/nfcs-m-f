@@ -19,6 +19,7 @@ declare interface IAuthSlice {
   currentUser: any;
   orderDetails: any;
   authFulField: boolean;
+  currAnalyticId: string;
 }
 
 declare type TState = {
@@ -28,7 +29,6 @@ declare type TState = {
   dashboard: IDashboardSliceState;
   dashboardLocal: IDashboardLocalSlice;
 };
-
 declare interface IUser {
   email: string;
   id: string;

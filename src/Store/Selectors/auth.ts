@@ -13,3 +13,5 @@ export const getOrderDetails = createSelector(mainSelector, (state) => state.ord
 export const getAuthLoader = createSelector(mainSelector, (state) => state.authLoader);
 
 export const getAuthFullField = createSelector(mainSelector, (state) => state.authFulField);
+
+export const getCurrAnalyticId = createSelector(mainSelector, (state) => state.currAnalyticId);

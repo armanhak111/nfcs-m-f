@@ -2,16 +2,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 // import TooltipSvg from '../../../../../Assets/Icons/cards/TooltipSvg';
-import { getOrderDetails } from '../../../../../Store/Selectors/auth';
+import { getCurrAnalyticId, getOrderDetails } from '../../../../../Store/Selectors/auth';
 import styles from './../detailsModal.module.scss';
 
 const DetailsBinance: React.FC = () => {
   const orderDetails = useSelector(getOrderDetails);
+  const currAnalyticId = useSelector(getCurrAnalyticId);
   return (
     <>
       <h2 className={styles.modalTitle}>Binance Future Forecast</h2>
       {orderDetails.map((item: any) => {
-        if (item.orderType === 'binance')
+        if (item.orderType === 'binance' && item.analyticId === currAnalyticId)
           return (
             <div key={item.analyticId} className={styles.detailsList}>
               <div className={styles.detailsItemContent}>

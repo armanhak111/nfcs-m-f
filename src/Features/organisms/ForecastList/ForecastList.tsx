@@ -9,6 +9,7 @@ import TimeSvg from '../../../Assets/Icons/forecast/TimeSvg';
 import { FORECAST_ICONS } from '../../../Constants/icons';
 // import { DETAILS_MODAL } from '../../../Constants/modals';
 import { getOrderDetails } from '../../../Store/Selectors/auth';
+import { setCurrAnalyticId } from '../../../Store/Slices/auth';
 // import { usersAnalytics } from '../../../Store/Slices/auth';
 import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
@@ -19,6 +20,21 @@ const ForecastList: React.FC = () => {
   const dispatch = useDispatch();
   // const curentUser = useSelector(getCurrentUser);
   const orderDetails = useSelector(getOrderDetails);
+  console.log(orderDetails, 'saaaaaa');
+
+  const getDetail = (item: any) => {
+    dispatch(setCurrAnalyticId(item.analyticId));
+
+    if (item.orderType === 'binance') {
+      return dispatch(setActionModal('modals.success.details.binance'));
+    } else if (item.orderType === 'nft') {
+      return dispatch(setActionModal('modals.success.details.nft'));
+    } else if (item.orderType === 'stock') {
+      return dispatch(setActionModal('modals.success.details.stock'));
+    } else if (item.orderType === 'crypto') {
+      return dispatch(setActionModal('modals.success.details.crypto'));
+    }
+  };
 
   return (
     <section className={styles.buyForecastSection}>
@@ -54,21 +70,7 @@ const ForecastList: React.FC = () => {
                 const Icon = FORECAST_ICONS[item.orderType];
                 return FORECAST_ICONS[item.orderType] ? <Icon /> : null;
               };
-              // const getDetail = () => {
-              //   const Details = DETAILS_MODAL[item.orderType];
-              //   return DETAILS_MODAL[item.orderType] ? <Details /> : null;
-              // };
-              const getDetail = () => {
-                if (item.orderType === 'binance') {
-                  return dispatch(setActionModal('modals.success.details.binance'));
-                } else if (item.orderType === 'nft') {
-                  return dispatch(setActionModal('modals.success.details.nft'));
-                } else if (item.orderType === 'stock') {
-                  return dispatch(setActionModal('modals.success.details.stock'));
-                } else if (item.orderType === 'crypto') {
-                  return dispatch(setActionModal('modals.success.details.crypto'));
-                }
-              };
+
               return (
                 <div key={item.analyticId} className={styles.foreacstBodyItem}>
                   <div className={styles.forecastBodyItemContent}>
@@ -96,12 +98,18 @@ const ForecastList: React.FC = () => {
                               </p>
                             </div>
                             <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
-                              <span className={styles.links} onClick={() => dispatch(getDetail())}>
+                              <span
+                                className={styles.links}
+                                onClick={() => dispatch(getDetail(item))}
+                              >
                                 Details
                               </span>
                               <span
                                 className={styles.links}
-                                onClick={() => dispatch(setActionModal('modals.cancel.order'))}
+                                onClick={() => {
+                                  dispatch(setCurrAnalyticId(item.analyticId));
+                                  dispatch(setActionModal('modals.cancel.order'));
+                                }}
                               >
                                 Cancel
                               </span>
