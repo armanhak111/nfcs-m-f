@@ -6,7 +6,7 @@ import { ROUTES } from '../../Constants/Routes';
 import $api, { $refreshApi, API_URL } from '../../Service/api/intercepter';
 import { AuthResponse } from '../../Service/api/types';
 import { setDashboardLoading } from './dashboard';
-import { setErrorMessage, setModal } from './modal';
+import { setActionModal, setErrorMessage, setModal } from './modal';
 
 interface IAuthUserResponse extends AuthResponse {
   user: IUser;
@@ -17,6 +17,7 @@ const initialState: IAuthSlice = {
   currentUser: {},
   orderDetails: [],
   authFulField: false,
+  currAnalyticId: '',
 };
 
 export const authSlice = createSlice({
@@ -53,6 +54,12 @@ export const authSlice = createSlice({
         authFulField: action.payload,
       };
     },
+    setCurrAnalyticId: (state, action) => {
+      return {
+        ...state,
+        currAnalyticId: action.payload,
+      };
+    },
   },
 });
 export const registration =
@@ -67,6 +74,7 @@ export const registration =
         if (response) {
           await localStorage.setItem('token', response.data.accessToken);
           await localStorage.setItem('refresh', response.data.refreshToken);
+          await localStorage.setItem('id', response.data.user.id);
           dispatch(setCurrentUser(response.data.user));
           dispatch(setAuth(true));
           dispatch(setAuthLoader(false));
@@ -117,10 +125,10 @@ export const signIn = (email: string, password: string, history: any) => (dispat
     });
 };
 
-export const getUser = () => (dispatch: Dispatch) => {
+export const getUser = (id: string) => (dispatch: Dispatch) => {
   dispatch(setAuthLoader(true));
   $api
-    .get('/user')
+    .get(`/user?id=${id}`)
     .then(async (response: AxiosResponse<IAuthUserResponse>) => {
       if (response) {
         dispatch(setCurrentUser(response.data));
@@ -191,6 +199,7 @@ export const checkAuth = (history: any) => (dispatch: Dispatch) => {
       dispatch(setAuthLoader(false));
     });
 };
+
 export const forgotPassword = (email: string) => (dispatch: Dispatch) => {
   dispatch(setAuthLoader(true));
   axios
@@ -269,11 +278,13 @@ export const changePassword =
         dispatch(setAuthLoader(false));
       });
   };
+
 export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
+  dispatch(setDashboardLoading(true));
   $api
     .post(`${API_URL}/analytics/order`, data)
     .then((response: AxiosResponse<any>) => {
-      dispatch(setCurrentUser(response.data));
+      dispatch(setOrderDetails(response.data));
     })
     .catch((e) => {
       const errorMessage = e.response.data.message;
@@ -282,8 +293,15 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       } else {
         dispatch(setErrorMessage('modals.error.tryLater'));
       }
+    })
+    .finally(() => {
+      dispatch(setDashboardLoading(false));
+      dispatch(setActionModal('modals.confirmation'));
+      // dispatch(setActionModal('modals.cancel.order'));
+      // dispatch(setActionModal(''));
     });
 };
+
 export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
   dispatch(setDashboardLoading(true));
   $api
@@ -297,7 +315,26 @@ export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
       dispatch(setDashboardLoading(false));
     });
 };
-export const { setAuth, setAuthLoader, setCurrentUser, setAuthFulfield, setOrderDetails } =
-  authSlice.actions;
+
+export const deleteUserAnalytics = (userId: string, analyticId: any) => (dispatch: Dispatch) => {
+  $api
+    .delete(`${API_URL}/analytics/delete`, {
+      data: { userId, analyticId },
+    })
+    .then((response: AxiosResponse<IAuthUserResponse>) => {
+      dispatch(setOrderDetails(response.data));
+    })
+    .finally(() => {
+      dispatch(setDashboardLoading(false));
+    });
+};
+export const {
+  setAuth,
+  setAuthLoader,
+  setCurrentUser,
+  setAuthFulfield,
+  setOrderDetails,
+  setCurrAnalyticId,
+} = authSlice.actions;
 
 export default authSlice.reducer;

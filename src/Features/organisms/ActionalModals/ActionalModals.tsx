@@ -45,7 +45,7 @@ Modal.setAppElement('#root');
 
 const ActionalModals: React.FC = () => {
   const modal = useSelector(getActionalModals);
-  console.log('actionModal', modal);
+  console.log('actionModalaaa', modal);
   const getModalContent = () => {
     const Component = ACTION_MODALS[modal];
     return ACTION_MODALS[modal] ? <Component /> : null;

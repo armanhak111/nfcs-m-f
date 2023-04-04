@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
@@ -9,15 +9,22 @@ import MyPromoCodeSvg from '../../../Assets/Icons/dashboard/MyPromoCodeSvg';
 import MenuFoldSvg from '../../../Assets/Icons/MenuFoldSvg';
 import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { getCurrentUser, getOrderDetails } from '../../../Store/Selectors/auth';
 import { getDashboardCurrentSlide } from '../../../Store/Selectors/dashboardLocal';
+import { usersAnalytics } from '../../../Store/Slices/auth';
 import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import styles from './dashboardSideBar.module.scss';
 
 const DashboardSideBar: React.FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser);
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
   };
+  useEffect(() => {
+    dispatch(usersAnalytics(currentUser.id));
+  }, []);
+  const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   return (
@@ -52,7 +59,9 @@ const DashboardSideBar: React.FC = () => {
             >
               <ForecastListSvg />
               <span className={styles.closedSidebar}>Forecast List</span>
-              <span className={`${styles.radyCount} ${styles.radyCountClosed}`}>2</span>
+              <span className={`${styles.radyCount} ${styles.radyCountClosed}`}>
+                {orderDetails.length}
+              </span>
             </span>
           </li>
           <li className={styles.asideListDivider} />

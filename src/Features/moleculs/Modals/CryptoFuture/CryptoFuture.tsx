@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CRYPTO_FUTURE_ORDER } from '../../../../Constants/dashboard';
-import { getCurrentUser } from '../../../../Store/Selectors/auth';
+import { getCurrentUser, getOrderDetails } from '../../../../Store/Selectors/auth';
 import { orderAnalytics } from '../../../../Store/Slices/auth';
 import { CURRENT_DATE, orderCryptoValidationScheme } from '../../../../Utils/validations';
 import Button from '../../../atoms/Button';
@@ -14,6 +14,10 @@ import styles from './cryptoFuture.module.scss';
 const CryptoFuture: React.FC = () => {
   const currentUser = useSelector(getCurrentUser);
   const userId = currentUser.id;
+  const orderDetails = useSelector(getOrderDetails);
+  console.log(orderDetails, 'arrr');
+  console.log(orderDetails.analyticId, 'aaaaaaaaaaaaaaaaaaaaa');
+  console.log(userId, 'sa e ');
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: CRYPTO_FUTURE_ORDER,

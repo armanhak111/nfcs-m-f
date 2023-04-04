@@ -1,5 +1,6 @@
 import BinanceFuture from '../Features/moleculs/Modals/BinanceFuture';
 import CancelModal from '../Features/moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
+import ConfirmationModal from '../Features/moleculs/Modals/ConfirmationModal/ConfirmationModal';
 // import CancelModal from '../Features/moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
 import CryptoFuture from '../Features/moleculs/Modals/CryptoFuture/CryptoFuture';
 import DetailsBinance from '../Features/moleculs/Modals/DetailsModal/DetailsBinanceFuture/DetailsBinance';
@@ -68,4 +69,12 @@ export const ACTION_MODALS: Record<string, any> = {
   'modals.success.details.stock': DetailsStock,
   'modals.success.details.crypto': DetaislCrypto,
   'modals.cancel.order': CancelModal,
+  'modals.confirmation': ConfirmationModal,
+};
+
+export const DETAILS_MODAL: Record<string, any> = {
+  crypto: DetaislCrypto,
+  nft: DetailsNft,
+  stock: DetailsStock,
+  binance: DetailsBinance,
 };
