@@ -104,7 +104,20 @@ const BinanceFuture = () => {
             </button>
           </div>
           <div className={styles.leverageRange}>
-            <input type="range" />
+            <input
+              type="range"
+              onChange={() => {
+                const currentVal = formik.values.adjustLeverage;
+                let val = 0;
+                if (currentVal < 50 && +currentVal !== 1) {
+                  val = 10;
+                } else if (+currentVal === 1) {
+                  val += 9;
+                }
+
+                formik.setFieldValue('adjustLeverage', `${+currentVal + val}`);
+              }}
+            />
             <div className={styles.leverageSum}>
               <p className={styles.active}>1x</p>
               <p className={styles.active}>10x</p>

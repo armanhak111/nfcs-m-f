@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
@@ -22,6 +22,8 @@ import styles from './dashboard.module.scss';
 
 const Dashboard: React.FC = () => {
   const currentSLide = useSelector(getDashboardCurrentSlide);
+  const sidebar = document.getElementsByClassName('tabletOpener');
+  const [open, setOpen] = useState(false);
   // const dispatch = useDispatch();
   // const user = useSelector(getCurrentUser);
   // const auth = useSelector(getAuthStatus);
@@ -45,22 +47,27 @@ const Dashboard: React.FC = () => {
   //     dispatch(users(user.id));
   //   }
   // }, [user]);
-
   const Component = useMemo(() => {
     return DASHBOARD[currentSLide];
   }, [currentSLide]);
+  const handelOpen = () => {
+    setOpen(!open);
+  };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
+
+  console.log(sidebar, 'ur es ara');
   return (
     <div className={`${styles.dashboardPage} page`}>
       <Header />
-      <DashboardSideBar />
+      <DashboardSideBar open={open} setOpen={setOpen} />
       <main className="main">
         <div className={styles.dashoardRight}>
           {isMobile && (
-            <button className={styles.dashboardSideOpen}>
+            <button onClick={handelOpen} className={styles.dashboardSideOpen}>
               <MenuFoldSvg />
             </button>
           )}
+          {sidebar}
           <Component />
         </div>
       </main>

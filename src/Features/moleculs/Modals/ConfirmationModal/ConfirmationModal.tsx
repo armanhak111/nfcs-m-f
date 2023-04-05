@@ -1,12 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-// import { useDispatch } from 'react-redux';
 import { ROUTES } from '../../../../Constants/Routes';
 import { setCurrentSlide } from '../../../../Store/Slices/dashboardLocal';
-// import { setActionModal } from '../../../../Store/Slices/modal';
-// import { setCurrentSlide } from '../../../../Store/Slices/dashboardLocal';
-// import { setActionModal } from '../../../../Store/Slices/modal';
 import Button from '../../../atoms/Button';
 import styles from './confirmationModal.module.scss';
 
@@ -26,13 +22,10 @@ const ConfirmationModal = () => {
               <Button
                 onClick={() => {
                   window.location.href = ROUTES.DASHBOARD;
-                  // dispatch(setActionModal(''));
-                  // dispatch(setActionModal(''));
                 }}
                 type="secondary"
                 id="Go"
               />
-              {/* <Button onClick={() => null} type="secondary" id="goo" /> */}
             </span>
           </div>
         </div>
