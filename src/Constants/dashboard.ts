@@ -76,3 +76,10 @@ export const CRYPTO_FUTURE_ORDER: TCrypto = {
   minPrice: '',
   maxPrice: '',
 };
+
+export type TNamePromo = {
+  name: string;
+};
+export const MY_PROMO_CODE_NAME: TNamePromo = {
+  name: '',
+};

@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import MenuFoldSvg from '../../../Assets/Icons/MenuFoldSvg';
+import { PageLoader } from '../../../Components/Dumb/PageLoader/PageLoader';
 import { DASHBOARD } from '../../../Constants/dashboard';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { getLoaderAra } from '../../../Store/Selectors/auth';
 import { getDashboardCurrentSlide } from '../../../Store/Selectors/dashboardLocal';
 import DashboardSideBar from '../../moleculs/DashboardSideBar';
 import MiniFooter from '../../moleculs/Footer/MiniFooter';
@@ -47,6 +49,7 @@ const Dashboard: React.FC = () => {
   //     dispatch(users(user.id));
   //   }
   // }, [user]);
+  const loading = useSelector(getLoaderAra);
   const Component = useMemo(() => {
     return DASHBOARD[currentSLide];
   }, [currentSLide]);
@@ -55,7 +58,9 @@ const Dashboard: React.FC = () => {
   };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
 
-  console.log(sidebar, 'ur es ara');
+  if (loading) {
+    return <PageLoader />;
+  }
   return (
     <div className={`${styles.dashboardPage} page`}>
       <Header />

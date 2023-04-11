@@ -15,3 +15,5 @@ export const getAuthLoader = createSelector(mainSelector, (state) => state.authL
 export const getAuthFullField = createSelector(mainSelector, (state) => state.authFulField);
 
 export const getCurrAnalyticId = createSelector(mainSelector, (state) => state.currAnalyticId);
+
+export const getLoaderAra = createSelector(mainSelector, (state) => state.loadAra);

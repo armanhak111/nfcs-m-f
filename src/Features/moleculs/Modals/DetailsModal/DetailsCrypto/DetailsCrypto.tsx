@@ -16,15 +16,12 @@ const DetaislCrypto: React.FC = () => {
           return (
             <div key={item.analyticId} className={styles.detailsList}>
               <div key={item.analyticId} className={styles.detailsItemContent}>
-                <p key={item.analyticId} className={styles.detailtsItemTitle}>
-                  Price Range :
-                  <span key={item.analyticId} style={{ marginLeft: '3px' }}>
-                    {item.sumType}
-                  </span>
+                <p key={item.sumType} className={styles.detailtsItemTitle}>
+                  Price Range :<span style={{ marginLeft: '3px' }}>{item.sumType}</span>
                 </p>
 
-                <p key={item.analyticId} className={styles.detailsItemText}>
-                  {item.minPrice}$ <span key={item.analyticId} className={styles.line}></span>
+                <p key={item.minPrice} className={styles.detailsItemText}>
+                  {item.minPrice}$ <span className={styles.line}></span>
                   {item.maxPrice}$
                 </p>
               </div>

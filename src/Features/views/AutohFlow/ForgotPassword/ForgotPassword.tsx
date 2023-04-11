@@ -19,7 +19,6 @@ const ForgotPassword: React.FC = () => {
     validationSchema: forgotPassValidationSchema,
     onSubmit: (values: TForgotPass) => {
       dispatch(forgotPassword(values.email));
-      console.log(values);
     },
   });
   const allowSubmit = useAllowSubmit(formik, FORGOT_PASS_INITIAL);

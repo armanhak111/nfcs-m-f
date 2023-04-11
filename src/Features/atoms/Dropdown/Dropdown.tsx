@@ -34,7 +34,15 @@ const Dropdown: React.FC<IDropdown> = ({
   const [open, setOpen] = useState(false);
 
   const ref = useOutsideDetect(setOpen);
-
+  const handleScroll = () => {
+    window.scroll({
+      top: document.body.offsetHeight,
+      left: 0,
+      behavior: 'smooth',
+    });
+    document.getElementById('doscroll')?.scrollTo({ top: 50, left: 0 });
+    console.log(document.getElementById('doscroll'));
+  };
   const handleClick = () => {
     onClick(name);
     setOpen(!open);
@@ -55,7 +63,12 @@ const Dropdown: React.FC<IDropdown> = ({
     return filteredValue && filteredValue.id;
   }, [value]);
   return (
-    <div ref={ref} className={`${styles.formItem} ${styles.selectItem}`}>
+    <div
+      ref={ref}
+      id="forScrole"
+      className={`${styles.formItem}   ${styles.selectItem}`}
+      onClick={handleScroll}
+    >
       <Typography className={styles.spanText} component="span" id={label} onClick={handleClick} />
       <ul className={styles.selectParent} onClick={handleClick}>
         <li className={`${styles.selectItem} ${open && styles.selectedItemVisible}`}>

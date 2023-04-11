@@ -7,7 +7,7 @@ import useMediaQuery from 'react-use-media-query-hook';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { useSettingsCollapse } from '../../../Hooks/useSettingsCollapse';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
-import { changeName } from '../../../Store/Slices/dashboard';
+import { changeName, changePasswordSettings } from '../../../Store/Slices/dashboard';
 import { changeNameValidationScheme, changePassValidationScheme } from '../../../Utils/validations';
 import Button from '../../atoms/Button';
 // import Dropdown from '../../atoms/Dropdown';
@@ -34,7 +34,7 @@ const Settings: React.FC = () => {
   const user = useSelector(getCurrentUser);
 
   const initialVal = useMemo(() => {
-    return currentItem === 'password_s' ? { old: '', new: '' } : { name: '' };
+    return currentItem === 'password_s' ? { old: '', newPas: '' } : { name: '' };
   }, [currentItem]);
   // const istablet = useMediaQuery(SCREENS.bigTablet);
   const formik = useFormik({
@@ -43,14 +43,14 @@ const Settings: React.FC = () => {
       currentItem === 'password_s' ? changePassValidationScheme : changeNameValidationScheme,
     onSubmit: (arg: any) => {
       if (currentItem === 'password_s') {
-        console.log(arg);
+        dispatch(changePasswordSettings(arg.old, arg.newPas, user.id, setCurretHeight));
       } else {
         dispatch(changeName(arg.name, user.id, setCurretHeight));
       }
     },
+
     validateOnMount: true,
   });
-
   const handleChangeName = () => {
     formik.handleSubmit();
   };
@@ -249,8 +249,8 @@ const Settings: React.FC = () => {
                         htmlFor="old"
                         type="text"
                         name="old"
-                        placeHolder="contactus.old"
-                        label="contactus.old"
+                        placeHolder="Current Password"
+                        label="Current Password"
                         onClick={formik.setFieldTouched}
                         onFocus={formik.setFieldTouched}
                         error={formik.touched.old && formik.errors.old}
@@ -258,16 +258,16 @@ const Settings: React.FC = () => {
                         value={formik.values.old || ''}
                       />
                       <Input
-                        htmlFor="new"
+                        htmlFor="newPas"
                         type="text"
-                        name="new"
-                        placeHolder="contactus.new"
-                        label="contactus.new"
+                        name="newPas"
+                        placeHolder="New Password"
+                        label="New Password"
                         onClick={formik.setFieldTouched}
                         onFocus={formik.setFieldTouched}
-                        error={formik.touched.new && formik.errors.new}
+                        error={formik.touched.newPas && formik.errors.newPas}
                         onChange={formik.handleChange}
-                        value={formik.values.new || ''}
+                        value={formik.values.newPas || ''}
                       />
                       <div className={styles.buttons}>
                         <div
@@ -279,13 +279,13 @@ const Settings: React.FC = () => {
                         <div className={`${styles.buttonTwo} col_`}>
                           <Button
                             type="primary"
-                            onClick={() => formik.handleSubmit()}
+                            onClick={handleChangeName}
                             customClass={styles.cardBtn}
                             id="Change"
                             disabeled={Boolean(
-                              !formik.touched.new ||
+                              !formik.touched.newPas ||
                                 !formik.touched.old ||
-                                formik.errors.new ||
+                                formik.errors.newPas ||
                                 formik.errors.old
                             )}
                           />

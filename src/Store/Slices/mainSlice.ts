@@ -2,6 +2,7 @@ import { createSlice, Dispatch } from '@reduxjs/toolkit';
 import axios, { AxiosResponse } from 'axios';
 
 import { API_URL } from '../../Service/api/intercepter';
+import { setLoadAra } from './auth';
 import { setErrorMessage, setModal } from './modal';
 
 const initialState: IMainSliceState = {
@@ -23,6 +24,7 @@ export const mainSlice = createSlice({
 
 export const contactUs =
   (values: Record<string, string>, resetForm: any) => (dispatch: Dispatch) => {
+    dispatch(setLoadAra(true));
     axios
       .post(`${API_URL}/contact`, values)
       .then(async (response: AxiosResponse<any>) => {
@@ -38,6 +40,9 @@ export const contactUs =
         } else {
           dispatch(setErrorMessage('modals.error.tryLater'));
         }
+      })
+      .finally(() => {
+        dispatch(setLoadAra(false));
       });
   };
 

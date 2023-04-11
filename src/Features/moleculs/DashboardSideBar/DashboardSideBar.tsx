@@ -24,18 +24,17 @@ interface IDashboardSideBar {
 const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
-  const slide = useSelector(getDashboardCurrentSlide);
-  console.log(slide, 'ekavvvv');
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
   };
   useEffect(() => {
+    // console.log(1111);
     dispatch(usersAnalytics(currentUser.id));
   }, []);
+
   const handelOpen = () => {
     return setOpen(!open);
   };
-  console.log(open, 'chi bacum ');
   const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
@@ -117,4 +116,4 @@ const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   );
 };
 
-export default DashboardSideBar;
+export default React.memo(DashboardSideBar);

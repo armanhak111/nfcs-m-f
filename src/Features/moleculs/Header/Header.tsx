@@ -89,7 +89,7 @@ const Header: React.FC = () => {
             <ul className={styles.headerMenuList}>
               {currNavBarItems.map((currentItem: TNavBar) => {
                 return (
-                  <motion.li transition={{ type: 'spring', stiffness: 30 }} key={currentItem.path}>
+                  <motion.li transition={{ type: 'spring', stiffness: 30 }} key={currentItem.id}>
                     <Typography
                       onClick={() => changePage(currentItem)}
                       component={'span'}
@@ -97,6 +97,7 @@ const Header: React.FC = () => {
                         currentItem.className && styles[currentItem.className]
                       }`}
                       id={currentItem.id}
+                      key={currentItem.id}
                     />
                   </motion.li>
                 );

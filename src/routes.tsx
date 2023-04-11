@@ -25,7 +25,6 @@ const Routes: React.FC = () => {
   const token = localStorage.getItem('token');
   const storageId = localStorage.getItem('id');
   const fulfield = useSelector(getAuthFullField);
-  console.log(currentUser, 'currentUser');
   useEffect(() => {
     if (token && storageId) {
       dispatch(getUser(storageId));

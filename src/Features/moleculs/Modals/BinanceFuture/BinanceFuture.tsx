@@ -46,8 +46,15 @@ const BinanceFuture = () => {
     },
   });
 
-  console.log('formik values', formik.values);
+  const handleStep = (range: string | number) => {
+    if (range <= '10') {
+      return '9';
+    } else {
+      return '10  ';
+    }
+  };
 
+  console.log(handleStep(formik.values.adjustLeverage));
   return (
     <>
       <h2 className={styles.modalTitle}>Binance Future Forecast</h2>
@@ -106,25 +113,21 @@ const BinanceFuture = () => {
           <div className={styles.leverageRange}>
             <input
               type="range"
-              onChange={() => {
-                const currentVal = formik.values.adjustLeverage;
-                let val = 0;
-                if (currentVal < 50 && +currentVal !== 1) {
-                  val = 10;
-                } else if (+currentVal === 1) {
-                  val += 9;
-                }
-
-                formik.setFieldValue('adjustLeverage', `${+currentVal + val}`);
+              onChange={(e) => {
+                formik.setFieldValue('adjustLeverage', `${e.target.value}`);
               }}
+              min="0"
+              max="50"
+              step="10"
+              value={formik.values.adjustLeverage}
             />
             <div className={styles.leverageSum}>
               <p className={styles.active}>1x</p>
               <p className={styles.active}>10x</p>
               <p className={styles.active}>20x</p>
-              <p>30x</p>
-              <p>40x</p>
-              <p>50x</p>
+              <p className={styles.active}>30x</p>
+              <p className={styles.active}>40x</p>
+              <p className={styles.active}>50x</p>
             </div>
           </div>
         </div>

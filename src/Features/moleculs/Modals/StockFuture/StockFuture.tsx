@@ -43,7 +43,6 @@ const StockFuture: React.FC = () => {
       dispatch(orderAnalytics(data));
     },
   });
-  console.log('fformik', formik.values);
   return (
     <>
       <h2 className={styles.modalTitle}>Stock Forecast</h2>

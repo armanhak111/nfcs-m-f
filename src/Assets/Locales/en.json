@@ -87,6 +87,7 @@
     "modals.error.title": "Something went wrong",
     "modals.error.button": "Ok",
     "modals.error.tryLater": "Please try again later",
+    "modals.error.needBuyAnalytic":"Sorry you need to buy analytics before you can invite people",
     "resetPassword.header": "Reset Password",
     "resetPassword.button": "Reset",
     "resetPassword.rememberPass": "Remembered the password?",

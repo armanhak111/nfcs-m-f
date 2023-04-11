@@ -79,7 +79,10 @@ export const changeNameValidationScheme = yup.object({
 });
 export const changePassValidationScheme = yup.object({
   old: yup.string().required(),
-  new: yup.string().required(),
+  newPas: yup.string().required(),
+});
+export const nameMyPromoCode = yup.object({
+  name: yup.string().required(),
 });
 
 export const constactUsValidationScheme = yup.object({

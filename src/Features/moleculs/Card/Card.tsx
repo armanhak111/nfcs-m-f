@@ -83,6 +83,7 @@ const Card: React.FC<ICard> = ({
             </>
           )}
         </div>
+        <div className={styles.underScore}>{hoverEffect === 'cardItemDisabled' && <> _ _ _</>}</div>
         <Button
           type="primary"
           customClass={styles.cardBtn}
