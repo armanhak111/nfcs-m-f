@@ -1,3 +1,4 @@
+import { PageLoader } from '../Components/Dumb/PageLoader/PageLoader';
 import BinanceFuture from '../Features/moleculs/Modals/BinanceFuture';
 import CancelModal from '../Features/moleculs/Modals/BinanceFuture/CancelModal/CancelModal';
 import ConfirmationModal from '../Features/moleculs/Modals/ConfirmationModal/ConfirmationModal';
@@ -70,6 +71,7 @@ export const ACTION_MODALS: Record<string, any> = {
   'modals.success.details.crypto': DetaislCrypto,
   'modals.cancel.order': CancelModal,
   'modals.confirmation': ConfirmationModal,
+  'loader.gooo': PageLoader,
 };
 
 export const DETAILS_MODAL: Record<string, any> = {

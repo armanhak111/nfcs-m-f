@@ -1,5 +1,6 @@
+import { useFormik } from 'formik';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import CopySvg from '../../../Assets/Icons/promocode/CopySvg';
@@ -7,8 +8,11 @@ import CostSvg from '../../../Assets/Icons/promocode/CostSvg';
 import ReferralLinkSvg from '../../../Assets/Icons/promocode/ReferralLinkSvg';
 import TotoalUpcomeSvg from '../../../Assets/Icons/promocode/TotoalUpcomeSvg';
 import WaterFallSvg from '../../../Assets/Icons/promocode/WaterFallSvg';
+import { MY_PROMO_CODE_NAME } from '../../../Constants/dashboard';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
+import { setErrorMessage } from '../../../Store/Slices/modal';
+import { nameMyPromoCode } from '../../../Utils/validations';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import styles from './myPromocode.module.scss';
@@ -18,6 +22,15 @@ const MyPromocode: React.FC = () => {
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   const smallTablet = useMediaQuery(SCREENS.smallTablet);
   const user = useSelector(getCurrentUser);
+  const dispach = useDispatch();
+
+  const formik = useFormik({
+    initialValues: MY_PROMO_CODE_NAME,
+    validationSchema: nameMyPromoCode,
+    onSubmit: () => {
+      console.log('ayoo');
+    },
+  });
   return (
     <section>
       <h2 className="title dashboard-title">My Promocode</h2>
@@ -90,12 +103,18 @@ const MyPromocode: React.FC = () => {
                       name="name"
                       placeHolder="contactus.name"
                       label="contactus.name"
-                      onClick={() => null}
-                      onFocus={() => null}
-                      onChange={() => null}
-                      value={'formik.values.name'}
+                      onClick={formik.setFieldTouched}
+                      onFocus={formik.setFieldTouched}
+                      onChange={formik.handleChange}
+                      value={formik.values.name}
                     />
-                    <Button type="primary" customClass={styles.promocodeBtn} id="Send" />
+                    <Button
+                      onClick={() => dispach(setErrorMessage('modals.error.needBuyAnalytic'))}
+                      type="primary"
+                      customClass={styles.promocodeBtn}
+                      id="Send"
+                      disabeled={Boolean(!formik.touched.name)}
+                    />
                   </div>
                 </div>
               )}
@@ -124,12 +143,18 @@ const MyPromocode: React.FC = () => {
                         name="name"
                         placeHolder="contactus.name"
                         label="contactus.name"
-                        onClick={() => null}
-                        onFocus={() => null}
-                        onChange={() => null}
-                        value={'formik.values.name'}
+                        onClick={formik.setFieldTouched}
+                        onFocus={formik.setFieldTouched}
+                        onChange={formik.handleChange}
+                        value={formik.values.name}
                       />
-                      <Button type="primary" customClass={styles.promocodeBtn} id="Send" />
+                      <Button
+                        onClick={() => dispach(setErrorMessage('modals.error.needBuyAnalytic'))}
+                        type="primary"
+                        customClass={styles.promocodeBtn}
+                        id="Send"
+                        disabeled={Boolean(!formik.touched.name)}
+                      />
                     </div>
                   </div>
                 </div>
@@ -156,7 +181,7 @@ const MyPromocode: React.FC = () => {
                     <li>
                       <div className={styles.reffrealLinkInfoLeft}>
                         <p className={styles.refferealLinkText}>Your Sponser Address</p>
-                        <ol className={styles.sponsorsList}>
+                        {/* <ol className={styles.sponsorsList}>
                           <li>
                             <p>0x85E74fA...A8K94E1Ed6468Ce</p>
                           </li>
@@ -175,7 +200,7 @@ const MyPromocode: React.FC = () => {
                           <li>
                             <p>0x85E74fA...A8K94E1Ed6468Ce</p>
                           </li>
-                        </ol>
+                        </ol> */}
                       </div>
                     </li>
                   </ul>
@@ -185,14 +210,16 @@ const MyPromocode: React.FC = () => {
                 <div className="col_">
                   <div className={`${styles.promocodeItem} ${styles.promocodeItemBig}`}>
                     <ul className={styles.promocodeLeftList}>
-                      {!isTablet && (
+                      {/* {!isTablet && (
                         <li>
                           <div className={styles.reffrealLinkInfoLogo}>
                             <ReferralLinkSvg />
                           </div>
                           <div className={styles.reffrealLinkInfo}>
                             <p className={styles.refferalLink}>0x85E74fA...A8K94E1Ed6468Ce</p>
-                            <p className={styles.refferealLinkText}>Your Referral Link</p>
+                            <p className={styles.refferealLinkText}>
+                              Your Referral Link 888888888888888888
+                            </p>
                           </div>
                           <div className={styles.linkCopy}>
                             <button type="button">
@@ -200,11 +227,11 @@ const MyPromocode: React.FC = () => {
                             </button>
                           </div>
                         </li>
-                      )}
+                      )} */}
                       <li>
                         <div className={styles.reffrealLinkInfoLeft}>
                           <p className={styles.refferealLinkText}>Your Sponser Address</p>
-                          <ol className={styles.sponsorsList}>
+                          {/* <ol className={styles.sponsorsList}>
                             <li>
                               <p>0x85E74fA...A8K94E1Ed6468Ce</p>
                             </li>
@@ -223,7 +250,7 @@ const MyPromocode: React.FC = () => {
                             <li>
                               <p>0x85E74fA...A8K94E1Ed6468Ce</p>
                             </li>
-                          </ol>
+                          </ol> */}
                         </div>
                       </li>
                     </ul>
@@ -231,7 +258,7 @@ const MyPromocode: React.FC = () => {
                 </div>
               )}
             </div>
-            {!isTablet && (
+            {!onlyTablet && !isTablet && (
               <div className={`${styles.promocodeCol} col_`}>
                 <div className={`${styles.promocodeItem} ${styles.promocodeItemBig}`}>
                   <div className={styles.promocodeForm}>
@@ -241,12 +268,18 @@ const MyPromocode: React.FC = () => {
                       name="name"
                       placeHolder="contactus.name"
                       label="contactus.name"
-                      onClick={() => null}
-                      onFocus={() => null}
-                      onChange={() => null}
-                      value={'formik.values.name'}
+                      onClick={formik.setFieldTouched}
+                      onFocus={formik.setFieldTouched}
+                      onChange={formik.handleChange}
+                      value={formik.values.name}
                     />
-                    <Button type="primary" customClass={styles.promocodeBtn} id="Send" />
+                    <Button
+                      onClick={() => dispach(setErrorMessage('modals.error.needBuyAnalytic'))}
+                      type="primary"
+                      customClass={styles.promocodeBtn}
+                      id="Send"
+                      disabeled={Boolean(!formik.touched.name)}
+                    />
                   </div>
                 </div>
               </div>

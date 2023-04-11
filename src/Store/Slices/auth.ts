@@ -18,6 +18,7 @@ const initialState: IAuthSlice = {
   orderDetails: [],
   authFulField: false,
   currAnalyticId: '',
+  loadAra: false,
 };
 
 export const authSlice = createSlice({
@@ -59,6 +60,9 @@ export const authSlice = createSlice({
         ...state,
         currAnalyticId: action.payload,
       };
+    },
+    setLoadAra: (state, action) => {
+      return { ...state, loadAra: action.payload };
     },
   },
 });
@@ -145,7 +149,7 @@ export const getUser = (id: string) => (dispatch: Dispatch) => {
 };
 
 export const logout = () => (dispatch: Dispatch) => {
-  dispatch(setDashboardLoading(true));
+  dispatch(setLoadAra(true));
   $api
     .post('/logout')
     .then(async (response: AxiosResponse<IAuthUserResponse>) => {
@@ -162,7 +166,7 @@ export const logout = () => (dispatch: Dispatch) => {
       await localStorage.removeItem('refresh');
     })
     .finally(() => {
-      dispatch(setDashboardLoading(false));
+      dispatch(setLoadAra(false));
     });
 };
 
@@ -280,7 +284,7 @@ export const changePassword =
   };
 
 export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispatch) => {
-  dispatch(setDashboardLoading(true));
+  dispatch(setLoadAra(true));
   $api
     .post(`${API_URL}/analytics/order`, data)
     .then((response: AxiosResponse<any>) => {
@@ -295,15 +299,14 @@ export const orderAnalytics = (data: Record<string, string>) => (dispatch: Dispa
       }
     })
     .finally(() => {
-      dispatch(setDashboardLoading(false));
-      dispatch(setActionModal('modals.confirmation'));
-      // dispatch(setActionModal('modals.cancel.order'));
-      // dispatch(setActionModal(''));
+      dispatch(setLoadAra(false));
+      // dispatch(setActionModal('modals.confirmation'));
     });
+  dispatch(setActionModal('modals.confirmation'));
 };
 
 export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
-  dispatch(setDashboardLoading(true));
+  dispatch(setLoadAra(true));
   $api
     .post(`${API_URL}/analytics`, {
       id,
@@ -312,11 +315,13 @@ export const usersAnalytics = (id: any) => (dispatch: Dispatch) => {
       dispatch(setOrderDetails(response.data));
     })
     .finally(() => {
-      dispatch(setDashboardLoading(false));
+      // dispatch(setLoadAra(false));
     });
+  dispatch(setLoadAra(false));
 };
 
 export const deleteUserAnalytics = (userId: string, analyticId: any) => (dispatch: Dispatch) => {
+  dispatch(setLoadAra(true));
   $api
     .delete(`${API_URL}/analytics/delete`, {
       data: { userId, analyticId },
@@ -325,9 +330,10 @@ export const deleteUserAnalytics = (userId: string, analyticId: any) => (dispatc
       dispatch(setOrderDetails(response.data));
     })
     .finally(() => {
-      dispatch(setDashboardLoading(false));
+      dispatch(setLoadAra(false));
     });
 };
+
 export const {
   setAuth,
   setAuthLoader,
@@ -335,6 +341,7 @@ export const {
   setAuthFulfield,
   setOrderDetails,
   setCurrAnalyticId,
+  setLoadAra,
 } = authSlice.actions;
 
 export default authSlice.reducer;

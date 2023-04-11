@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MODALS, TModalVariantsSuccess } from '../Constants/modals';
 import { ROUTES } from '../Constants/Routes';
 import { getErrorMessage, getModal } from '../Store/Selectors/modal';
-import { setModal } from '../Store/Slices/modal';
+import { setErrorMessage, setModal } from '../Store/Slices/modal';
 
 export const useCurrentButtonActions = () => {
   const modal: TModalVariantsSuccess | '' = useSelector(getModal);
@@ -53,6 +53,7 @@ export const useModal = () => {
     if (currentModal && currentModal.outsideClose) {
       document.body.style.overflow = 'auto';
       dispatch(setModal(''));
+      dispatch(setErrorMessage(''));
     }
   };
 
@@ -70,7 +71,6 @@ export const useModal = () => {
       return errorCurrentModal;
     }
   }, [modal, error]);
-
   return {
     isOpen,
     closeModal,

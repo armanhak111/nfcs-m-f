@@ -20,6 +20,7 @@ declare interface IAuthSlice {
   orderDetails: any;
   authFulField: boolean;
   currAnalyticId: string;
+  loadAra: boolean;
 }
 
 declare type TState = {

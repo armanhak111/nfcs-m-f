@@ -38,6 +38,7 @@ Modal.setAppElement('#root');
 
 const Modals: React.FC = () => {
   const { isOpen, closeModal, currentModal } = useModal();
+
   const { action } = useCurrentButtonActions();
   const dispatch = useDispatch();
 

@@ -229,7 +229,7 @@
                             }
                             .headerMenuLink {
                                 padding-bottom: 0;
-                                padding-top: 24px;
+                                // padding-top: 24px;
                             }
                         }
                     }
@@ -342,6 +342,9 @@
                 backdrop-filter: blur(16px);
                 border-radius: 8px;
                 padding: 8px 12px;
+                min-width: 250px;
+                left: 50%;
+                transform: translateX(-50%);
                 @media all and (max-width: $tablet) {
                     padding: 8px 6px;
                 }

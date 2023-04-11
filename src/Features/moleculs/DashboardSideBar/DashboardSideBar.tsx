@@ -15,23 +15,34 @@ import { usersAnalytics } from '../../../Store/Slices/auth';
 import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import styles from './dashboardSideBar.module.scss';
 
-const DashboardSideBar: React.FC = () => {
+interface IDashboardSideBar {
+  open: boolean;
+  // eslint-disable-next-line no-unused-vars
+  setOpen: (arg: boolean) => void;
+}
+
+const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
   };
   useEffect(() => {
+    // console.log(1111);
     dispatch(usersAnalytics(currentUser.id));
   }, []);
+
+  const handelOpen = () => {
+    return setOpen(!open);
+  };
   const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   return (
-    <aside className={`${styles.aside}`}>
+    <aside className={`${styles.aside} ${open && styles.opened} `}>
       <div className={styles.asideContent}>
         {onlyTablet && (
-          <button className={styles.tabletOpener}>
+          <button onClick={handelOpen} className={styles.tabletOpener}>
             <MenuFoldSvg />
           </button>
         )}
@@ -43,10 +54,12 @@ const DashboardSideBar: React.FC = () => {
               data-current={DASHBOARD_SLIDES.buyAnalytic}
               className={`${styles.asideListLink} ${
                 currentSLide === DASHBOARD_SLIDES.buyAnalytic && styles.active
-              }`}
+              }   `}
             >
               <BuyForecastSvg />
-              <span className={styles.closedSidebar}>Buy Analytic</span>
+              <span className={`${styles.closedSidebar && open && styles.opened}  `}>
+                Buy Analytic
+              </span>
             </span>
           </li>
           <li className={styles.asideListItem}>
@@ -58,8 +71,12 @@ const DashboardSideBar: React.FC = () => {
               }`}
             >
               <ForecastListSvg />
-              <span className={styles.closedSidebar}>Forecast List</span>
-              <span className={`${styles.radyCount} ${styles.radyCountClosed}`}>
+              <span className={`${styles.closedSidebar && open && styles.opened}  `}>
+                Forecast List
+              </span>
+              <span
+                className={`${styles.radyCount} ${styles.radyCountClosed && open && styles.opened}`}
+              >
                 {orderDetails.length}
               </span>
             </span>
@@ -74,7 +91,9 @@ const DashboardSideBar: React.FC = () => {
               }`}
             >
               <MyPromoCodeSvg />
-              <span className={styles.closedSidebar}>My PromoCode</span>
+              <span className={`${styles.closedSidebar && open && styles.opened}  `}>
+                My PromoCode
+              </span>
             </span>
           </li>
           <li className={styles.asideListItem}>
@@ -86,7 +105,9 @@ const DashboardSideBar: React.FC = () => {
               }`}
             >
               <CustomSettingsSvg />
-              <span className={styles.closedSidebar}>Custom Settings</span>
+              <span className={`${styles.closedSidebar && open && styles.opened}  `}>
+                Custom Settings
+              </span>
             </span>
           </li>
         </ul>
@@ -95,4 +116,4 @@ const DashboardSideBar: React.FC = () => {
   );
 };
 
-export default DashboardSideBar;
+export default React.memo(DashboardSideBar);

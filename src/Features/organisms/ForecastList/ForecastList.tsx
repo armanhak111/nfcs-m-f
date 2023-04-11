@@ -19,8 +19,8 @@ import styles from './forecastList.module.scss';
 const ForecastList: React.FC = () => {
   const dispatch = useDispatch();
   // const curentUser = useSelector(getCurrentUser);
-  const orderDetails = useSelector(getOrderDetails);
-  console.log(orderDetails, 'saaaaaa');
+  const newOrderDetails = useSelector(getOrderDetails);
+  const orderDetails = [...newOrderDetails].reverse();
 
   const getDetail = (item: any) => {
     dispatch(setCurrAnalyticId(item.analyticId));
@@ -81,7 +81,8 @@ const ForecastList: React.FC = () => {
                             <div className={`${styles.leftItem} ${styles.leftItemTime}`}>
                               <p>
                                 <TimeSvg />
-                                Order<span>{item.date}</span>
+                                Order:{''}
+                                <span>{item.date}</span>
                               </p>
                             </div>
                             <div className={`${styles.leftItem} ${styles.leftItemLogo}`}>
@@ -91,7 +92,7 @@ const ForecastList: React.FC = () => {
                                 {/* <BinanceSvg /> */}
                                 {/* <StockSvg /> */}
                                 {/* <CryptoSvg /> */}
-                                <span>Lorem Ipsum</span>
+                                <span>{item.orderType.toUpperCase()}</span>
                                 <p>
                                   <small>Open Sea</small>
                                 </p>
@@ -176,102 +177,6 @@ const ForecastList: React.FC = () => {
                 </div>
               );
             })}
-
-            <div className={styles.foreacstBodyItem}>
-              <div className={styles.forecastBodyItemContent}>
-                <div className={styles.bodyItem}>
-                  <div className={styles.bodyRow}>
-                    <div className={`${styles.customCol} ${styles.customColSmall}`}>
-                      <div className={styles.bodyItemLeft}>
-                        <div className={`${styles.leftItem} ${styles.leftItemTime}`}>
-                          <p>
-                            <TimeSvg />
-                            Order<span> 06.Jan.2022</span>
-                          </p>
-                        </div>
-                        <div className={`${styles.leftItem} ${styles.leftItemLogo}`}>
-                          <p>
-                            {/* <NftSvg /> */}
-                            <span>Lorem Ipsum</span>
-                            <p>
-                              <small>Open Sea</small>
-                            </p>
-                          </p>
-                        </div>
-                        <div className={`${styles.leftItem} ${styles.leftItemBtns}`}>
-                          <span
-                            className={styles.links}
-                            onClick={() => dispatch(setActionModal('modals.success.details.nft'))}
-                          >
-                            Details
-                          </span>
-                          <span
-                            className={styles.links}
-                            onClick={() => dispatch(setActionModal('modals.cancel.order'))}
-                          >
-                            Cancel
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className={`${styles.customCol} ${styles.customColBig}`}>
-                      <div className={styles.bodyItemRight}>
-                        <div className={`${styles.stepBarItem} ${styles.stepBarItemFull}`}>
-                          <div className={styles.stepBarRow}>
-                            <div className={styles.stepBarRowItem}>
-                              <div className={styles.stepBarInner}>
-                                <p>Order</p>
-                              </div>
-                            </div>
-                            <div className={styles.stepBarRowItemBig}>
-                              <div className={styles.stepBarInner}>
-                                <p>Pending</p>
-                              </div>
-                            </div>
-                            <div className={styles.stepBarRowItem}>
-                              <div className={styles.stepBarInner}>
-                                <p>Done</p>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className={styles.forecastBtns}>
-                          <div className={styles.btnParent}>
-                            <Button
-                              type="primary"
-                              disabeled
-                              id="Buy With Crypto"
-                              className={`${styles.forcastBtn} ${styles.forcesastBtnPrimary}`}
-                            ></Button>
-                          </div>
-                          <div className={styles.btnParent}>
-                            <Button
-                              type="secondary"
-                              disabeled
-                              id="Buy With 33$"
-                              className={`${styles.forcastBtn} ${styles.forcesastBtnSecondary}`}
-                            ></Button>
-                          </div>
-                          <div className={styles.btnParent}>
-                            <Button
-                              type="secondary"
-                              disabeled
-                              id="Buy With UPT"
-                              className={`${styles.forcastBtn} ${styles.forcesastBtnSecondary}`}
-                            ></Button>
-                            <ToolTip
-                              isForecastList
-                              text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                              isOpen={false}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

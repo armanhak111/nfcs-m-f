@@ -63,6 +63,7 @@ const HomePage: React.FC = () => {
                   customClass={styles.discountBtn}
                   defaultMessage=" Buy Forecast"
                   onClick={buyForecast}
+                  id="Buy Forecast"
                 />
               </div>
             </div>

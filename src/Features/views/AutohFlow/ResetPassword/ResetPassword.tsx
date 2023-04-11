@@ -31,7 +31,6 @@ const ResetPassword: React.FC = () => {
   });
 
   const allowSubmit = useAllowSubmit(formik, RESET_PASS_INITIAL);
-  console.log(formik.values);
 
   return (
     <AuthView
