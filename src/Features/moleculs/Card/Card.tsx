@@ -26,13 +26,14 @@ const Card: React.FC<ICard> = ({
   info,
   buttonText,
   hoverEffect,
+  ttt,
 }) => {
   const Component = icon;
   const history = useHistory();
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [toolTip, setToolTip] = useState<boolean>(false);
-
+  console.log(ttt);
   const currentUser = useSelector(getCurrentUser);
 
   const isAuth = Object.values(currentUser).length;
@@ -50,24 +51,24 @@ const Card: React.FC<ICard> = ({
   };
   return (
     <div className={`${styles.cardsCol_25} col_25`}>
-      <div>
-        <ToolTip
-          text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae et arcu cras dolor
-        sollicitudin viverra maecenas pretium faucibus. Fermentu"
-          isOpen={toolTip}
-        />
-      </div>
-      <div className={`${styles.cardItem} ${styles[`${hoverEffect}`]}`}>
-        <div className={styles.cardTooltip}>
-          <button
-            onMouseLeave={() => setToolTip(false)}
-            onMouseEnter={() => setToolTip(true)}
-            type="button"
-            aria-label="tooltip"
-          >
-            <TooltipSvg />
-          </button>
+      {ttt && (
+        <div>
+          <ToolTip text={ttt} isOpen={toolTip} />
         </div>
+      )}
+      <div className={`${styles.cardItem} ${styles[`${hoverEffect}`]}`}>
+        {ttt && (
+          <div className={styles.cardTooltip}>
+            <button
+              onMouseLeave={() => setToolTip(false)}
+              onMouseEnter={() => setToolTip(true)}
+              type="button"
+              aria-label="tooltip"
+            >
+              <TooltipSvg />
+            </button>
+          </div>
+        )}
         <div className={styles.comingSoon}>Coming Soon</div>
         <div className={styles.cardIcon}>
           <Component />
@@ -75,15 +76,13 @@ const Card: React.FC<ICard> = ({
         <Typography className={styles.cardTitle} component="h2" id={title} />
         <Typography className={styles.cardText} component="p" id={info} />
         <div className={styles.cardPrice}>
-          {hoverEffect !== 'cardItemDisabled' && (
-            <>
-              {' '}
-              {saleMode && <s>{saledPrice}$</s>}
-              <p>{price}$</p>
-            </>
-          )}
+          <>
+            {' '}
+            {saleMode && <s>{saledPrice}$</s>}
+            <p>{price}$</p>
+          </>
         </div>
-        <div className={styles.underScore}>{hoverEffect === 'cardItemDisabled' && <> _ _ _</>}</div>
+        {/* <div className={styles.underScore}>{hoverEffect === 'cardItemDisabled' && <> _ _ _</>}</div> */}
         <Button
           type="primary"
           customClass={styles.cardBtn}

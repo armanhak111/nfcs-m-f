@@ -9,7 +9,7 @@ const BuyAnalytic: React.FC = () => {
   return (
     <section>
       <h2 className="title dashboard-title buy-forecast-title">Buy Forecast</h2>
-      <p className="dashboard-sub">Text about discount- 50 %</p>
+      <p className="dashboard-sub">Discount for all analysts for the first purchase- 50 %</p>
       <div>
         <div className={styles.cardRow}>
           {DAHBOARD_CARDS.map((current: THomeCards) => {

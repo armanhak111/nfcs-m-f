@@ -51,13 +51,13 @@ const AboutUs: React.FC = () => {
                         <span>
                           <LocationSvg />
                         </span>
-                        Yerevan, Buzand 34/2
+                        VluchtelingenWerk Nederland, 15/1
                       </p>
-                      <a href="tel:+37455846474" className={styles.contactItem}>
+                      <a href="tel:+18884521505" className={styles.contactItem}>
                         <span>
                           <PhoneSvg />
                         </span>
-                        +374 55 846474
+                        +1-888-452-1505
                       </a>
                     </div>
                     {/* <ul className={styles.aboutSocialList}>
@@ -116,7 +116,7 @@ const AboutUs: React.FC = () => {
                             </p>
                           </div>
                           <div className={styles.timelineDate}>
-                            <p>Jan 12</p>
+                            <p>Jan 2024</p>
                           </div>
                         </li>
                         <li>
@@ -129,13 +129,13 @@ const AboutUs: React.FC = () => {
                                 </>
                               ) : null}
                             </>
-                            <h3 className={styles.timelineTitle}>V1 VAULTS:</h3>
+                            <h3 className={styles.timelineTitle}>V2 VAULTS:</h3>
                             <p className={styles.timelineText}>
                               More global scope analytics for Futures,Bond analytics Fund analytics.
                             </p>
                           </div>
                           <div className={styles.timelineDate}>
-                            <p>Feb 12</p>
+                            <p>March 2024</p>
                           </div>
                         </li>
                         <li>
@@ -148,13 +148,13 @@ const AboutUs: React.FC = () => {
                                 </>
                               ) : null}
                             </>
-                            <h3 className={styles.timelineTitle}>V1 VAULTS:</h3>
+                            <h3 className={styles.timelineTitle}>V3 VAULTS:</h3>
                             <p className={styles.timelineText}>
                               More global scope analytics for Futures,Bond analytics Fund analytics.
                             </p>
                           </div>
                           <div className={styles.timelineDate}>
-                            <p>Mar 12</p>
+                            <p>Sep 2024</p>
                           </div>
                         </li>
                         <div className={styles.bothClenar} />
@@ -175,7 +175,7 @@ const AboutUs: React.FC = () => {
                           </div>
                           <div className={`${styles.tabletItem} col_33`}>
                             <div className={styles.tableItemBlock}>
-                              <h2 className={styles.tableItemBlockTitle}>V1 VAULTS:</h2>
+                              <h2 className={styles.tableItemBlockTitle}>V2 VAULTS:</h2>
                               <p className={styles.tableItemBlockText}>
                                 More global scope analytics for Futures,Bond analytics Fund
                                 analytics.
@@ -184,7 +184,7 @@ const AboutUs: React.FC = () => {
                           </div>
                           <div className={`${styles.tabletItem} col_33`}>
                             <div className={styles.tableItemBlock}>
-                              <h2 className={styles.tableItemBlockTitle}>V1 VAULTS:</h2>
+                              <h2 className={styles.tableItemBlockTitle}>V3 VAULTS:</h2>
                               <p className={styles.tableItemBlockText}>
                                 More global scope analytics for Futures,Bond analytics Fund
                                 analytics.
@@ -197,17 +197,17 @@ const AboutUs: React.FC = () => {
                         <div className={styles.tabletItemsRow}>
                           <div className={`${styles.tabletItem} col_33`}>
                             <div className={styles.tableItemBlock}>
-                              <p className={styles.tableItemBlockText}>sep 2022</p>
+                              <p className={styles.tableItemBlockText}>Jan 2024</p>
                             </div>
                           </div>
                           <div className={`${styles.tabletItem} col_33`}>
                             <div className={styles.tableItemBlock}>
-                              <p className={styles.tableItemBlockText}>Jan 2023</p>
+                              <p className={styles.tableItemBlockText}>March 2024</p>
                             </div>
                           </div>
                           <div className={`${styles.tabletItem} col_33`}>
                             <div className={styles.tableItemBlock}>
-                              <p className={styles.tableItemBlockText}>jun 2023</p>
+                              <p className={styles.tableItemBlockText}>Sep 2024</p>
                             </div>
                           </div>
                         </div>

@@ -9,7 +9,6 @@ const HomeCards: React.FC = () => {
   return (
     <div className="container">
       <h2 className="title">You have the ability to customize your unique analytics</h2>
-      <p className="subTitle">Text about discount- 50 %.</p>
       <div className={styles.cardItems}>
         <div className={styles.cardRow}>
           {HOME_CARDS.map((current: THomeCards) => {
@@ -23,6 +22,7 @@ const HomeCards: React.FC = () => {
                 title={current.title}
                 saledPrice={current.saledPrice}
                 price={current.price}
+                ttt={current.ttt}
               />
             );
           })}

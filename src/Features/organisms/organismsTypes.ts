@@ -8,4 +8,5 @@ export type THomeCards = {
   saledPrice: number;
   buttonText: string;
   hoverEffect: string;
+  ttt?: string;
 };

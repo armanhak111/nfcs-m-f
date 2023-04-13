@@ -18,7 +18,7 @@ const MiniFooter: React.FC<IMiniFooter> = ({ isDashboard = false }) => {
         <span>
           <CopyRightSvg />
         </span>
-        <Typography component="span" id="footer.copyright" />
+        <Typography component="span" id="NFCS LLC. All Rights reserved 812254" />
       </p>
       <menu className={styles.footerMenu}>
         {FOOTER_MENU.map((currentMenuItem: Record<string, string>) => {

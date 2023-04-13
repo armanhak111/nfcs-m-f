@@ -53,8 +53,8 @@ export const MODALS: Record<TModalVariantsSuccess, TModals> = {
   ['contact-success-modal']: {
     id: 'contact-success-modal',
     type: 'success',
-    title: 'axper jan',
-    subtitle: 'button.text',
+    title: 'Your application is already under consideration',
+    subtitle: 'Our support will contact you shortly',
     buttonText: 'Ok',
     outsideClose: true,
   },

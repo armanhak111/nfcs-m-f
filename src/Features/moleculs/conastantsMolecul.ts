@@ -107,10 +107,6 @@ export const FOOTER_MENU: Record<string, string>[] = [
     id: 'footer.menu.policy',
   },
   {
-    href: '/terms',
-    id: 'footer.menu.terms',
-  },
-  {
     href: '/contact',
     id: 'footer.menu.contactus',
   },

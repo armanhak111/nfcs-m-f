@@ -37,13 +37,13 @@ const Footer: React.FC = () => {
               <span>
                 <LocationSvg />
               </span>
-              Yerevan, Buzand 34/2
+              VluchtelingenWerk Nederland, 15/1
             </p>
-            <a href="tel:+37455846474" className={styles.contactItem}>
+            <a href="tel:+18884521505" className={styles.contactItem}>
               <span>
                 <PhoneSvg />
               </span>
-              +374 55 846474
+              +1-888-452-1505
             </a>
             {/* <div className={styles.designerInfo}>
               <ul className={styles.desingnerInfoList}>

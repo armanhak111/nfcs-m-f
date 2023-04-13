@@ -67,10 +67,9 @@ const Contact = () => {
                 <div className={styles.contactInfo}>
                   <h1 className="title">Contact Us</h1>
                   <p className="subTitle">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aenean turpis et a
-                    quis. In varius tristique ornare adipiscing mattis elit nisi enim. Et lorem
-                    pellentesque volutpat elit id mauris est aenean ut. Diam tincidunt commodo
-                    quisque mi.
+                    For any question or problem, we always have a 24/7 support to help you to solve
+                    all problems and to answer all your questions. Please fill out the feedback
+                    form.
                   </p>
                 </div>
               </div>

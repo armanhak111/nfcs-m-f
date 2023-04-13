@@ -55,8 +55,8 @@ const HomePage: React.FC = () => {
                   <span>50%</span> Discount!
                 </h2>
                 <p className={styles.discountText}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. At lorem enim massa quis
-                  vivamus sed enim, commodo. Suspendisse lectus lobortis augue tellus.{' '}
+                  Buy your first analytics and get a discount on the next one, you can also refer a
+                  friend and get UPT
                 </p>
                 <Button
                   type="primary"
@@ -81,9 +81,7 @@ const HomePage: React.FC = () => {
                 </h2>
                 <p className={styles.uptSubtext}>
                   In the world of innovations we are coordinating your knowledge and skills to
-                  discover yourself the right place for investing.In the world of innovations we are
-                  coordinating your knowledge and skills to discover yourself the right place for
-                  investing.
+                  discover yourself the right place for investing.
                 </p>
               </div>
               <div className={styles.uptSectionBody}>
@@ -103,7 +101,7 @@ const HomePage: React.FC = () => {
                       <h3 className={styles.uptSectionTitle}>
                         Get <span>25 UPT</span>
                       </h3>
-                      <p className={styles.uptSectionText}>When you shared user buy analytics.</p>
+                      <p className={styles.uptSectionText}>When your shared user buy analytics.</p>
                     </div>
                   </div>
                   <div className={`${styles.uptSectionRowCol} col_`}>

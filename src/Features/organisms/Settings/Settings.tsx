@@ -214,14 +214,7 @@ const Settings: React.FC = () => {
                 <div className={styles.settinsCollapseItem}>
                   <div className={styles.settinsCollapseItemHeader} id="header_3">
                     <h3 className={styles.settinsCollapseTitle}>Password</h3>
-                    {!isMobile && (
-                      <div className={styles.settinsCollapsetext}>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ante eget turpis
-                          etiam nunc vitae congue.{' '}
-                        </p>
-                      </div>
-                    )}
+                    {!isMobile && <div className={styles.settinsCollapsetext}></div>}
                     <div
                       onClick={() => collapse('password_s', 'header_3')}
                       className={styles.collpaseBtnContainer}
