@@ -15,8 +15,8 @@ const DetailsStock: React.FC = () => {
           return (
             <div key={item.analyticId} className={styles.detailsList}>
               <div className={styles.detailsItemContent}>
-                <p className={styles.detailtsItemTitle}>Industry</p>
-                <p className={styles.detailsItemText}>{item.industry}</p>
+                <p className={styles.detailtsItemTitle}>Stock Industry</p>
+                <p className={styles.detailsItemText}>{item.orderCategory}</p>
               </div>
               <div className={styles.detailsItemContent}>
                 <p className={styles.detailtsItemTitle}>

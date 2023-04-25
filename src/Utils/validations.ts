@@ -93,7 +93,7 @@ export const constactUsValidationScheme = yup.object({
 });
 
 export const orderBinanceValidationScheme = yup.object({
-  incuiryType: yup.string().required(),
+  orderCategory: yup.string().required(),
   adjustLeverage: yup.string().required(),
   sumType: yup.string().required(),
   minPrice: yup.string().required(),
@@ -102,7 +102,7 @@ export const orderBinanceValidationScheme = yup.object({
 });
 
 export const orderNftValidationScheme = yup.object({
-  platform: yup.string().required(),
+  orderCategory: yup.string().required(),
   type: yup.string().required(),
   sumType: yup.string().required(),
   minPrice: yup.string().required(),
@@ -110,7 +110,7 @@ export const orderNftValidationScheme = yup.object({
 });
 
 export const orderStockValidationScheme = yup.object({
-  industry: yup.string().required(),
+  orderCategory: yup.string().required(),
   sumType: yup.string().required(),
   minPrice: yup.string().required(),
   maxPrice: yup.string().required(),

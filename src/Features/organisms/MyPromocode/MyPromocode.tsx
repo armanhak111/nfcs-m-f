@@ -31,6 +31,9 @@ const MyPromocode: React.FC = () => {
       console.log('ayoo');
     },
   });
+  const copy = () => {
+    navigator.clipboard.writeText('0x85E74fA...A8K94E1Ed6468Ce');
+  };
   return (
     <section>
       <h2 className="title dashboard-title">My Promocode</h2>
@@ -90,7 +93,7 @@ const MyPromocode: React.FC = () => {
                       <p className={styles.refferealLinkText}>Your Referral Link</p>
                     </div>
                     <div className={styles.linkCopy}>
-                      <button type="button">
+                      <button onClick={copy} type="button">
                         <CopySvg />
                       </button>
                     </div>
@@ -130,7 +133,7 @@ const MyPromocode: React.FC = () => {
                         <p className={styles.refferealLinkText}>Your Referral Link</p>
                       </div>
                       <div className={styles.linkCopy}>
-                        <button type="button">
+                        <button onClick={copy} type="button">
                           <CopySvg />
                         </button>
                       </div>
@@ -172,7 +175,7 @@ const MyPromocode: React.FC = () => {
                           <p className={styles.refferealLinkText}>Your Referral Link</p>
                         </div>
                         <div className={styles.linkCopy}>
-                          <button type="button">
+                          <button onClick={copy} type="button">
                             <CopySvg />
                           </button>
                         </div>
@@ -180,7 +183,9 @@ const MyPromocode: React.FC = () => {
                     )}
                     <li>
                       <div className={styles.reffrealLinkInfoLeft}>
-                        <p className={styles.refferealLinkText}>Your Sponser Address</p>
+                        <p className={styles.refferealLinkText}>
+                          You currently have no invited users
+                        </p>
                         {/* <ol className={styles.sponsorsList}>
                           <li>
                             <p>0x85E74fA...A8K94E1Ed6468Ce</p>
@@ -230,7 +235,9 @@ const MyPromocode: React.FC = () => {
                       )} */}
                       <li>
                         <div className={styles.reffrealLinkInfoLeft}>
-                          <p className={styles.refferealLinkText}>Your Sponser Address</p>
+                          <p className={styles.refferealLinkText}>
+                            You currently have no invited users
+                          </p>
                           {/* <ol className={styles.sponsorsList}>
                             <li>
                               <p>0x85E74fA...A8K94E1Ed6468Ce</p>

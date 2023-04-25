@@ -1,10 +1,9 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { useLocation } from 'react-router';
 
 const ScrollToTop: React.FC = ({ children }) => {
   const location = useLocation();
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 20);
   }, [location]);
 

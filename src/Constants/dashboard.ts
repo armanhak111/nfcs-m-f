@@ -19,7 +19,7 @@ export const DASHBOARD: Record<string, React.FC> = {
   settings: Settings,
 };
 export type TBinanceOrder = {
-  incuiryType: string;
+  orderCategory: string;
   adjustLeverage: string;
   sumType: string;
   minPrice: string;
@@ -27,7 +27,7 @@ export type TBinanceOrder = {
   timeZone: string;
 };
 export const BINANCE_FUTURE_ORDER: any = {
-  incuiryType: '',
+  orderCategory: '',
   adjustLeverage: '20',
   sumType: 'USD',
   minPrice: '',
@@ -36,7 +36,7 @@ export const BINANCE_FUTURE_ORDER: any = {
 };
 
 export type TNftOrder = {
-  platform: string;
+  orderCategory: string;
   type: string;
   sumType: string;
   minPrice: string;
@@ -44,7 +44,7 @@ export type TNftOrder = {
 };
 
 export const NFT_FUTURE_ORDER: TNftOrder = {
-  platform: '',
+  orderCategory: '',
   type: '',
   sumType: 'USD',
   minPrice: '',
@@ -52,14 +52,14 @@ export const NFT_FUTURE_ORDER: TNftOrder = {
 };
 
 export type TStock = {
-  industry: string;
+  orderCategory: string;
   sumType: string;
   minPrice: string;
   maxPrice: string;
 };
 
 export const STOCK_FUTURE_ORDER: TStock = {
-  industry: '',
+  orderCategory: '',
   sumType: 'USD',
   minPrice: '',
   maxPrice: '',

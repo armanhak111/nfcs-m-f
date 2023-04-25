@@ -7,8 +7,12 @@ import styles from './confirmationModal.module.scss';
 const ConfirmationModal = () => {
   return (
     <>
-      <div className={styles.cancelModal}>
-        <h2 className={styles.modalTitle}>Your order successful</h2>
+      <div className={styles.confirmModal}>
+        <p className={styles.modalTitle}> Your request has been successfully formulated</p>
+        <p className={styles.modalSubtitle}>
+          {' '}
+          On the waiting list, you will be able to see and follow your analytics
+        </p>
         <div className={styles.detailsList}>
           <div className={styles.modalBtn}>
             <Button

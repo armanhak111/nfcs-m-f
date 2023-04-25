@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import { PageLoader } from './Components/Dumb/PageLoader/PageLoader';
-import ScrollToTop from './Components/Dumb/ScrollToTop';
+// import ScrollToTop from './Components/Dumb/ScrollToTop';
 import AboutUs from './Features/views/AboutUs';
 import ChangePassword from './Features/views/AutohFlow/ChangePassword';
 import ForgotPassword from './Features/views/AutohFlow/ForgotPassword';
@@ -35,50 +35,50 @@ const Routes: React.FC = () => {
   }
   return (
     <BrowserRouter>
-      <ScrollToTop>
-        <Switch>
-          <Route exact path="/sign-in">
-            <SignIn />
-          </Route>
-          <Route exact path="/sign-up">
-            <SignUp />
-          </Route>
-          <Route exact path="/forgot-pass">
-            <ForgotPassword />
-          </Route>
-          <Route exact path="/change-password">
-            {!Object.entries(currentUser).length && fulfield && !currentUser.isActivated && (
-              <Redirect to="/" />
-            )}
-            <ChangePassword />
-          </Route>
-          <Route exact path="/reset-password/:id">
-            <ResetPassword />
-          </Route>
-          <Route exact path="/dashboard">
-            {!Object.entries(currentUser).length && fulfield && <Redirect to="/" />}
-            <Dashboard />
-          </Route>
-          <Route exact path="/about">
-            <AboutUs />
-          </Route>
-          <Route exact path="/description/:current">
-            <CurrentAnalytic />
-          </Route>
-          <Route exact path="/privacy">
-            <Privacy />
-          </Route>
-          <Route exact path="/terms">
-            <Terms />
-          </Route>
-          <Route exact path="/contact">
-            <Contact />
-          </Route>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-        </Switch>
-      </ScrollToTop>
+      {/* <ScrollToTop> */}
+      <Switch>
+        <Route exact path="/sign-in">
+          <SignIn />
+        </Route>
+        <Route exact path="/sign-up">
+          <SignUp />
+        </Route>
+        <Route exact path="/forgot-pass">
+          <ForgotPassword />
+        </Route>
+        <Route exact path="/change-password">
+          {!Object.entries(currentUser).length && fulfield && !currentUser.isActivated && (
+            <Redirect to="/" />
+          )}
+          <ChangePassword />
+        </Route>
+        <Route exact path="/reset-password/:id">
+          <ResetPassword />
+        </Route>
+        <Route exact path="/dashboard">
+          {!Object.entries(currentUser).length && fulfield && <Redirect to="/" />}
+          <Dashboard />
+        </Route>
+        <Route exact path="/about">
+          <AboutUs />
+        </Route>
+        <Route exact path="/description/:current">
+          <CurrentAnalytic />
+        </Route>
+        <Route exact path="/privacy">
+          <Privacy />
+        </Route>
+        <Route exact path="/terms">
+          <Terms />
+        </Route>
+        <Route exact path="/contact">
+          <Contact />
+        </Route>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
+      </Switch>
+      {/* </ScrollToTop> */}
     </BrowserRouter>
   );
 };

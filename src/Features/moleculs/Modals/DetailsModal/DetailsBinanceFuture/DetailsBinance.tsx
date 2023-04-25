@@ -16,8 +16,8 @@ const DetailsBinance: React.FC = () => {
           return (
             <div key={item.analyticId} className={styles.detailsList}>
               <div className={styles.detailsItemContent}>
-                <p className={styles.detailtsItemTitle}>Inquiry type</p>
-                <p className={styles.detailsItemText}>{item.incuiryType}</p>
+                <p className={styles.detailtsItemTitle}>Order Type</p>
+                <p className={styles.detailsItemText}>{item.orderCategory}</p>
               </div>
               <div className={styles.detailsItemContent}>
                 <p className={styles.detailtsItemTitle}>Adjust Leverage</p>

@@ -35,6 +35,8 @@ const ForecastList: React.FC = () => {
       return dispatch(setActionModal('modals.success.details.crypto'));
     }
   };
+  console.log(newOrderDetails);
+  console.log(orderDetails, 'ditailssss');
 
   return (
     <section className={styles.buyForecastSection}>
@@ -94,7 +96,9 @@ const ForecastList: React.FC = () => {
                                 {/* <CryptoSvg /> */}
                                 <span>{item.orderType.toUpperCase()}</span>
                                 <p>
-                                  <small>Open Sea</small>
+                                  <small>
+                                    {item.orderCategory ? item.orderCategory : '_ _ _ _'}
+                                  </small>
                                 </p>
                               </p>
                             </div>
