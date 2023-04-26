@@ -52,21 +52,16 @@ const Header: React.FC = () => {
       }
       if (location.pathname !== currentItem.path) {
         await history.push(currentItem.path);
-        if (currentItem.id) {
-          const scrolledItem = document.getElementById(currentItem.id);
-          if (scrolledItem && distanceToTop) {
-            scrolledItem.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'start' });
-            scrolledItem.scrollTop = -1000;
-          }
-        }
       }
 
       if (currentItem.path === ROUTES.HOME) {
         if (currentItem.id) {
           const scrolledItem = document.getElementById(currentItem.id);
           if (scrolledItem && distanceToTop) {
-            scrolledItem.scrollIntoView({ block: 'start', behavior: 'smooth' });
-            console.log(scrolledItem.scrollTop, 'scrolledItem.scrollTop');
+            window.scrollTo({
+              top: scrolledItem.offsetTop - distanceToTop,
+              behavior: 'smooth',
+            });
           }
         }
       }

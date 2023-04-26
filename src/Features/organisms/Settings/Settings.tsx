@@ -217,7 +217,7 @@ const Settings: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.settingsCollapseCol}>
+              {/* <div className={styles.settingsCollapseCol}>
                 <div className={styles.settinsCollapseItem}>
                   <div className={styles.settinsCollapseItemHeader} id="header_3">
                     <h3 className={styles.settinsCollapseTitle}>Password</h3>
@@ -298,7 +298,7 @@ const Settings: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

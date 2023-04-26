@@ -4,7 +4,10 @@ import { useLocation } from 'react-router';
 const ScrollToTop: React.FC = ({ children }) => {
   const location = useLocation();
   useLayoutEffect(() => {
-    window.scrollTo(0, 20);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   }, [location]);
 
   return <>{children}</>;
