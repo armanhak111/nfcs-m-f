@@ -15,8 +15,8 @@ const DetailsNft: React.FC = () => {
           return (
             <div key={item.analyticId} className={styles.detailsList}>
               <div className={styles.detailsItemContent}>
-                <p className={styles.detailtsItemTitle}>Platform</p>
-                <p className={styles.detailsItemText}>{item.platform}</p>
+                <p className={styles.detailtsItemTitle}>Marketplace</p>
+                <p className={styles.detailsItemText}>{item.orderCategory}</p>
               </div>
               <div className={styles.detailsItemContent}>
                 <p className={styles.detailtsItemTitle}>Type</p>

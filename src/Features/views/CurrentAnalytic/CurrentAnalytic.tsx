@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import useMediaQuery from 'react-use-media-query-hook';
 
@@ -20,12 +20,23 @@ const CurrentAnalytic: React.FC = () => {
     const currentIcon = DESCRIPTIONS.find((element: TDescriptions) => element.current === current);
     return currentIcon?.icon;
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
 
   const text = useMemo(() => {
     const current = history.location.pathname.split('/')[2];
     const currentIcon = DESCRIPTIONS.find((element: TDescriptions) => element.current === current);
     return currentIcon;
   }, []);
+
+  // setTimeout(() => {
+  //   const el = document.getElementById('view');
+  //   console.log('www', el?.scrollHeight);
+  //   console.log('timout');
+  //   el?.scrollTo(300, 0);
+  //   window?.scrollTo(200, 0);
+  // }, 3000);
 
   return (
     <div className={`${styles.analyticPage} current-analytic-page page`}>

@@ -60,7 +60,7 @@ const Contact = () => {
     <div className={`${styles.contactPage} page contact-page`}>
       <Header />
       <MainContent>
-        <section className={styles.contactSection}>
+        <section className={styles.contactSection} id="navbar.contactus">
           <div className="container">
             <div className={styles.contactRow}>
               <div className={`${styles.col_left} col_item`}>

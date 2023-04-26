@@ -22,8 +22,11 @@
   background-size: contain;
   z-index: 1;
   transition: 0.3s;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   @media all and (max-width: $normalDesktop) {
-    padding: 80px 16px 16px;
+    padding: 200px 16px 16px;
     background-position: center top;
   }
   @media all and (max-width: $tablet) {

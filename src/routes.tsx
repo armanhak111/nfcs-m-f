@@ -4,6 +4,8 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import { PageLoader } from './Components/Dumb/PageLoader/PageLoader';
 import ScrollToTop from './Components/Dumb/ScrollToTop';
+// import ScrollToTop from './Components/Dumb/ScrollToTop';
+// import ScrollToTop from './Components/Dumb/ScrollToTop';
 import AboutUs from './Features/views/AboutUs';
 import ChangePassword from './Features/views/AutohFlow/ChangePassword';
 import ForgotPassword from './Features/views/AutohFlow/ForgotPassword';
@@ -33,6 +35,7 @@ const Routes: React.FC = () => {
   if (token && !Object.values(currentUser).length && !fulfield) {
     return <PageLoader />;
   }
+
   return (
     <BrowserRouter>
       <ScrollToTop>

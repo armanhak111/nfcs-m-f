@@ -1,23 +1,24 @@
 @import "/src/styles/vars";
 @import "/src/styles/mixins";
-.cancelModal{
+.confirmModal{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.modalTitle{
-    max-width: 502px;
-    text-align: center;
-    @media all and (max-width: $smallTablet) {
-        @include fontRem(20, 700);
-        max-width: 502px
-    }
-}
+// .modalTitle{
+//     max-width: 502px;
+//     text-align: center;
+//     @media all and (max-width: $smallTablet) {
+//         @include fontRem(20, 700);
+//         max-width: 502px
+//     }
+// }
 .modalTitle {
     text-align: center;
     @include fontRem(28, 700);
     line-height: 36px;
     color: $titleColor;
+    
     @media all and (max-width: $smallTablet) {
         @include fontRem(20, 700);
         max-width: 200px;
@@ -26,8 +27,23 @@
         line-height: 30px;
     }
 }
+.modalSubtitle{
+    text-align: center;
+    margin-top: 15px;
+    @include fontRem(16, 700);
+    line-height: 36px;
+    color: $titleColor;
+    
+    @media all and (max-width: $smallTablet) {
+        @include fontRem(14, 700);
+        max-width: 200px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 30px;
+    }
+}
 .detailsList {
-    margin-top: 50px;
+    margin-top: 30px;
     padding-left: 16px;
     padding-right: 16px;
     @media all and (max-width: $smallTablet) {

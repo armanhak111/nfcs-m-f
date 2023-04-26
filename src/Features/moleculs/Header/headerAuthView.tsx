@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import useMediaQuery from 'react-use-media-query-hook';
 
 import ArrowSvg from '../../../Assets/Icons/ArrowSvg';
 import HeaderCoinSvg from '../../../Assets/Icons/HeaderCoinSvg';
 import UserIconSvg from '../../../Assets/Icons/UserIconSvg';
+import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
+import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { logout } from '../../../Store/Slices/auth';
@@ -16,6 +19,10 @@ export const HeaderAuthView: React.FC = () => {
   const user = useSelector(getCurrentUser);
   const handleOpen = () => {
     setOpen(!open);
+  };
+  const history = useHistory();
+  const buyForecast = () => {
+    history.push(ROUTES.DASHBOARD);
   };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
   return (
@@ -47,7 +54,13 @@ export const HeaderAuthView: React.FC = () => {
           )}
 
           <li>
-            <span className={styles.userSubLink}>Custom Settings</span>
+            <span
+              className={styles.userSubLink}
+              onClick={buyForecast}
+              data-current={DASHBOARD_SLIDES.forecastList}
+            >
+              Custom Settings
+            </span>
           </li>
           <li onClick={() => dispatch(logout())}>
             <span className={styles.userSubLink}>Log Out</span>

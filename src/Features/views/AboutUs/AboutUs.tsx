@@ -33,7 +33,7 @@ const AboutUs: React.FC = () => {
     >
       <Header />
       <MainContent>
-        <section className={styles.aboutUsSection}>
+        <section className={styles.aboutUsSection} id="navbar.about">
           <div className="container">
             <div className={styles.aboutUsRow}>
               <div className={`${styles.col_left} col_50`}>

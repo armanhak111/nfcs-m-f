@@ -12,18 +12,92 @@ import Input from '../../../atoms/Input';
 import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './nftFuture.module.scss';
 
-const INQUIRY_OPTIONS = [
+const MARKET_PLACE = [
   {
-    id: 'contactus.dropdown.generalInquiry',
-    value: 'General Inquiry',
+    id: 'contactus.dropdown.openSea',
+    value: 'OpenSea',
   },
   {
-    id: 'contactus.dropdown.salesInquiry',
-    value: 'Sales Inquiry',
+    id: 'contactus.dropdown.magicEden',
+    value: 'Magic Eden',
   },
   {
-    id: 'contactus.dropdown.techIssue',
-    value: 'Technical Issue',
+    id: 'contactus.dropdown.castle',
+    value: 'Castle',
+  },
+  {
+    id: 'contactus.dropdown.floor',
+    value: 'Floor',
+  },
+  {
+    id: 'contactus.dropdown.yawww',
+    value: 'Yawww',
+  },
+  {
+    id: 'contactus.dropdown.rarible',
+    value: 'Rarible',
+  },
+  {
+    id: 'contactus.dropdown.digitaleyes',
+    value: 'DigitalEyes',
+  },
+  {
+    id: 'contactus.dropdown.solport',
+    value: 'Solport',
+  },
+];
+const NFT_CATEGORY = [
+  {
+    id: 'contactus.dropdown.artistic',
+    value: 'Artistic tokens as part of NFT types',
+  },
+  {
+    id: 'contactus.dropdown.collectibles',
+    value: 'Collectibles- NFT types',
+  },
+  {
+    id: 'contactus.dropdown.digitals',
+    value: 'Digital collectibles',
+  },
+  {
+    id: 'contactus.dropdown.trading',
+    value: 'Trading cards NFT',
+  },
+  {
+    id: 'contactus.dropdown.bigSports',
+    value: 'Big sports moments tokens',
+  },
+  {
+    id: 'contactus.dropdown.utilitySecu',
+    value: 'Utility & Security tokens',
+  },
+  {
+    id: 'contactus.dropdown.virtualNft',
+    value: 'Virtual real estate NFT',
+  },
+  {
+    id: 'contactus.dropdown.gamingToken',
+    value: 'Gaming tokens as NFT types',
+  },
+  {
+    id: 'contactus.dropdown.wearablesNft',
+    value: 'NFT Wearables in Virtual Fashion',
+  },
+  {
+    id: 'contactus.dropdown.memesTokens',
+    value: 'Memes tokens as NFT types',
+  },
+  {
+    id: 'contactus.dropdown.musicToken',
+    value: 'Music and Media tokens',
+  },
+  {
+    id: 'contactus.dropdown.identityPart',
+    value: 'Identity as a part of NFT types',
+  },
+  {
+    id: 'contactus.dropdown.eventTickets',
+    value: 'Event tickets tokens',
   },
 ];
 const NftFuture: React.FC = () => {
@@ -50,10 +124,10 @@ const NftFuture: React.FC = () => {
       <div className={styles.detailsList}>
         <div className={styles.detailsItemContent}>
           <Dropdown
-            name="platform"
-            label="Platform"
-            options={INQUIRY_OPTIONS}
-            value={formik.values.platform}
+            name="orderCategory"
+            label="Marketplace"
+            options={MARKET_PLACE}
+            value={formik.values.orderCategory}
             defaultValue="Select"
             onClick={formik.setFieldTouched}
             onChange={() => null}
@@ -63,8 +137,8 @@ const NftFuture: React.FC = () => {
         <div className={styles.detailsItemContent}>
           <Dropdown
             name="type"
-            label="Type"
-            options={INQUIRY_OPTIONS}
+            label="NFT Category"
+            options={NFT_CATEGORY}
             value={formik.values.type}
             defaultValue="Select"
             onClick={formik.setFieldTouched}
@@ -114,7 +188,7 @@ const NftFuture: React.FC = () => {
           <Button
             onClick={formik.handleSubmit}
             disabeled={Boolean(
-              !formik.touched.platform ||
+              !formik.touched.orderCategory ||
                 !formik.touched.type ||
                 !formik.touched.minPrice ||
                 !formik.touched.maxPrice ||

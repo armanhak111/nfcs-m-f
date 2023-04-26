@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
     return <PageLoader />;
   }
   return (
-    <div className={`${styles.dashboardPage} page`}>
+    <div className={`${styles.dashboardPage} page`} id="navbar.dashboard">
       <Header />
       <DashboardSideBar open={open} setOpen={setOpen} />
       <main className="main">

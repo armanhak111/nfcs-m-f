@@ -12,18 +12,54 @@ import Input from '../../../atoms/Input';
 import TabSwitch from '../../../atoms/TabSwitch/TabSwitch';
 import styles from './stockFuture.module.scss';
 
-const INQUIRY_OPTIONS = [
+const STOCK_INDUSTRY = [
   {
-    id: 'contactus.dropdown.generalInquiry',
-    value: 'General Inquiry',
+    id: 'contactus.dropdown.healthcare',
+    value: 'Healthcare Sector',
   },
   {
-    id: 'contactus.dropdown.salesInquiry',
-    value: 'Sales Inquiry',
+    id: 'contactus.dropdown.materials',
+    value: 'Materials Sector',
   },
   {
-    id: 'contactus.dropdown.techIssue',
-    value: 'Technical Issue',
+    id: 'contactus.dropdown.realEstate',
+    value: 'Real Estate Sector',
+  },
+  {
+    id: 'contactus.dropdown.costumerStap',
+    value: 'Consumer Staples Sector',
+  },
+  {
+    id: 'contactus.dropdown.costumerDisc',
+    value: 'Consumer Discretionary Sector',
+  },
+  {
+    id: 'contactus.dropdown.utilitiesSector',
+    value: 'Utilities Sector',
+  },
+  {
+    id: 'contactus.dropdown.energySector',
+    value: 'Energy Sector',
+  },
+  {
+    id: 'contactus.dropdown.industrialSector',
+    value: 'Industrials Sector',
+  },
+  {
+    id: 'contactus.dropdown.',
+    value: 'Consumer Services Sector',
+  },
+  {
+    id: 'contactus.dropdown.',
+    value: 'costumerServiceSector',
+  },
+  {
+    id: 'contactus.dropdown.financialSector',
+    value: 'Financials Sector',
+  },
+  {
+    id: 'contactus.dropdown.technologySector',
+    value: 'Technology Sector',
   },
 ];
 const StockFuture: React.FC = () => {
@@ -49,10 +85,10 @@ const StockFuture: React.FC = () => {
       <div className={styles.detailsList}>
         <div className={styles.detailsItemContent}>
           <Dropdown
-            name="industry"
-            label="Industry"
-            options={INQUIRY_OPTIONS}
-            value={formik.values.industry}
+            name="orderCategory"
+            label="Stock Industry"
+            options={STOCK_INDUSTRY}
+            value={formik.values.orderCategory}
             defaultValue="Select"
             onClick={formik.setFieldTouched}
             onChange={() => null}
@@ -102,7 +138,7 @@ const StockFuture: React.FC = () => {
           <Button
             onClick={formik.handleSubmit}
             disabeled={Boolean(
-              !formik.touched.industry ||
+              !formik.touched.orderCategory ||
                 !formik.touched.minPrice ||
                 !formik.touched.maxPrice ||
                 formik.errors.minPrice ||

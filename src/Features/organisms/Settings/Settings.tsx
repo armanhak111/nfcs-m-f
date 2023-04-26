@@ -34,15 +34,15 @@ const Settings: React.FC = () => {
   const user = useSelector(getCurrentUser);
 
   const initialVal = useMemo(() => {
-    return currentItem === 'password_s' ? { old: '', newPas: '' } : { name: '' };
+    return currentItem.id === 'password_s' ? { old: '', newPas: '' } : { name: '' };
   }, [currentItem]);
   // const istablet = useMediaQuery(SCREENS.bigTablet);
   const formik = useFormik({
     initialValues: initialVal,
     validationSchema:
-      currentItem === 'password_s' ? changePassValidationScheme : changeNameValidationScheme,
+      currentItem.id === 'password_s' ? changePassValidationScheme : changeNameValidationScheme,
     onSubmit: (arg: any) => {
-      if (currentItem === 'password_s') {
+      if (currentItem.id === 'password_s') {
         dispatch(changePasswordSettings(arg.old, arg.newPas, user.id, setCurretHeight));
       } else {
         dispatch(changeName(arg.name, user.id, setCurretHeight));
@@ -158,7 +158,10 @@ const Settings: React.FC = () => {
                       </div>
                     )}
                     <div
-                      onClick={() => collapse('name_s', 'header_2')}
+                      onClick={() => {
+                        collapse('name_s', 'header_2');
+                        // setCurretHeight(0);
+                      }}
                       className={styles.collpaseBtnContainer}
                     >
                       <button type="button">Change</button>
@@ -173,7 +176,11 @@ const Settings: React.FC = () => {
                     id="name_s"
                     className={styles.collapseContent}
                     style={{
-                      height: `${currentItem === 'name_s' ? `${currentHeight}px` : '0px'}`,
+                      height: `${
+                        currentItem.id === 'name_s' && currentItem.isOpen
+                          ? `${currentHeight}px`
+                          : '0px'
+                      }`,
                     }}
                   >
                     <div className={styles.collapseContentInner}>
@@ -210,7 +217,7 @@ const Settings: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.settingsCollapseCol}>
+              {/* <div className={styles.settingsCollapseCol}>
                 <div className={styles.settinsCollapseItem}>
                   <div className={styles.settinsCollapseItemHeader} id="header_3">
                     <h3 className={styles.settinsCollapseTitle}>Password</h3>
@@ -234,7 +241,11 @@ const Settings: React.FC = () => {
                     id="password_s"
                     className={styles.collapseContent}
                     style={{
-                      height: `${currentItem === 'password_s' ? `${currentHeight}px` : '0px'}`,
+                      height: `${
+                        currentItem.id === 'password_s' && currentItem.isOpen
+                          ? `${currentHeight}px`
+                          : '0px'
+                      }`,
                     }}
                   >
                     <div className={styles.collapseContentInner}>
@@ -287,7 +298,7 @@ const Settings: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -56,18 +56,13 @@ const Header: React.FC = () => {
 
       if (currentItem.path === ROUTES.HOME) {
         if (currentItem.id) {
-          const scrolledItem = document.getElementById(currentItem.id)?.offsetTop;
+          const scrolledItem = document.getElementById(currentItem.id);
           if (scrolledItem && distanceToTop) {
             window.scrollTo({
-              top: scrolledItem - distanceToTop - 10,
+              top: scrolledItem.offsetTop - distanceToTop,
               behavior: 'smooth',
             });
           }
-        } else {
-          window.scrollTo({
-            top: 0,
-            behavior: 'smooth',
-          });
         }
       }
     },

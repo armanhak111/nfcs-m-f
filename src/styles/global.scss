@@ -1,12 +1,12 @@
 @import "./vars";
 @import "./_mixins";
 
-html,
-body {
+html {
     height: 100%;
     overflow-x: hidden;
 }
 body {
+    height: 100%;
     box-sizing: border-box;
     margin: 0;
     box-sizing: border-box;

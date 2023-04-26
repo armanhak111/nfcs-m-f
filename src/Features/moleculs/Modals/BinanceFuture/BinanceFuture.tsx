@@ -16,16 +16,32 @@ import styles from './binanceFuture.module.scss';
 
 const INQUIRY_OPTIONS = [
   {
-    id: 'contactus.dropdown.generalInquiry',
-    value: 'General Inquiry',
+    id: 'contactus.dropdown.limitOrder',
+    value: 'Limit Order',
   },
   {
-    id: 'contactus.dropdown.salesInquiry',
-    value: 'Sales Inquiry',
+    id: 'contactus.dropdown.marketOrder',
+    value: 'Market Order',
   },
   {
-    id: 'contactus.dropdown.techIssue',
-    value: 'Technical Issue',
+    id: 'contactus.dropdown.stopLimitOrder',
+    value: 'Stop-Limit Order',
+  },
+  {
+    id: 'contactus.dropdown.stopMarketOrder',
+    value: 'Stopm Market Order',
+  },
+  {
+    id: 'contactus.dropdown.trailingStopOrder',
+    value: 'Trailing Stop Order',
+  },
+  {
+    id: 'contactus.dropdown.stopOnlyOrder',
+    value: 'Stop Only Order',
+  },
+  {
+    id: 'contactus.dropdown.limitTpsOrder',
+    value: 'Limit TP/SL Order (Strategy Order)',
   },
 ];
 const BinanceFuture = () => {
@@ -61,10 +77,10 @@ const BinanceFuture = () => {
       <div className={styles.detailsList}>
         <div className={styles.detailsItemContent}>
           <Dropdown
-            name="incuiryType"
+            name="orderCategory"
             label="contactus.dropdown.label"
             options={INQUIRY_OPTIONS}
-            value={formik.values.incuiryType}
+            value={formik.values.orderCategory}
             defaultValue="Select"
             onClick={formik.setFieldTouched}
             onChange={() => null}
@@ -187,7 +203,7 @@ const BinanceFuture = () => {
             onClick={formik.handleSubmit}
             customClass={styles.cardBtn}
             disabeled={Boolean(
-              !formik.touched.incuiryType ||
+              !formik.touched.orderCategory ||
                 !formik.touched.minPrice ||
                 !formik.touched.maxPrice ||
                 !formik.touched.timeZone
