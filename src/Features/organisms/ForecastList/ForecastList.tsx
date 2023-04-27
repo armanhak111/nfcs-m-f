@@ -35,8 +35,6 @@ const ForecastList: React.FC = () => {
       return dispatch(setActionModal('modals.success.details.crypto'));
     }
   };
-  console.log(newOrderDetails);
-  console.log(orderDetails, 'ditailssss');
 
   return (
     <section className={styles.buyForecastSection}>
@@ -64,9 +62,14 @@ const ForecastList: React.FC = () => {
             </ul>
           </div>
           <div className={styles.forecastBody}>
-            <p className={styles.waittimeInfo}>
-              Max Wait Time: <span>1 Week</span>
-            </p>
+            {orderDetails?.length ? (
+              <p className={styles.waittimeInfo}>
+                Max Wait Time:<span>1 Week</span>
+              </p>
+            ) : (
+              <p className={styles.waittimeInfo}>You currently have no pre-orders for analytics</p>
+            )}
+
             {orderDetails.map((item: any) => {
               const getIcons = () => {
                 const Icon = FORECAST_ICONS[item.orderType];

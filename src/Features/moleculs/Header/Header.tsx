@@ -28,7 +28,6 @@ const Header: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
   const currentUser = useSelector(getCurrentUser);
-  console.log(currentUser.upt, 'ures ara');
 
   // const dispatch = useDispatch();
   const isAuth = Object.values(currentUser).length;

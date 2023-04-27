@@ -10,7 +10,6 @@ export const useSettingsCollapse = () => {
   const collapse = (id: string, headerId: string) => {
     const headerItem: any = document.getElementById(headerId);
     const currentElement: any = document.getElementById(id);
-    console.log(currentElement.getBoundingClientRect());
     setCurretHeight(
       currentElement.getBoundingClientRect().top + headerItem.getBoundingClientRect().height
     );

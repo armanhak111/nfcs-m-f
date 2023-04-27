@@ -28,7 +28,7 @@ const MyPromocode: React.FC = () => {
     initialValues: MY_PROMO_CODE_NAME,
     validationSchema: nameMyPromoCode,
     onSubmit: () => {
-      console.log('ayoo');
+      console.log('ye');
     },
   });
   const copy = () => {

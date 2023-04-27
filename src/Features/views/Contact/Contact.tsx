@@ -56,7 +56,6 @@ const Contact = () => {
   const canSubmit = useMemo(() => {
     return !formik.errors.email && formik.values.email !== '';
   }, [formik.errors, formik.values]);
-  console.log(formik.values, 'sdsff');
 
   return (
     <div className={`${styles.contactPage} page contact-page`}>
