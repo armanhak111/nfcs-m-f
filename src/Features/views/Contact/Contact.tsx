@@ -28,15 +28,16 @@ const CONTACT_US_INTIAL = {
 const INQUIRY_OPTIONS = [
   {
     id: 'contactus.dropdown.generalInquiry',
+
     value: 'General Inquiry',
   },
   {
     id: 'contactus.dropdown.salesInquiry',
-    value: 'Sales Inquiry',
+    value: 'Sales Inquiry ',
   },
   {
     id: 'contactus.dropdown.techIssue',
-    value: 'Technical Issue',
+    value: 'Technical Issue ',
   },
 ];
 
@@ -55,6 +56,7 @@ const Contact = () => {
   const canSubmit = useMemo(() => {
     return !formik.errors.email && formik.values.email !== '';
   }, [formik.errors, formik.values]);
+  console.log(formik.values, 'sdsff');
 
   return (
     <div className={`${styles.contactPage} page contact-page`}>
@@ -100,10 +102,10 @@ const Contact = () => {
                     />
                     <Dropdown
                       name="inquiry"
-                      label="contactus.dropdown.label"
+                      label="contactus.dropdown.inquiry"
                       options={INQUIRY_OPTIONS}
                       value={formik.values.inquiry}
-                      defaultValue="contactus.dropdown.generalInquiry"
+                      defaultValue="Inquiry Type"
                       onClick={formik.setFieldTouched}
                       onChange={formik.setFieldValue}
                     />

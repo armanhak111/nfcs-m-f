@@ -11,6 +11,7 @@ import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { logout } from '../../../Store/Slices/auth';
+import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import styles from './header.module.scss';
 
 export const HeaderAuthView: React.FC = () => {
@@ -21,8 +22,9 @@ export const HeaderAuthView: React.FC = () => {
     setOpen(!open);
   };
   const history = useHistory();
-  const buyForecast = () => {
+  const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     history.push(ROUTES.DASHBOARD);
+    dispatch(setCurrentSlide(e.currentTarget.dataset.current));
   };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
   return (
@@ -48,7 +50,7 @@ export const HeaderAuthView: React.FC = () => {
                 <span className={styles.cointIcon}>
                   <HeaderCoinSvg />
                 </span>
-                {user.upt}
+                {user.upt} UPT
               </div>
             </li>
           )}
@@ -56,8 +58,8 @@ export const HeaderAuthView: React.FC = () => {
           <li>
             <span
               className={styles.userSubLink}
-              onClick={buyForecast}
-              data-current={DASHBOARD_SLIDES.forecastList}
+              onClick={handleChangeSLide}
+              data-current={DASHBOARD_SLIDES.settings}
             >
               Custom Settings
             </span>

@@ -37,7 +37,7 @@ const CryptoFuture = () => {
             <div className={styles.inputsItem}>
               <Input
                 htmlFor="name"
-                type="text"
+                type="number"
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
@@ -55,7 +55,7 @@ const CryptoFuture = () => {
                 <TabSwitch formik={formik} />
                 <Input
                   htmlFor="name"
-                  type="text"
+                  type="number"
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "
