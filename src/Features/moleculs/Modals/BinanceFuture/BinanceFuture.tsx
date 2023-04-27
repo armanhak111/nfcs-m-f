@@ -62,15 +62,15 @@ const BinanceFuture = () => {
     },
   });
 
-  const handleStep = (range: string | number) => {
-    if (range <= '10') {
-      return '9';
-    } else {
-      return '10  ';
-    }
-  };
+  // const handleStep = (range: string | number) => {
+  //   if (range <= '10') {
+  //     return '9';
+  //   } else {
+  //     return '10  ';
+  //   }
+  // };
 
-  console.log(handleStep(formik.values.adjustLeverage));
+  // console.log(handleStep(formik.values.adjustLeverage));
   return (
     <>
       <h2 className={styles.modalTitle}>Binance Future Forecast</h2>

@@ -33,7 +33,6 @@ const Card: React.FC<ICard> = ({
   const { pathname } = useLocation();
   const dispatch = useDispatch();
   const [toolTip, setToolTip] = useState<boolean>(false);
-  console.log(ttt);
   const currentUser = useSelector(getCurrentUser);
 
   const isAuth = Object.values(currentUser).length;

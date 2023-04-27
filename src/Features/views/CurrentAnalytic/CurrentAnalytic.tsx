@@ -30,14 +30,6 @@ const CurrentAnalytic: React.FC = () => {
     return currentIcon;
   }, []);
 
-  // setTimeout(() => {
-  //   const el = document.getElementById('view');
-  //   console.log('www', el?.scrollHeight);
-  //   console.log('timout');
-  //   el?.scrollTo(300, 0);
-  //   window?.scrollTo(200, 0);
-  // }, 3000);
-
   return (
     <div className={`${styles.analyticPage} current-analytic-page page`}>
       <Header />

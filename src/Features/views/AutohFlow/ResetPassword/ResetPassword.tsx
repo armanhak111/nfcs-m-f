@@ -15,7 +15,6 @@ const ResetPassword: React.FC = () => {
   const [showPass, setShowPass] = useState<boolean>(false);
   const [showRepeatPass, setShowRepeatPass] = useState<boolean>(false);
   const params: { id: string } = useParams();
-  console.log(params.id);
 
   const dispatch = useDispatch();
   const formik = useFormik({

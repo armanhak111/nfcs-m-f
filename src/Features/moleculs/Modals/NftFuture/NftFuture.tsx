@@ -114,7 +114,6 @@ const NftFuture: React.FC = () => {
       dispatch(orderAnalytics(data));
     },
   });
-  console.log('formik', formik.values);
   return (
     <>
       <h2 className={styles.modalTitle}>NFT Forecast</h2>
