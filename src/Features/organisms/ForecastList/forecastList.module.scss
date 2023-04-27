@@ -252,6 +252,9 @@
                                     }
                                 }
                             }
+                            .orderDate{
+                                margin-left: 5px
+                            }
                         }
                         .leftItemBtns {
                             @include flex-center-vert;

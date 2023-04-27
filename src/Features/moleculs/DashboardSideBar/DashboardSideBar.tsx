@@ -9,6 +9,7 @@ import MyPromoCodeSvg from '../../../Assets/Icons/dashboard/MyPromoCodeSvg';
 import MenuFoldSvg from '../../../Assets/Icons/MenuFoldSvg';
 import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { useOutsideDetect } from '../../../Hooks/useOutsideDetect';
 import { getCurrentUser, getOrderDetails } from '../../../Store/Selectors/auth';
 import { getDashboardCurrentSlide } from '../../../Store/Selectors/dashboardLocal';
 import { usersAnalytics } from '../../../Store/Slices/auth';
@@ -26,21 +27,20 @@ const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   const currentUser = useSelector(getCurrentUser);
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
-    setOpen(!open);
   };
   useEffect(() => {
-    // console.log(1111);
     dispatch(usersAnalytics(currentUser.id));
   }, []);
 
+  const ref = useOutsideDetect(setOpen);
   const handelOpen = () => {
-    return setOpen(!open);
+    setOpen(!open);
   };
   const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
   return (
-    <aside className={`${styles.aside} ${open && styles.opened} `}>
+    <aside ref={ref} className={`${styles.aside} ${open && styles.opened} `}>
       <div className={styles.asideContent}>
         {onlyTablet && (
           <button onClick={handelOpen} className={styles.tabletOpener}>

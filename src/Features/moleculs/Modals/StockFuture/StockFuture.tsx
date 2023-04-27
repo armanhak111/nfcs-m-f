@@ -101,7 +101,7 @@ const StockFuture: React.FC = () => {
             <div className={styles.inputsItem}>
               <Input
                 htmlFor="name"
-                type="text"
+                type="number"
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
@@ -119,7 +119,7 @@ const StockFuture: React.FC = () => {
                 <TabSwitch formik={formik} />
                 <Input
                   htmlFor="name"
-                  type="text"
+                  type="number"
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "

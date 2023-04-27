@@ -152,7 +152,7 @@ const BinanceFuture = () => {
             <div className={styles.inputsItem}>
               <Input
                 htmlFor="minPrice"
-                type="text"
+                type="number"
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
@@ -170,7 +170,7 @@ const BinanceFuture = () => {
                 <TabSwitch formik={formik} />
                 <Input
                   htmlFor="maxPrice"
-                  type="text"
+                  type="number"
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "

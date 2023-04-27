@@ -90,6 +90,7 @@ export const constactUsValidationScheme = yup.object({
     .string()
     .email('validation.scheme.signin.email.invalid')
     .required('validation.scheme.signin.email.requiere'),
+  inquiry: yup.string().required(),
 });
 
 export const orderBinanceValidationScheme = yup.object({

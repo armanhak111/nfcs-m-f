@@ -14,7 +14,7 @@ type isTruthyEqual = {
 };
 
 interface IInputProps {
-  type?: 'text' | 'password';
+  type?: 'text' | 'password' | 'number';
   isPassInput?: boolean;
   htmlFor: string;
   label: string;

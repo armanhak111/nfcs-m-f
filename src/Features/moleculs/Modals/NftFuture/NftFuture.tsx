@@ -18,6 +18,10 @@ const MARKET_PLACE = [
     value: 'OpenSea',
   },
   {
+    id: 'contactus.dropdown.rarible',
+    value: 'Rarible',
+  },
+  {
     id: 'contactus.dropdown.magicEden',
     value: 'Magic Eden',
   },
@@ -29,14 +33,7 @@ const MARKET_PLACE = [
     id: 'contactus.dropdown.floor',
     value: 'Floor',
   },
-  {
-    id: 'contactus.dropdown.yawww',
-    value: 'Yawww',
-  },
-  {
-    id: 'contactus.dropdown.rarible',
-    value: 'Rarible',
-  },
+
   {
     id: 'contactus.dropdown.digitaleyes',
     value: 'DigitalEyes',
@@ -151,7 +148,7 @@ const NftFuture: React.FC = () => {
             <div className={styles.inputsItem}>
               <Input
                 htmlFor="name"
-                type="text"
+                type="number"
                 name="minPrice"
                 placeHolder="Min"
                 label="Price Range"
@@ -169,7 +166,7 @@ const NftFuture: React.FC = () => {
                 <TabSwitch formik={formik} />
                 <Input
                   htmlFor="name"
-                  type="text"
+                  type="number"
                   name="maxPrice"
                   placeHolder="Max"
                   label=" "

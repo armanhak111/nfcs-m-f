@@ -84,7 +84,7 @@ const ForecastList: React.FC = () => {
                               <p>
                                 <TimeSvg />
                                 Order:{''}
-                                <span>{item.date}</span>
+                                <span className={styles.orderDate}> {item.date}</span>
                               </p>
                             </div>
                             <div className={`${styles.leftItem} ${styles.leftItemLogo}`}>
