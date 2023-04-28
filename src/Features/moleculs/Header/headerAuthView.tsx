@@ -9,6 +9,7 @@ import UserIconSvg from '../../../Assets/Icons/UserIconSvg';
 import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
+import { useOutsideDetect } from '../../../Hooks/useOutsideDetect';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { logout } from '../../../Store/Slices/auth';
 import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
@@ -21,6 +22,7 @@ export const HeaderAuthView: React.FC = () => {
   const handleOpen = () => {
     setOpen(!open);
   };
+  const ref = useOutsideDetect(setOpen);
   const history = useHistory();
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     history.push(ROUTES.DASHBOARD);
@@ -28,47 +30,51 @@ export const HeaderAuthView: React.FC = () => {
   };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
   return (
-    <ul className={styles.headerAuthComponent}>
-      <li className={styles.userItem} role="menuitem" onClick={handleOpen}>
-        {Object.values(user).length > 0 && (
-          <div className={styles.userInfoShort}>
-            <span className={styles.userImageIcon}>
-              <UserIconSvg />
-            </span>
-            <span className={styles.nameShort}>{user.name}</span>
-            <span
-              className={`${styles.userDropdownIcon} ${open ? styles.userDropdownIconRotated : ''}`}
-            >
-              <ArrowSvg />
-            </span>
-          </div>
-        )}
-        <ul className={`${styles.userSubList} ${open ? styles.userSubListOpen : ''}`}>
-          {isMobile && Object.values(user).length > 0 && (
-            <li className={styles.cointListItem}>
-              <div className={styles.cointItem}>
-                <span className={styles.cointIcon}>
-                  <HeaderCoinSvg />
-                </span>
-                {user.upt} UPT
-              </div>
-            </li>
+    <div ref={ref}>
+      <ul className={styles.headerAuthComponent}>
+        <li className={styles.userItem} role="menuitem" onClick={handleOpen}>
+          {Object.values(user).length > 0 && (
+            <div className={styles.userInfoShort}>
+              <span className={styles.userImageIcon}>
+                <UserIconSvg />
+              </span>
+              <span className={styles.nameShort}>{user.name}</span>
+              <span
+                className={`${styles.userDropdownIcon} ${
+                  open ? styles.userDropdownIconRotated : ''
+                }`}
+              >
+                <ArrowSvg />
+              </span>
+            </div>
           )}
+          <ul className={`${styles.userSubList} ${open ? styles.userSubListOpen : ''}`}>
+            {isMobile && Object.values(user).length > 0 && (
+              <li className={styles.cointListItem}>
+                <div className={styles.cointItem}>
+                  <span className={styles.cointIcon}>
+                    <HeaderCoinSvg />
+                  </span>
+                  {user.upt} UPT
+                </div>
+              </li>
+            )}
 
-          <li>
-            <span
-              className={styles.userSubLink}
-              onClick={handleChangeSLide}
-              data-current={DASHBOARD_SLIDES.settings}
-            >
-              Custom Settings
-            </span>
-          </li>
-          <li onClick={() => dispatch(logout())}>
-            <span className={styles.userSubLink}>Log Out</span>
-          </li>
-        </ul>
-      </li>
-    </ul>
+            <li>
+              <span
+                className={styles.userSubLink}
+                onClick={handleChangeSLide}
+                data-current={DASHBOARD_SLIDES.settings}
+              >
+                Custom Settings
+              </span>
+            </li>
+            <li onClick={() => dispatch(logout())}>
+              <span className={styles.userSubLink}>Log Out</span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   );
 };
