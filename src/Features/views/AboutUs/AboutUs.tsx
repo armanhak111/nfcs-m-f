@@ -131,7 +131,7 @@ const AboutUs: React.FC = () => {
                             </>
                             <h3 className={styles.timelineTitle}>V2 VAULTS:</h3>
                             <p className={styles.timelineText}>
-                              More global scope analytics for Futures,Bond analytics Fund analytics.
+                              Our users will be able to create their own analytics.{' '}
                             </p>
                           </div>
                           <div className={styles.timelineDate}>
@@ -150,7 +150,8 @@ const AboutUs: React.FC = () => {
                             </>
                             <h3 className={styles.timelineTitle}>V3 VAULTS:</h3>
                             <p className={styles.timelineText}>
-                              More global scope analytics for Futures,Bond analytics Fund analytics.
+                              There will be a global platform where our users will sell their own
+                              analytics after passing the review.{' '}
                             </p>
                           </div>
                           <div className={styles.timelineDate}>
