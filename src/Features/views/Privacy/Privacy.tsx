@@ -15,17 +15,27 @@ const Privacy = () => {
             <div className={styles.privacyItem}>
               <h2 className={`${styles.privacyTitle} title`}>Privacy Policy</h2>
               <p className={styles.privacyText}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid adipisci quod
-                mollitia sed rerum odit quaerat recusandae quibusdam eaque, voluptatum consequuntur
-                dolore nesciunt quo corporis laboriosam, voluptate fugiat pariatur soluta omnis
-                aperiam repellat! Doloribus facilis repudiandae dignissimos animi eos quis
-                cupiditate velit, accusamus facere ea quam delectus alias labore modi laboriosam,
-                aliquam magnam. Beatae facere iusto pariatur fugit, minima ea magnam soluta sed.
-                Nostrum dolores tempore ratione cumque? Earum alias vitae culpa veritatis odit vero
-                iure amet neque velit repellat. Incidunt ex accusamus praesentium sapiente quidem
-                iste, repudiandae alias nihil reiciendis quo sunt ipsum rerum delectus provident et
-                aperiam ullam ad? Magni et vitae cum! Ut voluptatem laborum recusandae, voluptatibus
-                porro voluptate aspernatur quos minima quibusdam qui ratione maxime neque?
+                At NFCS, we are committed to protecting the privacy of our users. We collect
+                personal information such as email and password during registration to provide you
+                access to our platform. We require email confirmation to verify your identity and
+                protect your account from unauthorized access.
+                <br />
+                <br />
+                <br />
+                We also collect analytical data to improve our platform, including the use of
+                cookies and similar technologies. This data may include information about your
+                browsing behavior, device information, and IP address.
+                <br />
+                <br />
+                <br />
+                We do not share your personal information with third parties, except as required by
+                law or to provide our services to you. We take appropriate measures to protect your
+                personal information from unauthorized access, alteration, or disclosure.
+                <br />
+                <br />
+                <br />
+                By using our platform, you consent to the terms of this Privacy Policy. If you have
+                any questions or concerns, please contact us at support@nfcs.com.
               </p>
             </div>
           </div>

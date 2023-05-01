@@ -16,7 +16,7 @@ const Portal: React.FC = () => {
         <h2 className="title">NFCS Portal</h2>
         <p className="subTitle">
           NFCS is a portal that will give you the opportunity to understand the world of{' '}
-          <a href="#" className={styles.portalHeaderLink}>
+          <a href="/about" className={styles.portalHeaderLink}>
             Cryptocurrencies, Futures, NFT and Stocks
           </a>{' '}
           and offer you the best way to invest your founds.
