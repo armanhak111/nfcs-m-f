@@ -140,6 +140,14 @@
                 max-width: 487px;
                 width: 100%;
                 margin-left: 80px;
+                max-width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                p{
+                    max-width: 100px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                }
                 @media all and (max-width: $normalDesktop) {
                     margin-left: 50px;
                     max-width: 350px;
