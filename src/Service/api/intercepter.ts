@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
-export const API_URL = 'https://nfcs-b.onrender.com/api';
+export const API_URL = 'https://nfcs-m-b.vercel.app/api';
 const $api = axios.create({
   withCredentials: true,
   baseURL: API_URL,
