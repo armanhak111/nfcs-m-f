@@ -1,119 +1,136 @@
 @import "/src/styles/vars";
 @import "/src/styles/mixins";
 
-
 .formItem {
-    position: relative;
-    &:not(:last-child) {
-        margin-bottom: 48px;
-        @media all and (max-width: $tablet) {
-            margin-bottom: 32px;
-        }
+  position: relative;
+  &:not(:last-child) {
+    margin-bottom: 48px;
+    @media all and (max-width: $tablet) {
+      margin-bottom: 32px;
     }
+  }
 }
 
 .label {
-    @include fontRem(16, 500);
-    line-height: 20px;
-    margin-bottom: 16px;
-    display: block;
-    color: $titleColor;
-    @media all and (max-width: $smallTablet) {
-        @include fontRem(14, 500);
-        margin-bottom: 8px;
-    }
+  @include fontRem(16, 500);
+  line-height: 20px;
+  margin-bottom: 16px;
+  display: block;
+  color: $titleColor;
+  @media all and (max-width: $smallTablet) {
+    @include fontRem(14, 500);
+    margin-bottom: 8px;
+  }
 }
 .input {
-    width: 100%;
-    background: rgba(41, 52, 139, 0.24);
-    border: 1px solid rgba(178, 186, 215, 0.48);
-    border-radius: 8px;
-    transition: 0.3s;
-    height: 64px;
-    padding-left: 16px;
-    @include fontRem(16, 500);
-    line-height: 20px;
-    color: $titleColor;
-    @media all and (max-width: $tablet) {
-        height: 48px;
-    }
-    &::placeholder {
-        font-family: inherit;
-        color: rgba(227, 230, 234, 0.32);
-    }
-    &:focus {
-        border-color: $blue;
-        outline: none !important;
-    }
+  width: 100%;
+  background: rgba(41, 52, 139, 0.24);
+  border: 1px solid rgba(178, 186, 215, 0.48);
+  border-radius: 8px;
+  transition: 0.3s;
+  height: 64px;
+  padding-left: 16px;
+  @include fontRem(16, 500);
+  line-height: 20px;
+  color: $titleColor;
+  @media all and (max-width: $tablet) {
+    height: 48px;
+  }
+  &::placeholder {
+    font-family: inherit;
+    color: rgba(227, 230, 234, 0.32);
+  }
+  &:focus {
+    border-color: $blue;
+    outline: none !important;
+  }
 }
-.textarea{
-    padding: 10px;
-    padding-right: 5px;
-    resize: none;
-    &::-webkit-scrollbar {
-        width: 6px;
-        border-radius: 10px;
-        @media all and (max-width: $tablet) {
-            width: 3px;
-        }
+.textarea {
+  padding: 10px;
+  padding-right: 5px;
+  resize: none;
+  &::-webkit-scrollbar {
+    width: 6px;
+    border-radius: 10px;
+    @media all and (max-width: $tablet) {
+      width: 3px;
     }
-    &::-webkit-scrollbar-track {
-        border-radius: 10px;
-        background: linear-gradient(
-            229.09deg,
-            rgba(173, 179, 189, 0.24) 3.76%,
-            rgba(104, 115, 117, 0.24) 115.42%
-        );
-    }
-    &::-webkit-scrollbar-thumb {
-        background: linear-gradient(229.09deg, #1875fc 3.76%, #00ddfb 115.42%);
-        border-radius: 10px;
-    }
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: linear-gradient(
+      229.09deg,
+      rgba(173, 179, 189, 0.24) 3.76%,
+      rgba(104, 115, 117, 0.24) 115.42%
+    );
+  }
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(229.09deg, #1875fc 3.76%, #00ddfb 115.42%);
+    border-radius: 10px;
+  }
 }
 
 .addonInput {
-    position: relative;
-    button {
-        @include buttonNulled;
-        @include flex-center-vert;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 23px;
-        svg {
-            path {
-                transition: 0.3s;
-            }
-        }
-        &:hover {
-            svg {
-                path {
-                    fill: $white;
-                    fill-opacity: 1;
-                }
-            }
-        }
-    }
-    input {
-        padding-right: 55px;
-    }
-}
-
-.errorMessage{
+  position: relative;
+  button {
+    @include buttonNulled;
+    @include flex-center-vert;
     position: absolute;
-    bottom: -20px;
-    left: 5px;
-    color: #981616;
-    @include fontRem(14, 500);
-}
-
-.repeatMode{
-    width: 16px;
-    height: 16px;
-    background: red;
-    position: absolute;
-    right: -28px;
-    border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
+    right: 23px;
+    svg {
+      path {
+        transition: 0.3s;
+      }
+    }
+    &:hover {
+      svg {
+        path {
+          fill: $white;
+          fill-opacity: 1;
+        }
+      }
+    }
+  }
+  input {
+    padding-right: 55px;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -20px;
+  left: 5px;
+  color: #981616;
+
+  &.errorMessageAlt {
+    top: 110px;
+    
+    @media all and (max-width: $tablet) {
+      top: 90px;
+    }
+    @media all and (max-width: $smallTablet) {
+      top: 75px;
+    }
+    @media all and (max-width: $mobile) {
+      bottom: -40px;
+    }
+  }
+  @include fontRem(14, 500);
+
+  @media all and (max-width: $mobile) {
+    bottom: -40px;
+  }
+}
+
+.repeatMode {
+  width: 16px;
+  height: 16px;
+  background: red;
+  position: absolute;
+  right: -28px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
 }

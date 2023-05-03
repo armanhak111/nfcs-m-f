@@ -51,6 +51,7 @@ const SignUp: React.FC = () => {
         onChange={formik.handleChange}
         value={formik.values.email}
         onClick={formik.setFieldTouched}
+        isSign
       />
       <Input
         htmlFor="password"
@@ -72,6 +73,7 @@ const SignUp: React.FC = () => {
         repeatMode
         setPassShowMode={setShowPass}
         value={formik.values.password}
+        isSign
       />
       <Input
         htmlFor="passwordConfirmation"
@@ -93,6 +95,7 @@ const SignUp: React.FC = () => {
         passShowMode={showRepeatPass}
         setPassShowMode={setShowRepeatPass}
         value={formik.values.passwordConfirmation}
+        isSign
       />
       <Disclaimer
         onChange={formik.setFieldValue}

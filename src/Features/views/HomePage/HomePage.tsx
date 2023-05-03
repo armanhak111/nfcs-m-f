@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useMediaQuery from 'react-use-media-query-hook';
 
@@ -9,6 +9,7 @@ import Portal from '../../../Components/Dumb/Portal';
 import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
+import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import Button from '../../atoms/Button';
 import Footer from '../../moleculs/Footer';
 import Header from '../../moleculs/Header';
@@ -21,11 +22,12 @@ import styles from './HomePage.module.scss';
 const HomePage: React.FC = () => {
   const history = useHistory();
   const currentUser = useSelector(getCurrentUser);
-
+  const dispatch = useDispatch();
   const isAuth = Object.values(currentUser).length;
   const buyForecast = () => {
     if (isAuth) {
       history.push(ROUTES.DASHBOARD);
+      dispatch(setCurrentSlide('buyAnalytic'));
     } else {
       history.push(ROUTES.SIGN_IN);
     }

@@ -27,6 +27,9 @@ const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   const currentUser = useSelector(getCurrentUser);
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
+    if (open) {
+      setOpen(!open);
+    }
   };
   useEffect(() => {
     dispatch(usersAnalytics(currentUser.id));

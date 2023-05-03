@@ -9,8 +9,8 @@ export const TIME_ZONE: TTimeZone[] = [
     id: 'UTC +0: British Isles, West Africa',
   },
   {
-    value: 'UTC -1: Cabo Verde, Ponta Delgada (Portugal) and Ittoqqortoormiit (Greenland)',
-    id: 'UTC -1: Cabo Verde, Ponta Delgada (Portugal) and Ittoqqortoormiit (Greenland)',
+    value: 'UTC -1: Verde, Ponta Delgada (Portugal) and Ittoqqortoormiit',
+    id: 'UTC -1: Verde, Ponta Delgada (Portugal) and Ittoqqortoormiit ',
   },
   {
     value: 'UTC -2: Sandwich Island (South Georgia)',
@@ -45,8 +45,8 @@ export const TIME_ZONE: TTimeZone[] = [
     id: 'UTC -9: Alaska (US)',
   },
   {
-    value: 'UTC -10: French Polynesia, Kiribati, Cook Islands, Hawaii (US)',
-    id: 'UTC -10: French Polynesia, Kiribati, Cook Islands, Hawaii (US)',
+    value: 'UTC -10: French Polynesia, Kiribati Cook Islands Hawaii (US)',
+    id: 'UTC -10: French Polynesia, Kiribati Cook Islands Hawaii (US)',
   },
   {
     value: 'UTC -11: US Minor Outlying Islands and Niue',
@@ -93,8 +93,8 @@ export const TIME_ZONE: TTimeZone[] = [
     id: 'UTC +9: Part of Russia and Eastern Asia',
   },
   {
-    value: 'UTC +10: Part of Russia, Papua New-Guinea and Eastern Australia',
-    id: 'UTC +10: Part of Russia, Papua New-Guinea and Eastern Australia',
+    value: 'UTC +10: Part of Russia, Papua New-Guinea and  Australia',
+    id: 'UTC +10: Part of Russia, Papua New-Guinea and  Australia',
   },
   {
     value: 'UTC +11: Part of Russia and Oceania Islands',

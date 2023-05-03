@@ -23,6 +23,9 @@
     }
     .detailsItemContent {
         margin-bottom: 40px;
+        .aaa{
+            color: aqua;
+        }
         .divider {
             position: relative;
             top: 18px;
@@ -100,6 +103,9 @@
                 flex: 1;
                 .inputsItemPrice{
                     margin-bottom: 13px;
+                    @media all and (max-width: $smallTablet) {   
+                        margin-bottom: 18px;
+                    }
                 }
             }
         }
