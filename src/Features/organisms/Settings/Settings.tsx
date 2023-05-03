@@ -195,6 +195,7 @@ const Settings: React.FC = () => {
                         error={formik.touched.name && formik.errors.name}
                         onChange={formik.handleChange}
                         value={formik.values.name || ''}
+                        isSign
                       />
 
                       <div className={styles.buttons}>

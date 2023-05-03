@@ -32,6 +32,7 @@ interface IInputProps {
   textarea?: boolean;
   style?: React.CSSProperties;
   formik?: any;
+  isSign?: any;
 }
 
 const Input: React.FC<IInputProps> = ({
@@ -53,6 +54,7 @@ const Input: React.FC<IInputProps> = ({
   textarea,
   style,
   formik,
+  isSign,
 }) => {
   const intl = useIntl();
   return (
@@ -87,7 +89,15 @@ const Input: React.FC<IInputProps> = ({
               placeholder={intl.formatMessage({ id: placeHolder })}
             />
           )}
-          {error && <Typography component="p" className={styles.errorMessage} id={error} />}
+          {error && (
+            <Typography
+              component="p"
+              className={
+                isSign ? `${styles.errorMessage} ${styles.errorMessageAlt}` : styles.errorMessage
+              }
+              id={error}
+            />
+          )}
         </div>
       ) : (
         <div onClick={() => onClick(name)} className={styles.formItem}>
@@ -119,7 +129,15 @@ const Input: React.FC<IInputProps> = ({
               />
             )}
           </div>
-          {error && <Typography component="p" className={styles.errorMessage} id={error} />}
+          {error && (
+            <Typography
+              component="p"
+              className={
+                isSign ? `${styles.errorMessage} ${styles.errorMessageAlt}` : styles.errorMessage
+              }
+              id={error}
+            />
+          )}
         </div>
       )}
     </>

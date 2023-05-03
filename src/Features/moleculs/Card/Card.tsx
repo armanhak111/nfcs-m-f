@@ -5,6 +5,7 @@ import { useHistory, useLocation } from 'react-router-dom';
 import TooltipSvg from '../../../Assets/Icons/cards/TooltipSvg';
 import { ROUTES } from '../../../Constants/Routes';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
+import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
@@ -41,6 +42,7 @@ const Card: React.FC<ICard> = ({
     if (pathname === '/') {
       if (isAuth) {
         history.push(ROUTES.DASHBOARD);
+        dispatch(setCurrentSlide('buyAnalytic'));
       } else {
         history.push(ROUTES.SIGN_IN);
       }

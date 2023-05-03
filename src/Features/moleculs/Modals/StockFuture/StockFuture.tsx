@@ -46,13 +46,10 @@ const STOCK_INDUSTRY = [
     value: 'Industrials Sector',
   },
   {
-    id: 'contactus.dropdown.',
+    id: 'contactus.dropdown.costumerServiceSector',
     value: 'Consumer Services Sector',
   },
-  {
-    id: 'contactus.dropdown.',
-    value: 'costumerServiceSector',
-  },
+
   {
     id: 'contactus.dropdown.financialSector',
     value: 'Financials Sector',

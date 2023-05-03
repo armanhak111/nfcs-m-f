@@ -47,6 +47,7 @@ const SignIn: React.FC = () => {
         onChange={formik.handleChange}
         value={formik.values.email}
         onClick={formik.setFieldTouched}
+        isSign
       />
       <Input
         htmlFor="password"
@@ -62,6 +63,7 @@ const SignIn: React.FC = () => {
         passShowMode={showPass}
         setPassShowMode={setShowPass}
         value={formik.values.password}
+        isSign
       />
     </AuthView>
   );
