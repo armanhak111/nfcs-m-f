@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import TooltipSvg from '../../../Assets/Icons/cards/TooltipSvg';
+import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { ROUTES } from '../../../Constants/Routes';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
 import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
+// import { setCurrentSlide } from '../../../Store/Slices/dashboardLocal';
 import { setActionModal } from '../../../Store/Slices/modal';
 import Button from '../../atoms/Button';
 import ToolTip from '../../atoms/ToolTip';
 import Typography from '../../atoms/Typography';
 import { THomeCards } from '../../organisms/organismsTypes';
-// import Dashboard from '../../views/Dashboard';
 import styles from './card.module.scss';
 
 interface ICard extends THomeCards {
@@ -42,7 +43,7 @@ const Card: React.FC<ICard> = ({
     if (pathname === '/') {
       if (isAuth) {
         history.push(ROUTES.DASHBOARD);
-        dispatch(setCurrentSlide('buyAnalytic'));
+        dispatch(setCurrentSlide(DASHBOARD_SLIDES.buyAnalytic));
       } else {
         history.push(ROUTES.SIGN_IN);
       }
