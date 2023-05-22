@@ -6,6 +6,7 @@ import useMediaQuery from 'react-use-media-query-hook';
 import bgDesktop from '../../../Assets/images/full-bg.png';
 import bgMobile from '../../../Assets/images/fulll-bg-mobile.png';
 import Portal from '../../../Components/Dumb/Portal';
+import { DASHBOARD_SLIDES } from '../../../Constants/dashboard';
 import { ROUTES } from '../../../Constants/Routes';
 import { SCREENS } from '../../../Constants/ScreenResolutions';
 import { getCurrentUser } from '../../../Store/Selectors/auth';
@@ -27,7 +28,7 @@ const HomePage: React.FC = () => {
   const buyForecast = () => {
     if (isAuth) {
       history.push(ROUTES.DASHBOARD);
-      dispatch(setCurrentSlide('buyAnalytic'));
+      dispatch(setCurrentSlide(DASHBOARD_SLIDES.buyAnalytic));
     } else {
       history.push(ROUTES.SIGN_IN);
     }

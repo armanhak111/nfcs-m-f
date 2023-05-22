@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { DASHBOARD_SLIDES } from '../../Constants/dashboard';
-
 const initialState: IDashboardLocalSlice = {
-  currentSlide: DASHBOARD_SLIDES.forecastList,
+  currentSlide: 'forecastList',
 };
 
 export const dashboardLocalSlice = createSlice({
