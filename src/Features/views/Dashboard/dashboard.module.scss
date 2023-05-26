@@ -29,7 +29,7 @@
 .dashoardRight {
     margin-left: 380px;
     width: calc(100% - 380px);
-    padding-top: 15px;
+    padding-top: 11px;
     padding-right: 80px;
     padding-bottom: 32px;
     @media all and (max-width: $normalDesktop) {
@@ -50,6 +50,7 @@
 }
 .dashboardSideOpen {
     @include buttonNulled;
+    margin-left: 5px;
     margin-bottom: 15px;
     position: relative;
     z-index: 3;

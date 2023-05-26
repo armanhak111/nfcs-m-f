@@ -19,37 +19,46 @@ import styles from './dashboardSideBar.module.scss';
 interface IDashboardSideBar {
   open: boolean;
   // eslint-disable-next-line no-unused-vars
-  setOpen: (arg: boolean) => void;
+  setOpen: (arg: any) => void;
 }
 
 const DashboardSideBar: React.FC<IDashboardSideBar> = ({ open, setOpen }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser);
+
   const handleChangeSLide = (e: React.MouseEvent<HTMLDivElement>) => {
     dispatch(setCurrentSlide(e.currentTarget.dataset.current));
-    if (open) {
-      setOpen(!open);
-    }
+    setOpen((prev: any) => !prev);
   };
+
   useEffect(() => {
     dispatch(usersAnalytics(currentUser.id));
   }, []);
 
   const ref = useOutsideDetect(setOpen);
+
   const handelOpen = () => {
-    setOpen(!open);
+    setOpen((prev: any) => !prev);
   };
+
   const orderDetails = useSelector(getOrderDetails);
   const currentSLide = useSelector(getDashboardCurrentSlide);
   const onlyTablet = useMediaQuery(SCREENS.onlyTablet);
+  const isMobile = useMediaQuery(SCREENS.smallTablet);
+
   return (
     <aside ref={ref} className={`${styles.aside} ${open && styles.opened} `}>
       <div className={styles.asideContent}>
-        {onlyTablet && (
+        {(onlyTablet || isMobile) && (
           <button onClick={handelOpen} className={styles.tabletOpener}>
             <MenuFoldSvg />
           </button>
         )}
+        {/* {isMobile && (
+          <button onClick={handelOpen} className={styles.}>
+            <MenuFoldSvg />
+          </button>
+        )} */}
 
         <ul className={styles.asideList}>
           <li className={styles.asideListItem}>

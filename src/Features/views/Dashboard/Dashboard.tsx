@@ -54,7 +54,7 @@ const Dashboard: React.FC = () => {
     return DASHBOARD[currentSLide];
   }, [currentSLide]);
   const handelOpen = () => {
-    setOpen(!open);
+    setOpen((prev: any) => !prev);
   };
   const isMobile = useMediaQuery(SCREENS.smallTablet);
 
@@ -67,7 +67,7 @@ const Dashboard: React.FC = () => {
       <DashboardSideBar open={open} setOpen={setOpen} />
       <main className="main">
         <div className={styles.dashoardRight}>
-          {isMobile && (
+          {isMobile && !open && (
             <button onClick={handelOpen} className={styles.dashboardSideOpen}>
               <MenuFoldSvg />
             </button>
